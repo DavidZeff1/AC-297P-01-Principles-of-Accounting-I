@@ -243,6 +243,11 @@
       if (kind === "cards") cards(el, (def.cards || {})[key] || []);
       else if (kind === "sorter") sorter(el, (def.sorters || {})[key]);
       else if (kind === "quiz") quiz(el, def.quiz || [], id);
+      else if (HUB.widgets && HUB.widgets[kind]) {
+        var data = (def.data || {})[key];
+        if (data) { try { HUB.widgets[kind](el, data, key); } catch (e) { console.error("Widget " + kind + "/" + key + " failed", e); } }
+        else console.error("No data for widget " + kind + "/" + key);
+      }
     });
   }
 

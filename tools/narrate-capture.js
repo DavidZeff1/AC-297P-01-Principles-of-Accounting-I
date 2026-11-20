@@ -30,7 +30,7 @@ const STUB = () => {
 };
 
 /* clickable elements whose click changes what is read; lessons can mark more with data-voice-state */
-const CLICKABLES = [".flow-step", ".users-svg .node", ".era-btn", ".flip", "[data-basis]", "[data-voice-state]"];
+const CLICKABLES = [".flow-step", ".users-svg .node", ".era-btn", ".flip", "[data-basis]", ".st-dot", "[data-voice-state]"];
 
 (async () => {
   const out = process.argv[2];
@@ -69,6 +69,16 @@ const CLICKABLES = [".flow-step", ".users-svg .node", ".era-btn", ".flip", "[dat
       const n = await page.locator(sel).count();
       for (let i = 0; i < n; i++) {
         await page.locator(sel).nth(i).click(); await wait(600);
+        await add(id, await spoken()); await add(id, await all());
+      }
+    }
+    /* buttons that reveal one more thing each press (next entry, next step, next transaction) */
+    const reps = await page.locator("[data-voice-repeat]").count();
+    for (let i = 0; i < reps; i++) {
+      for (let k = 0; k < 40; k++) {
+        const b = page.locator("[data-voice-repeat]").nth(i);
+        if (await b.isDisabled()) break;
+        await b.click(); await wait(600);
         await add(id, await spoken()); await add(id, await all());
       }
     }
