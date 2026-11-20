@@ -9,18 +9,22 @@
   var HUB = window.HUB;
   var W = HUB.widgets = HUB.widgets || {};
 
+  /* DEC: decimals for the widget being drawn (2 when any of its amounts has cents) */
+  var DEC = 0;
+  function hasCents(list) { return list.some(function (n) { return typeof n === "number" && Math.round(n * 100) % 100 !== 0; }); }
   function money(n, opts) {
     if (n === null || n === undefined || n === "") return "";
     if (typeof n === "string") return n;
-    var s = Math.abs(n).toLocaleString("en-US", { minimumFractionDigits: (opts && opts.dec) || 0, maximumFractionDigits: (opts && opts.dec) || 0 });
+    var dec = opts && opts.dec !== undefined ? opts.dec : (DEC || (Math.round(n * 100) % 100 ? 2 : 0));
+    var s = Math.abs(n).toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec });
     var d = opts && opts.noDollar ? "" : "$";
     return n < 0 ? "(" + d + s + ")" : d + s;
   }
-  function plain(n) { return money(n, { noDollar: true }); }
+  function plain(n) { return money(n, { noDollar: true, dec: DEC || (Math.round(n * 100) % 100 ? 2 : 0) }); }
   function sayMoney(n) { return (n < 0 ? "minus " : "") + "$" + Math.abs(n).toLocaleString("en-US"); }
   function strip(html) { var d = document.createElement("div"); d.innerHTML = html; return d.textContent; }
   function say(el) { if (HUB.voice) HUB.voice.say(el); }
-  W.money = money;
+  W.money = function (n, o) { var keep = DEC; DEC = 0; var r = money(n, o); DEC = keep; return r; };
 
   /* linked figures: tapping any element with data-link highlights every element sharing that value */
   function link(e) {
@@ -38,6 +42,7 @@
      { entity, title, date, cols: 1|2, rows: [{ l, a, b, ind, head, bold, ua, ub, uua, uub, gap }] }
      a = inner column, b = outer column; u* = single underline, uu* = double underline */
   W.statement = function (el, d) {
+    DEC = hasCents([].concat.apply([], d.rows.map(function (r) { return [r.a, r.b]; }))) ? 2 : 0;
     var two = d.cols === 2 || d.rows.some(function (r) { return r.a !== undefined && r.b !== undefined; });
     var h = '<div class="statement' + (two ? " two" : "") + '">';
     h += '<div class="st-head" data-say="' + [d.entity, d.title, d.date].filter(Boolean).join(". ") + '."><b>' + (d.entity || "") + '</b><span>' + (d.title || "") + '</span>' + (d.date ? '<span>' + d.date + '</span>' : '') + '</div>';
@@ -70,6 +75,7 @@
   }
   W.journal = function (el, d) {
     var noDate = d.entries.every(function (e) { return !e.date; });
+    DEC = hasCents([].concat.apply([], d.entries.map(function (e) { return [].concat.apply([], e.lines.map(function (l) { return [l[1], l[2]]; })); }))) ? 2 : 0;
     var h = '<div class="scroll-x"><table class="journal' + (noDate ? ' nodate' : '') + '"><thead><tr>' + (noDate ? '' : '<th>Date</th>') + '<th>Accounts</th><th class="num">Debit</th><th class="num">Credit</th></tr></thead>';
     d.entries.forEach(function (e) { h += entryHtml(e, noDate); });
     h += '</table></div>';
@@ -332,4 +338,10 @@
     el.addEventListener("input", run);
     run();
   };
+  /* reset decimal mode after every widget render */
+  Object.keys(W).forEach(function (k) {
+    var f = W[k];
+    if (typeof f !== "function" || k === "money") return;
+    W[k] = function () { try { return f.apply(this, arguments); } finally { DEC = 0; } };
+  });
 })();
