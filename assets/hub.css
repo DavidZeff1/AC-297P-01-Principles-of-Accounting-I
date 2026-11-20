@@ -355,3 +355,49 @@ body.focus-mode .focus-nav { display: grid; grid-template-columns: minmax(0, 1fr
 .focus-nav button.next { grid-column: 2; text-align: right; background: var(--ledger); color: var(--ledger-ink); border-color: var(--ledger); }
 .focus-nav .dir { display: block; font-size: 13px; opacity: .75; }
 @media (max-width: 520px) { .fb-exit span { display: none; } }
+
+/* ---------- voice-over ---------- */
+:root { --vo-lit: rgba(246, 220, 107, .38); --vo-ring: #c9a20a; --vo-hover: rgba(27, 106, 80, .06); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --vo-lit: rgba(246, 220, 107, .16); --vo-ring: rgba(246, 220, 107, .7); --vo-hover: rgba(76, 192, 143, .07); } }
+:root[data-theme="dark"] { --vo-lit: rgba(246, 220, 107, .16); --vo-ring: rgba(246, 220, 107, .7); --vo-hover: rgba(76, 192, 143, .07); }
+.hero-top { justify-content: flex-start; }
+.hero-top .crumbs { margin-right: auto; }
+.listen-btn svg, .vo-toggle svg, .fb-voice svg { flex: none; }
+.vo-toggle {
+  display: inline-flex; align-items: center; gap: 6px; border: 0; cursor: pointer; border-radius: 999px;
+  padding: 7px 12px; background: rgba(255, 255, 255, .1); color: #e9f3ee; font: 600 13px/1 var(--f-body);
+}
+.vo-toggle:hover { background: rgba(255, 255, 255, .18); }
+.vo-toggle.on, .fb-voice.on { background: #7fe0b2; color: #0b2a1e; }
+.fb-voice { display: inline-flex; align-items: center; gap: 4px; }
+@media (max-width: 520px) { .vo-toggle span, .fb-voice span { display: none; } }
+
+.vo-btn { display: none; }
+body.vo-on .vo-btn {
+  display: inline-flex; align-items: center; gap: 5px; border: 0; cursor: pointer; background: var(--ledger-soft); color: var(--ledger);
+  border-radius: 999px; padding: 5px 10px; font: 600 12px/1 var(--f-body); letter-spacing: 0; text-transform: none; margin-left: 8px;
+}
+body.vo-on .vo-btn:hover { filter: brightness(.96); }
+body.vo-on .vo-q { padding: 5px 7px; margin-left: auto; align-self: flex-start; }
+body.vo-on .vo-readable { cursor: pointer; border-radius: 6px; transition: background-color .2s, box-shadow .2s; }
+body.vo-on .vo-readable:hover { background-color: var(--vo-hover); box-shadow: 0 0 0 6px var(--vo-hover); }
+.vo-lit, body.vo-on .vo-lit:hover { background-color: var(--vo-lit) !important; box-shadow: 0 0 0 6px var(--vo-lit) !important; outline: 2px solid var(--vo-ring); outline-offset: 6px; border-radius: 6px; }
+body.vo-on { padding-bottom: 88px; }
+
+.vo-dock {
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 35;
+  width: min(760px, calc(100% - 24px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
+  display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 14px;
+  background: var(--bar); color: #e9f3ee; box-shadow: 0 8px 30px rgba(0, 0, 0, .28);
+}
+.vo-ctl { flex: none; width: 38px; height: 38px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: #e9f3ee; cursor: pointer; }
+.vo-ctl:hover { background: rgba(255, 255, 255, .12); }
+.vo-main { width: 44px; height: 44px; background: #7fe0b2; color: #0b2a1e; }
+.vo-main:hover { background: #95e8c1; }
+.vo-now { flex: 1; min-width: 0; display: grid; gap: 2px; padding: 0 6px; }
+.vo-k { font: 700 11px/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; color: #9cc9b3; }
+#vo-label { font-size: 14px; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vo-rate { flex: none; border: 1px solid rgba(255, 255, 255, .25); background: transparent; color: #e9f3ee; border-radius: 999px; padding: 6px 10px; font: 600 13px/1 var(--f-mono); cursor: pointer; min-width: 3.6em; }
+.vo-voice { flex: none; max-width: 150px; background: rgba(255, 255, 255, .08); color: #e9f3ee; border: 1px solid rgba(255, 255, 255, .25); border-radius: 8px; padding: 6px 8px; font: 500 13px/1.2 var(--f-body); color-scheme: dark; }
+.vo-x { width: 32px; height: 32px; font-size: 14px; opacity: .8; }
+@media (max-width: 560px) { .vo-voice { display: none; } .vo-dock { gap: 2px; } .vo-ctl { width: 34px; height: 34px; } .vo-main { width: 42px; height: 42px; } }

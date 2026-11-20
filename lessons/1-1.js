@@ -320,7 +320,7 @@
       </div>
       <div style="display:grid;gap:14px;align-content:start;min-width:0">
         <div class="stmt" id="stmt"></div>
-        <p class="verdict" id="sim-verdict"></p>
+        <p class="verdict" id="sim-verdict" aria-live="polite"></p>
       </div>
     </div>
   </div>
@@ -359,7 +359,7 @@
           </g>
           <circle cx="140" cy="46" r="5" class="base"/>
         </svg>
-        <p class="verdict" id="land-note"></p>
+        <p class="verdict" id="land-note" aria-live="polite"></p>
       </div>
     </div>
   </div>
@@ -479,7 +479,7 @@
       root.querySelector("#flow-play").addEventListener("click", function () {
         if (timer) { stop(); return; }
         show(0); this.textContent = "❚❚ Pause";
-        timer = setInterval(function () { if (cur >= FLOW.length - 1) { stop(); return; } show(cur + 1); }, 2600);
+        timer = setInterval(function () { if (HUB.voice && HUB.voice.busy()) return; if (cur >= FLOW.length - 1) { stop(); return; } show(cur + 1); }, 2600);
       });
       show(0);
 
