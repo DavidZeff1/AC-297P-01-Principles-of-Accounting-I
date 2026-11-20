@@ -621,3 +621,33 @@ table.ws td.now { background: var(--marker) !important; color: var(--marker-ink)
 .ws-tot td { font-weight: 700; border-top: 2px solid var(--ink); }
 .ws-final td { border-bottom: 3px double var(--ink); }
 .ws-ni td { font-style: italic; }
+/* invoice mock */
+.invoice { border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; display: grid; gap: 4px; font-size: 14px; background: var(--card); }
+.inv-top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 4px; }
+.inv-top b { font-family: var(--f-display); font-size: 16px; }
+.inv-pay { margin-top: 6px; font-weight: 700; padding: 6px 10px; border-radius: 6px; }
+.inv-pay.ok { background: var(--good-soft); color: var(--good); }
+.inv-pay.late { background: var(--bad-soft); color: var(--bad); }
+/* freight terms (lesson 5.2) */
+.fob { margin: 14px 0; display: grid; gap: 6px; }
+.fob-row { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; }
+.fob-end { font-weight: 700; text-align: center; line-height: 1.2; padding: 8px 12px; border: 1.5px solid var(--rule); border-radius: 8px; background: var(--card); }
+.fob-end small { font-weight: 400; color: var(--ink-3); }
+.fob-truck { position: relative; text-align: center; padding: 8px; border-radius: 999px; font-size: 14px; background: var(--rule-2); }
+.fob-truck.seller { background: var(--ledger-soft); }
+.fob-truck.buyer, .fob-truck.both { background: var(--mgr-soft); }
+.fob-truck::after { content: "→"; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
+.fob-own { text-align: center; font-size: 14px; color: var(--ink-2); }
+/* split bar (COGS vs ending inventory) */
+.split-bar { display: flex; height: 44px; border-radius: 8px; overflow: hidden; font: 600 13px/44px var(--f-body); }
+.split-bar span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 8px; min-width: 0; }
+.sb-a { background: var(--bad-soft); color: var(--bad); }
+.sb-b { background: var(--ledger-soft); color: var(--ledger); }
+/* register (lesson 5.3) */
+.reg-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 10px; }
+.reg-item { display: grid; gap: 4px; text-align: left; border: 1.5px solid var(--rule); background: var(--card); border-radius: 10px; padding: 12px 14px; cursor: pointer; }
+.reg-item:hover { border-color: var(--ledger); }
+.reg-item span { font-size: 13px; color: var(--ink-3); }
+.reg-item .reg-scan { justify-self: start; margin-top: 4px; font: 700 12px/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--ledger-ink); background: var(--ledger); padding: 6px 10px; border-radius: 999px; }
+table.journal.nodate { min-width: 300px; }
+table.journal.nodate th.num, table.journal.nodate td.num { width: 6.5em; }

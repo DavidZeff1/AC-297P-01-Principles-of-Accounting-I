@@ -56,21 +56,22 @@
   /* ---------- journal: general journal entries ----------
      { entries: [{ date, lines: [[account, debit, credit]], memo }], step: true }
      step: reveal one entry at a time with a "Show next entry" button */
-  function entryHtml(e) {
+  function entryHtml(e, noDate) {
     var s = (e.date ? e.date + ": " : "") + e.lines.map(function (ln) {
       return (ln[1] ? "debit " : "credit ") + strip(ln[0]) + ", " + sayMoney(ln[1] || ln[2]);
     }).join("; ") + "." + (e.memo ? " " + strip(e.memo) : "");
     var h = '<tbody class="jr-entry" data-say="' + s.replace(/"/g, "&quot;") + '">';
     e.lines.forEach(function (ln, i) {
-      h += '<tr><td class="jr-date">' + (i === 0 ? (e.date || "") : "") + '</td><td class="jr-acct' + (ln[2] ? " cr" : "") + '">' + ln[0] + '</td>' +
+      h += '<tr>' + (noDate ? '' : '<td class="jr-date">' + (i === 0 ? (e.date || "") : "") + '</td>') + '<td class="jr-acct' + (ln[2] ? " cr" : "") + '">' + ln[0] + '</td>' +
         '<td class="num">' + (ln[1] ? plain(ln[1]) : "") + '</td><td class="num">' + (ln[2] ? plain(ln[2]) : "") + '</td></tr>';
     });
-    if (e.memo) h += '<tr class="jr-memo"><td></td><td colspan="3">' + e.memo + '</td></tr>';
+    if (e.memo) h += '<tr class="jr-memo">' + (noDate ? '' : '<td></td>') + '<td colspan="3">' + e.memo + '</td></tr>';
     return h + '</tbody>';
   }
   W.journal = function (el, d) {
-    var h = '<div class="scroll-x"><table class="journal"><thead><tr><th>Date</th><th>Accounts</th><th class="num">Debit</th><th class="num">Credit</th></tr></thead>';
-    d.entries.forEach(function (e) { h += entryHtml(e); });
+    var noDate = d.entries.every(function (e) { return !e.date; });
+    var h = '<div class="scroll-x"><table class="journal' + (noDate ? ' nodate' : '') + '"><thead><tr>' + (noDate ? '' : '<th>Date</th>') + '<th>Accounts</th><th class="num">Debit</th><th class="num">Credit</th></tr></thead>';
+    d.entries.forEach(function (e) { h += entryHtml(e, noDate); });
     h += '</table></div>';
     if (d.step) h += '<div class="w-ctl"><button type="button" class="btn small jr-next" data-voice-repeat>Show next entry</button><button type="button" class="btn ghost small jr-reset">Start over</button><span class="hint jr-count"></span></div>';
     el.innerHTML = h;
