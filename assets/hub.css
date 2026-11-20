@@ -686,3 +686,14 @@ table.plain thead th.num { font-family: var(--f-display); }
 .dc-key { display: flex; gap: 16px; font-size: 13px; color: var(--ink-2); }
 .dc-key span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
 .dc-key .dep::before { background: var(--ledger); } .dc-key .mnt::before { background: var(--mgr); }
+/* promissory note mock (lesson 12.2) */
+.note-doc { border: 1px solid var(--rule); border-radius: 8px; background: var(--card); padding: 16px 18px; display: grid; gap: 8px; max-width: 640px; font-family: var(--f-body); }
+.nd-top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
+.nd-top b { font-family: var(--f-display); font-size: 17px; }
+/* contingency decision (lesson 12.3) */
+.cont-out { margin-top: 14px; }
+.cont-res { border-radius: var(--r); padding: 14px 16px; display: grid; gap: 4px; }
+.cont-res b { font: 800 22px/1.1 var(--f-display); font-stretch: 85%; }
+.cont-res.rec { background: var(--bad-soft); } .cont-res.rec b { color: var(--bad); }
+.cont-res.note { background: var(--mgr-soft); } .cont-res.note b { color: var(--mgr); }
+.cont-res.none { background: var(--rule-2); }
