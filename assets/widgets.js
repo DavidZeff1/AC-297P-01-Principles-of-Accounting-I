@@ -53,7 +53,8 @@
       h += '<div class="st-row' + (r.head ? " head" : "") + (r.bold ? " bold" : "") + '" style="--ind:' + (r.ind || 0) + '"' + (r.link ? ' data-link="' + r.link + '" tabindex="0" role="button"' : '') + ' data-say="' + sayRow.replace(/"/g, "&quot;") + '.">';
       h += '<span class="st-l">' + r.l + '</span>';
       if (two) h += '<span class="st-a"><span class="' + (r.uua ? "uu" : r.ua ? "u" : "") + '">' + money(r.a) + '</span></span>';
-      h += '<span class="st-b"><span class="' + (r.uub ? "uu" : r.ub ? "u" : "") + '">' + money(two ? r.b : r.a !== undefined ? r.a : r.b) + '</span></span></div>';
+      var uu = two ? r.uub : (r.uub || r.uua), u = two ? r.ub : (r.ub || r.ua);
+      h += '<span class="st-b"><span class="' + (uu ? "uu" : u ? "u" : "") + '">' + money(two ? r.b : r.a !== undefined ? r.a : r.b) + '</span></span></div>';
     });
     el.innerHTML = h + '</div>';
   };

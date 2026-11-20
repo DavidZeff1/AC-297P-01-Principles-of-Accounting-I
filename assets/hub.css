@@ -651,3 +651,38 @@ table.ws td.now { background: var(--marker) !important; color: var(--marker-ink)
 .reg-item .reg-scan { justify-self: start; margin-top: 4px; font: 700 12px/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--ledger-ink); background: var(--ledger); padding: 6px 10px; border-radius: 999px; }
 table.journal.nodate { min-width: 300px; }
 table.journal.nodate th.num, table.journal.nodate td.num { width: 6.5em; }
+.timeline-note { display: flex; border-radius: 8px; overflow: hidden; font-size: 14px; font-weight: 600; }
+.timeline-note span { padding: 10px 12px; min-width: 0; }
+.tn-a { flex: 1; background: var(--ledger-soft); color: var(--ledger); }
+.tn-b { flex: 2; background: var(--mgr-soft); color: var(--mgr); }
+/* nail barrel (lesson 8.2) */
+.barrel-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; margin-top: 14px; align-items: start; }
+@media (max-width: 640px) { .barrel-wrap { grid-template-columns: minmax(0, 1fr); } }
+.barrel { display: flex; flex-direction: column; height: 260px; border: 3px solid var(--ink-3); border-top: 0; border-radius: 0 0 26px 26px; overflow: hidden; background: var(--rule-2); }
+.layer { position: relative; display: flex; align-items: center; border-top: 1px dashed var(--ink-3); min-height: 0; }
+.layer-in { position: absolute; inset: 0 auto 0 0; transition: width .4s; }
+.layer.l0 .layer-in { background: rgba(27, 106, 80, .35); }
+.layer.l1 .layer-in { background: rgba(154, 85, 18, .35); }
+.layer.l2 .layer-in { background: rgba(178, 60, 42, .30); }
+.layer-t { position: relative; padding: 0 12px; font: 600 13px/1.2 var(--f-mono); }
+@media (prefers-reduced-motion: reduce) { .layer-in { transition: none; } }
+table.plain thead th.num { font-family: var(--f-display); }
+/* ownership bar (lesson 9.1) */
+.own-bar { position: relative; height: 18px; border-radius: 9px; background: var(--rule-2); overflow: hidden; }
+.own-bar span { position: absolute; inset: 0 auto 0 0; background: var(--ledger); border-radius: 9px; }
+.own-bar i { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); }
+.own-scale { position: relative; height: 18px; font: 500 11px/18px var(--f-mono); color: var(--ink-3); }
+.own-scale span { position: absolute; transform: translateX(-50%); }
+.own-scale span:first-child { transform: none; }
+.own-scale span:last-child { transform: none; }
+/* depreciation chart (lesson 10.3) */
+.dep-chart { max-width: 560px; margin-top: 12px; }
+.dep-chart svg { width: 100%; height: auto; display: block; }
+.dc-grid { stroke: var(--rule-2); stroke-width: 1; }
+.dc-ax { fill: var(--ink-3); font: 500 12px var(--f-mono); }
+.dc-tot { fill: var(--ink); font: 700 13px var(--f-mono); }
+.dc-dep { fill: var(--ledger); }
+.dc-mnt { fill: var(--mgr); opacity: .8; }
+.dc-key { display: flex; gap: 16px; font-size: 13px; color: var(--ink-2); }
+.dc-key span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.dc-key .dep::before { background: var(--ledger); } .dc-key .mnt::before { background: var(--mgr); }
