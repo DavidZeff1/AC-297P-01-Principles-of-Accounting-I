@@ -29,7 +29,7 @@ interactive examples, flashcards, practice quiz). See README.md for the file lay
   Then add `<script src="audio/<lessonId>/index.js"></script>` to `index.html` beside the others.
   The capture step clicks through every interactive state, so new widget types that change spoken
   text should be clickable elements listed in `CLICKABLES` in `tools/narrate-capture.js` (or carry
-  `data-voice-state`). The narrator voice is Michael (`am_michael`, Kokoro-82M) unless the user picks another.
+  `data-voice-state`). The narrator is always Michael (`am_michael`, Kokoro-82M): the user wants one natural male voice and no voice picker.
 - Hosting limits for the artifact: at most ~511 files and 256 MB per version, 15 MB per binary file.
   Each lesson's narration is one bundle of roughly 5–7 MB at 32 kbps; if the total nears 256 MB,
   re-record at `--bitrate 24k` or split packs across artifacts.

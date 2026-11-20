@@ -10,7 +10,6 @@
   var supported = !!(synth && window.SpeechSynthesisUtterance);
   var KEY = "ac297p-voice-v1";
   var RATES = [0.75, 1, 1.25, 1.5, 1.75];
-  var SAMPLE = "Accounting measures and reports financial information about an economic unit.";
   var ON_MSG = "Voice-over on. Press play to hear this page, or tap any paragraph.";
 
   var SEL = {
@@ -41,7 +40,7 @@
 
   var view = { kind: null, root: null, blocks: [], extra: [] };
   var idx = 0, playing = false, run = 0, speakingNow = false, lit = null, observer = null;
-  var dock, playBtn, labelEl, rateBtn, voiceSel;
+  var dock, playBtn, labelEl, rateBtn;
 
   /* ---------- text extraction ---------- */
   var BREAK = /^(block|flex|grid|list-item|table|table-row|table-cell|inline-flex|inline-grid|inline-block)$/;
@@ -123,7 +122,7 @@
   }
   HUB.voiceHash = hash;
   function clipFor(text) {
-    if (pref.voice && pref.voice.indexOf("device:") === 0) return null;
+    if (window.__voCapture) return null; /* build-time capture uses the stand-in engine */
     var h = hash(text), ids = [view.pack, "common"];
     for (var i = 0; i < ids.length; i++) { var p = packs[ids[i]]; if (p && !p.failed && p.map[h]) return { p: p, at: p.map[h] }; }
     return null;
@@ -133,10 +132,6 @@
     if (clipUrl) URL.revokeObjectURL(clipUrl);
     clipUrl = URL.createObjectURL(new Blob([c.p.buf.slice(c.at[0], c.at[0] + c.at[1])], { type: "audio/mpeg" }));
     return clipUrl;
-  }
-  function narratorLabel() {
-    var p = packs[view.pack] || packs.common;
-    return p ? p.label : null;
   }
   var player = typeof Audio !== "undefined" ? new Audio() : null;
   if (player) player.preload = "auto";
@@ -159,27 +154,9 @@
   function loadVoices() {
     voices = supported ? synth.getVoices().filter(function (v) { return /^en(-|_|$)/i.test(v.lang); }) : [];
     voices.sort(function (a, b) { return rank(a) - rank(b); });
-    if (!voiceSel) return;
-    var nl = narratorLabel(), h = "";
-    if (nl) h += '<option value="">' + nl + ' (natural)</option>';
-    var best = bestVoice();
-    h += voices.map(function (v) {
-      var val = (nl ? "device:" : "") + v.name;
-      return '<option value="' + val.replace(/"/g, "&quot;") + '">' + v.name.replace(/^(Microsoft|Google) /, "").replace(/ - English.*$/, "").replace(/ Online \(Natural\)/, " (natural)") + (rank(v) < 99 ? "" : " ·") + '</option>';
-    }).join("");
-    voiceSel.innerHTML = h;
-    var want = pref.voice || (nl ? "" : best);
-    if (!nl && want.indexOf("device:") === 0) want = want.slice(7);
-    if (nl && want && want.indexOf("device:") !== 0) want = "";
-    voiceSel.value = want;
-    if (voiceSel.selectedIndex < 0) voiceSel.selectedIndex = 0;
-    voiceSel.hidden = voiceSel.options.length < 2;
   }
-  function bestVoice() { return voices[0] ? voices[0].name : ""; }
-  function currentVoice() {
-    var name = (pref.voice || "").replace(/^device:/, "") || bestVoice();
-    return voices.find(function (v) { return v.name === name; }) || voices[0] || null;
-  }
+  /* fallback only: the device's closest match to the narrator (best-ranked male English voice) */
+  function currentVoice() { return voices[0] || null; }
 
   function hush() {
     run++; speakingNow = false;
@@ -308,11 +285,10 @@
       '<button type="button" class="vo-ctl" id="vo-next" aria-label="Next paragraph">' + IC.next + '</button>' +
       '<div class="vo-now"><span class="vo-k">Voice-over</span><span id="vo-label">Tap Play, or tap any paragraph</span></div>' +
       '<button type="button" class="vo-rate" id="vo-rate" aria-label="Reading speed"></button>' +
-      '<select id="vo-voice" class="vo-voice" aria-label="Voice"></select>' +
       '<button type="button" class="vo-ctl vo-x" id="vo-close" aria-label="Turn voice-over off">✕</button>';
     document.body.appendChild(dock);
     playBtn = dock.querySelector("#vo-play"); labelEl = dock.querySelector("#vo-label");
-    rateBtn = dock.querySelector("#vo-rate"); voiceSel = dock.querySelector("#vo-voice");
+    rateBtn = dock.querySelector("#vo-rate");
     playBtn.addEventListener("click", function () { if (playing) pause(); else playFrom(idx); });
     dock.querySelector("#vo-prev").addEventListener("click", function () { playFrom(idx - 1); });
     dock.querySelector("#vo-next").addEventListener("click", function () { playFrom(idx + 1); });
@@ -321,7 +297,6 @@
       var k = RATES.indexOf(pref.rate); pref.rate = RATES[(k + 1) % RATES.length]; savePref(); paintDock();
       if (playing) playFrom(idx);
     });
-    voiceSel.addEventListener("change", function () { pref.voice = voiceSel.value; savePref(); if (playing) playFrom(idx); else sayNow(SAMPLE); });
     loadVoices();
     if (supported && "onvoiceschanged" in synth) synth.addEventListener("voiceschanged", loadVoices);
   }
@@ -433,7 +408,7 @@
       collect().forEach(function (el) { out = out.concat(sentences(extract(el))); });
       return out;
     },
-    _fixed: function () { return sentences(clean(ON_MSG)).concat(sentences(clean(SAMPLE))); }
+    _fixed: function () { return sentences(clean(ON_MSG)); }
   };
 
   buildDock();

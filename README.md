@@ -25,10 +25,9 @@ sections, and `Esc` to exit. The setting is remembered.
 
 Press **Voice** in the top bar (or the `V` key) to turn on voice-over. Lessons are narrated by
 **Michael**, a natural neural voice recorded ahead of time with the open-source
-[Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) model (Apache-2.0). Anything without a
-recording falls back to the device's own speech engine, which prefers the most natural relaxed male
-voice the device has (Edge "Natural" voices, Apple Enhanced voices, Google UK English Male). The voice
-picker in the player bar switches between Michael and the device voices.
+[Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) model (Apache-2.0). There is one voice by design. The
+rare sentence without a recording (such as a changed progress count) is read by the device's closest
+male voice.
 
 - **Listen to this lesson** reads the whole lesson from the top, highlighting each block as it goes.
   In focus mode it turns the sections for you.
@@ -36,7 +35,7 @@ picker in the player bar switches between Michael and the device voices.
   Each section has a **Listen from here** button, and each quiz question has a speaker button.
 - Interactive pieces speak their results: diagram stages, user groups, simulator outcomes, flipped
   flashcards, and quiz and sorter feedback.
-- The player bar at the bottom has previous/next, play/pause (`P`), speed (0.75× to 1.75×), and a voice picker.
+- The player bar at the bottom has previous/next, play/pause (`P`), and speed (0.75× to 1.75×).
 
 Abbreviations are given spoken forms (FASB, GAAP, IFRS, …) in `assets/voice.js`. A lesson can add its own
 with `pronounce: [[/regex/g, "spoken form"]]`.

@@ -26,7 +26,7 @@ const STUB = () => {
   };
   Object.defineProperty(window, "speechSynthesis", { value: fake });
   window.SpeechSynthesisUtterance = function (t) { this.text = t; };
-  try { localStorage.setItem("ac297p-voice-v1", JSON.stringify({ on: true, rate: 1, voice: "device:none" })); } catch (e) {}
+  try { localStorage.setItem("ac297p-voice-v1", JSON.stringify({ on: true, rate: 1 })); } catch (e) {}
 };
 
 /* clickable elements whose click changes what is read; lessons can mark more with data-voice-state */
