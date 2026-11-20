@@ -86,6 +86,47 @@
     paint();
   };
 
+  /* ---------- ledger: one general ledger account with a running balance ----------
+     { account, no, open: [date, amount], rows: [[date, description, debit, credit]], normal: "dr"|"cr", swap: true }
+     swap: adds a toggle between "Increase/Decrease" and "Debit/Credit" column labels */
+  W.ledger = function (el, d) {
+    var normal = d.normal || "dr", bal = d.open ? d.open[1] : 0;
+    var h = '<div class="ledger-w">' + (d.swap ? '<div class="seg ledger-swap" role="group" aria-label="Column labels"><button type="button" data-voice-state class="on" data-lab="dc">Debit / Credit</button><button type="button" data-voice-state data-lab="id">Increase / Decrease</button></div>' : '');
+    h += '<div class="scroll-x"><table class="ledger"><caption><b>' + d.account + '</b>' + (d.no ? ' <span class="hint">Account no. ' + d.no + '</span>' : '') + '</caption><thead><tr><th>Date</th><th>Description</th><th class="num lab-dr">Debit</th><th class="num lab-cr">Credit</th><th class="num">Balance</th></tr></thead><tbody>';
+    if (d.open) h += '<tr data-say="' + d.open[0] + ': beginning balance, ' + sayMoney(bal) + '."><td>' + d.open[0] + '</td><td>Balance</td><td></td><td></td><td class="num">' + plain(bal) + '</td></tr>';
+    d.rows.forEach(function (r) {
+      bal += normal === "dr" ? (r[2] || 0) - (r[3] || 0) : (r[3] || 0) - (r[2] || 0);
+      var sy = r[0] + ", " + strip(r[1]) + ": " + (r[2] ? "debit " + sayMoney(r[2]) : "credit " + sayMoney(r[3])) + ". Balance " + sayMoney(bal) + ".";
+      h += '<tr data-say="' + sy.replace(/"/g, "&quot;") + '"><td>' + r[0] + '</td><td>' + r[1] + '</td><td class="num">' + (r[2] ? plain(r[2]) : "") + '</td><td class="num">' + (r[3] ? plain(r[3]) : "") + '</td><td class="num">' + plain(bal) + '</td></tr>';
+    });
+    h += '</tbody></table></div><p class="ledger-note hint" aria-live="polite"></p></div>';
+    el.innerHTML = h;
+    if (!d.swap) return;
+    var inc = normal === "dr" ? ["Increase", "Decrease"] : ["Decrease", "Increase"];
+    el.querySelector(".ledger-swap").addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var dc = b.getAttribute("data-lab") === "dc";
+      el.querySelectorAll(".ledger-swap button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      el.querySelector(".lab-dr").textContent = dc ? "Debit" : inc[0];
+      el.querySelector(".lab-cr").textContent = dc ? "Credit" : inc[1];
+      el.querySelector(".ledger-note").textContent = dc ? "Accountants label the columns debit and credit." : "For an asset like cash, the debit column holds the increases and the credit column holds the decreases.";
+    });
+  };
+
+  /* ---------- trial: a trial balance ----------
+     { entity, date, rows: [[account, debit, credit]], title } */
+  W.trial = function (el, d) {
+    var dr = 0, cr = 0;
+    var h = '<div class="statement trial"><div class="st-head" data-say="' + d.entity + '. ' + (d.title || "Trial Balance") + '. ' + d.date + '."><b>' + d.entity + '</b><span>' + (d.title || "Trial Balance") + '</span><span>' + d.date + '</span></div>';
+    h += '<div class="st-row tb-head" aria-hidden="true"><span class="st-l"></span><span class="st-a">Debits</span><span class="st-b">Credits</span></div>';
+    d.rows.forEach(function (r) {
+      dr += r[1] || 0; cr += r[2] || 0;
+      h += '<div class="st-row" data-say="' + strip(r[0]) + ': ' + (r[1] ? "debit " + sayMoney(r[1]) : "credit " + sayMoney(r[2])) + '."><span class="st-l">' + r[0] + '</span><span class="st-a">' + (r[1] ? money(r[1]) : "") + '</span><span class="st-b">' + (r[2] ? money(r[2]) : "") + '</span></div>';
+    });
+    h += '<div class="st-row bold" data-say="Totals: debits ' + sayMoney(dr) + ', credits ' + sayMoney(cr) + '. ' + (dr === cr ? "In balance." : "Out of balance.") + '"><span class="st-l">Totals</span><span class="st-a"><span class="uu">' + money(dr) + '</span></span><span class="st-b"><span class="uu">' + money(cr) + '</span></span></div></div>';
+    el.innerHTML = h;
+  };
+
   /* ---------- taccounts: T-accounts with running balance ----------
      { accounts: [{ name, dr: [[label, amt]], cr: [[label, amt]], open: [side, amt] }] } */
   W.taccounts = function (el, d) {
