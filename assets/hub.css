@@ -1,5 +1,5 @@
 /* Layout: a sticky ledger-green top bar over a paper ground; lessons read in a
-   single 68ch column with a contents rail on wide screens. Figures are set in
+   wide column that fills the screen, with a contents rail on wide screens. Figures are set in
    mono with tabular numbers, totals get the accountant's double underline. */
 :root {
   --paper: #f3f6f1;
@@ -29,8 +29,8 @@
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --r: 10px;
-  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
-  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  --gutter-l: max(16px, 2.5vw, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, 2.5vw, env(safe-area-inset-right, 0px));
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -70,7 +70,7 @@ h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.15; text-wrap: ba
 p { margin: 0; }
 .mono, .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
 mark, .hl { background: var(--marker); color: var(--marker-ink); padding: 0 .2em; border-radius: 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.wrap { max-width: 1160px; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.wrap { max-width: 1600px; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
 
 /* ---------- top bar ---------- */
 .topbar {
@@ -160,12 +160,12 @@ mark, .hl { background: var(--marker); color: var(--marker-ink); padding: 0 .2em
   padding: 10px 14px 8px; border-radius: 8px 8px 0 0; font-variant-numeric: tabular-nums;
 }
 .lesson-title h1 { font-size: clamp(30px, 5vw, 48px); font-weight: 800; font-stretch: 80%; padding-bottom: 4px; }
-.lesson-sub { color: var(--ink-2); margin-top: 14px; max-width: 64ch; }
+.lesson-sub { color: var(--ink-2); margin-top: 14px; }
 .objectives { margin-top: 20px; display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
 .objective { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.4; color: var(--ink-2); }
 .objective b { font-family: var(--f-mono); color: var(--ledger); font-weight: 600; }
 
-.lesson-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 48px; padding-block: 32px 80px; }
+.lesson-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 36px; padding-block: 32px 80px; }
 @media (max-width: 960px) { .lesson-layout { grid-template-columns: minmax(0, 1fr); } .toc { display: none; } }
 .toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 72px); align-self: start; font-size: 14px; }
 .toc .eyebrow { margin-bottom: 10px; }
@@ -179,7 +179,6 @@ mark, .hl { background: var(--marker); color: var(--marker-ink); padding: 0 .2em
 
 .lesson-body { min-width: 0; display: grid; gap: 64px; }
 .sec { display: grid; gap: 18px; min-width: 0; scroll-margin-top: 80px; }
-.sec > p, .sec > ul, .sec > ol, .prose { max-width: 68ch; }
 .sec h2 { font-size: clamp(26px, 3.6vw, 34px); font-weight: 800; font-stretch: 82%; }
 .sec h3 { font-size: 20px; font-weight: 700; }
 .kind { display: inline-flex; gap: 8px; align-items: center; }
@@ -188,7 +187,7 @@ mark, .hl { background: var(--marker); color: var(--marker-ink); padding: 0 .2em
 .kind.check::before { background: var(--bad); }
 .sec ul, .sec ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
 
-.callout { border-radius: var(--r); padding: 18px 20px; background: var(--card); border: 1px solid var(--rule); max-width: 72ch; }
+.callout { border-radius: var(--r); padding: 18px 20px; background: var(--card); border: 1px solid var(--rule); }
 .callout .label { font: 700 12px/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; color: var(--ledger); margin-bottom: 8px; }
 .callout.def { background: var(--ledger-soft); border-color: transparent; }
 .callout.def p { font-size: 19px; line-height: 1.55; }
@@ -328,7 +327,7 @@ body.focus-mode .focusbar {
   background: var(--bar); color: #e9f3ee;
 }
 body.focus-mode .lesson-hero { background: transparent; border-bottom: 0; }
-body.focus-mode .lesson-hero .wrap, body.focus-mode .lesson-layout, .focusbar .wrap { max-width: 820px; }
+body.focus-mode .lesson-hero .wrap, body.focus-mode .lesson-layout, .focusbar .wrap { max-width: 1280px; }
 body.focus-mode .lesson-layout { grid-template-columns: minmax(0, 1fr); padding-block: 28px 64px; }
 body.focus-mode .lesson-hero:not([hidden]) + .lesson-layout { padding-top: 8px; }
 body.focus-mode .lesson-body { gap: 40px; }
@@ -400,3 +399,5 @@ body.vo-on { padding-bottom: 88px; }
 .vo-rate { flex: none; border: 1px solid rgba(255, 255, 255, .25); background: transparent; color: #e9f3ee; border-radius: 999px; padding: 6px 10px; font: 600 13px/1 var(--f-mono); cursor: pointer; min-width: 3.6em; }
 .vo-x { width: 32px; height: 32px; font-size: 14px; opacity: .8; }
 @media (max-width: 560px) { 
+/* larger type on wide screens so full-width lines stay comfortable */
+@media (min-width: 1300px) { body { font-size: 18px; } .callout.def p { font-size: 20px; } }
