@@ -651,3 +651,7 @@ table.ws td.now { background: var(--marker) !important; color: var(--marker-ink)
 .reg-item .reg-scan { justify-self: start; margin-top: 4px; font: 700 12px/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--ledger-ink); background: var(--ledger); padding: 6px 10px; border-radius: 999px; }
 table.journal.nodate { min-width: 300px; }
 table.journal.nodate th.num, table.journal.nodate td.num { width: 6.5em; }
+.timeline-note { display: flex; border-radius: 8px; overflow: hidden; font-size: 14px; font-weight: 600; }
+.timeline-note span { padding: 10px 12px; min-width: 0; }
+.tn-a { flex: 1; background: var(--ledger-soft); color: var(--ledger); }
+.tn-b { flex: 2; background: var(--mgr-soft); color: var(--mgr); }
