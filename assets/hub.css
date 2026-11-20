@@ -675,3 +675,14 @@ table.plain thead th.num { font-family: var(--f-display); }
 .own-scale span { position: absolute; transform: translateX(-50%); }
 .own-scale span:first-child { transform: none; }
 .own-scale span:last-child { transform: none; }
+/* depreciation chart (lesson 10.3) */
+.dep-chart { max-width: 560px; margin-top: 12px; }
+.dep-chart svg { width: 100%; height: auto; display: block; }
+.dc-grid { stroke: var(--rule-2); stroke-width: 1; }
+.dc-ax { fill: var(--ink-3); font: 500 12px var(--f-mono); }
+.dc-tot { fill: var(--ink); font: 700 13px var(--f-mono); }
+.dc-dep { fill: var(--ledger); }
+.dc-mnt { fill: var(--mgr); opacity: .8; }
+.dc-key { display: flex; gap: 16px; font-size: 13px; color: var(--ink-2); }
+.dc-key span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.dc-key .dep::before { background: var(--ledger); } .dc-key .mnt::before { background: var(--mgr); }
