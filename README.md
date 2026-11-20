@@ -23,8 +23,12 @@ sections, and `Esc` to exit. The setting is remembered.
 
 ## Voice-over
 
-Press **Voice** in the top bar (or the `V` key) to turn on voice-over. It uses the browser's
-built-in speech engine, so it works offline and needs no account.
+Press **Voice** in the top bar (or the `V` key) to turn on voice-over. Lessons are narrated by
+**Michael**, a natural neural voice recorded ahead of time with the open-source
+[Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) model (Apache-2.0). Anything without a
+recording falls back to the device's own speech engine, which prefers the most natural relaxed male
+voice the device has (Edge "Natural" voices, Apple Enhanced voices, Google UK English Male). The voice
+picker in the player bar switches between Michael and the device voices.
 
 - **Listen to this lesson** reads the whole lesson from the top, highlighting each block as it goes.
   In focus mode it turns the sections for you.
@@ -43,7 +47,9 @@ with `pronounce: [[/regex/g, "spoken form"]]`.
 | --- | --- |
 | `index.html` | Page shell: top bar, script tags for every built lesson |
 | `assets/course.js` | Course map: units, chapters, and lesson titles from Canvas |
-| `assets/voice.js` | Voice-over engine: reading order, spoken text cleanup, player bar |
+| `assets/voice.js` | Voice-over engine: reading order, spoken text cleanup, recorded clips, player bar |
+| `audio/<pack>/` | Recorded narration: `clips.mp3` bundle and `index.js` clip map, per lesson plus `home` and `common` |
+| `tools/narrate-capture.js`, `tools/narrate.py` | Collect every sentence a page can say, then record them with Kokoro |
 | `assets/hub.js` | Router (`#home`, `#lesson-1-1`), progress, and shared widgets |
 | `assets/hub.css` | Design tokens (light and dark) and shared component styles |
 | `lessons/<ch>-<n>.js` | One file per lesson, e.g. `lessons/1-1.js` |

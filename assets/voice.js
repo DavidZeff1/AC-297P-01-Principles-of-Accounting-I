@@ -10,6 +10,8 @@
   var supported = !!(synth && window.SpeechSynthesisUtterance);
   var KEY = "ac297p-voice-v1";
   var RATES = [0.75, 1, 1.25, 1.5, 1.75];
+  var SAMPLE = "Accounting measures and reports financial information about an economic unit.";
+  var ON_MSG = "Voice-over on. Press play to hear this page, or tap any paragraph.";
 
   var SEL = {
     lesson: [
@@ -17,7 +19,7 @@
       ".sec h2", ".sec h3", ".sec > p", ".sec > ul > li", ".sec > ol > li", ".callout",
       ".flow-detail", ".user-card", ".lane-src", ".lane", ".setter", ".converge", ".goal",
       ".flip", ".era-body", ".sim-ctrl > label", ".sim-month", ".meter", ".stmt", ".verdict",
-      "table.compare tr", ".sorter-item", ".scoreline", ".quiz-q", ".quiz-result", ".recap li"
+      "table.compare tr", ".sorter-item", ".quiz-q", ".quiz-result", ".recap li"
     ].join(","),
     home: ".home-hero h1, .home-hero p, .ledger-card, .unit-head, .chapter, .exam-milestone",
     soon: ".soon-page h1, .soon-page p"
@@ -57,7 +59,7 @@
     c.querySelectorAll("svg, style, script, .vo-btn, .cue, .panel-title .hint, .flip-face.back .term, input, [data-no-voice]").forEach(function (x) { x.remove(); });
     c.querySelectorAll(".opt .letter").forEach(function (x) { x.textContent = "Option " + x.textContent + ": "; });
     c.querySelectorAll(".stem .n").forEach(function (x) { x.textContent = "Question " + parseInt(x.textContent, 10) + ". "; });
-    c.querySelectorAll(".stmt-row > span:first-child, .ledger-card .row > span:first-child, .lane .row b, .meter-top > span:first-child, dt").forEach(function (x) { x.appendChild(document.createTextNode(": ")); });
+    c.querySelectorAll(".stmt-row > span:first-child, .ledger-card .row > span:first-child, .era-col .k, .lane .row b, .meter-top > span:first-child, dt").forEach(function (x) { x.appendChild(document.createTextNode(": ")); });
     c.querySelectorAll(".objective b").forEach(function (x) { x.textContent = "Goal " + x.textContent + ": "; });
     c.querySelectorAll("th, td").forEach(function (x) { x.appendChild(document.createTextNode(", ")); });
     c.querySelectorAll(".choice-row").forEach(function (x) { x.remove(); });
@@ -90,41 +92,132 @@
   }
 
   /* ---------- speech ---------- */
+  /* Two engines:
+     1. Recorded narration: natural neural voice clips made at build time (tools/narrate.py),
+        one mp3 per sentence, named by a hash of the sentence. Packs register via HUB.narrationPack.
+     2. The device's own speech engine, used for anything without a clip (or when chosen). */
+  var packs = {};
+  HUB.narrationPack = function (id, p) {
+    var map = {};
+    p.clips.split(" ").forEach(function (e) {
+      var f = e.split(":");
+      if (f.length === 3) map[f[0]] = [parseInt(f[1], 36), parseInt(f[2], 36)];
+    });
+    packs[id] = { voice: p.voice, label: p.label || p.voice, file: "audio/" + id + "/clips.mp3", map: map, buf: null, ready: null };
+  };
+  /* download a pack's bundle once; clips are sliced out of it as needed */
+  function loadPack(p) {
+    if (!p) return Promise.reject(new Error("no pack"));
+    if (!p.ready) {
+      p.ready = fetch(p.file).then(function (r) { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+        .then(function (b) { p.buf = b; return p; })
+        .catch(function (e) { p.failed = true; throw e; });
+    }
+    return p.ready;
+  }
+  function warm() { if (!pref.on || !view.pack) return; [packs[view.pack], packs.common].forEach(function (p) { if (p && !p.failed) loadPack(p).catch(function () {}); }); }
+  function hash(t) {
+    var h = 0x811c9dc5;
+    for (var i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+    return (h >>> 0).toString(36);
+  }
+  HUB.voiceHash = hash;
+  function clipFor(text) {
+    if (pref.voice && pref.voice.indexOf("device:") === 0) return null;
+    var h = hash(text), ids = [view.pack, "common"];
+    for (var i = 0; i < ids.length; i++) { var p = packs[ids[i]]; if (p && !p.failed && p.map[h]) return { p: p, at: p.map[h] }; }
+    return null;
+  }
+  var clipUrl = null;
+  function clipSrc(c) {
+    if (clipUrl) URL.revokeObjectURL(clipUrl);
+    clipUrl = URL.createObjectURL(new Blob([c.p.buf.slice(c.at[0], c.at[0] + c.at[1])], { type: "audio/mpeg" }));
+    return clipUrl;
+  }
+  function narratorLabel() {
+    var p = packs[view.pack] || packs.common;
+    return p ? p.label : null;
+  }
+  var player = typeof Audio !== "undefined" ? new Audio() : null;
+  if (player) player.preload = "auto";
+  /* Safari only lets a media element play from script after it has played once during a tap */
+  var SILENT = "data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwLjE2LjEwMAAAAAAAAAAAAAAA//OEwAAAAAAAAAAAAEluZm8AAAAPAAAABQAAAqAAbW1tbW1tbW1tbW1tbW1tbW1tbZKSkpKSkpKSkpKSkpKSkpKSkpKStra2tra2tra2tra2tra2tra2trbb29vb29vb29vb29vb29vb29vb2///////////////////////////AAAAAExhdmM2MC4zMQAAAAAAAAAAAAAAACQEUAAAAAAAAAKgvT9A1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//NExAAAAANIAAAAAExBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExFMAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKYAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NExKwAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NExKwAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV", unlocked = false;
+  function unlock() {
+    if (unlocked || !player || !pref.on) return;
+    unlocked = true;
+    player.src = SILENT;
+    var pr = player.play(); if (pr && pr.catch) pr.catch(function () { unlocked = false; });
+  }
+  ["pointerdown", "keydown"].forEach(function (ev) { document.addEventListener(ev, unlock, true); });
+
   var voices = [];
+  /* relaxed, clear male voices first, by platform: Edge natural voices, Apple enhanced voices, Google, Windows */
+  var MALE = [/Andrew.*Natural/i, /Brian.*Natural/i, /Christopher.*Natural/i, /Guy.*Natural/i, /Eric.*Natural/i, /Davis.*Natural/i, /Roger.*Natural/i, /Steffan.*Natural/i, /Ryan.*Natural/i, /Thomas.*Natural/i,
+    /^Evan\b.*(Premium|Enhanced)/i, /^Nathan\b.*(Premium|Enhanced)/i, /^Tom\b.*(Premium|Enhanced)/i, /^Aaron\b/i, /^Alex\b/i, /^Evan\b/i, /^Nathan\b/i, /^Tom\b/i, /^Daniel\b.*(Premium|Enhanced)/i, /^Oliver\b/i,
+    /Google UK English Male/i, /^Daniel\b/i, /Microsoft (Guy|David|Mark|George|Ryan)/i, /\bmale\b/i];
+  function rank(v) { for (var i = 0; i < MALE.length; i++) if (MALE[i].test(v.name)) return i; return 99; }
   function loadVoices() {
-    if (!supported) return;
-    voices = synth.getVoices().filter(function (v) { return /^en(-|_|$)/i.test(v.lang); });
+    voices = supported ? synth.getVoices().filter(function (v) { return /^en(-|_|$)/i.test(v.lang); }) : [];
+    voices.sort(function (a, b) { return rank(a) - rank(b); });
     if (!voiceSel) return;
-    var pick = pref.voice && voices.some(function (v) { return v.name === pref.voice; }) ? pref.voice : bestVoice();
-    voiceSel.innerHTML = voices.map(function (v) {
-      return '<option value="' + v.name.replace(/"/g, "&quot;") + '"' + (v.name === pick ? " selected" : "") + '>' + v.name.replace(/^(Microsoft|Google) /, "").replace(/ - English.*$/, "") + '</option>';
+    var nl = narratorLabel(), h = "";
+    if (nl) h += '<option value="">' + nl + ' (natural)</option>';
+    var best = bestVoice();
+    h += voices.map(function (v) {
+      var val = (nl ? "device:" : "") + v.name;
+      return '<option value="' + val.replace(/"/g, "&quot;") + '">' + v.name.replace(/^(Microsoft|Google) /, "").replace(/ - English.*$/, "").replace(/ Online \(Natural\)/, " (natural)") + (rank(v) < 99 ? "" : " ·") + '</option>';
     }).join("");
-    voiceSel.hidden = voices.length < 2;
+    voiceSel.innerHTML = h;
+    var want = pref.voice || (nl ? "" : best);
+    if (!nl && want.indexOf("device:") === 0) want = want.slice(7);
+    if (nl && want && want.indexOf("device:") !== 0) want = "";
+    voiceSel.value = want;
+    if (voiceSel.selectedIndex < 0) voiceSel.selectedIndex = 0;
+    voiceSel.hidden = voiceSel.options.length < 2;
   }
-  function bestVoice() {
-    var prefer = [/natural/i, /google us english/i, /samantha/i, /aria/i, /jenny/i, /daniel/i, /google uk english female/i];
-    for (var i = 0; i < prefer.length; i++) { var v = voices.find(function (x) { return prefer[i].test(x.name); }); if (v) return v.name; }
-    var us = voices.find(function (x) { return /en[-_]US/i.test(x.lang); });
-    return us ? us.name : (voices[0] ? voices[0].name : "");
-  }
+  function bestVoice() { return voices[0] ? voices[0].name : ""; }
   function currentVoice() {
-    var name = voiceSel && voiceSel.value || pref.voice;
-    return voices.find(function (v) { return v.name === name; }) || null;
+    var name = (pref.voice || "").replace(/^device:/, "") || bestVoice();
+    return voices.find(function (v) { return v.name === name; }) || voices[0] || null;
   }
 
-  function hush() { run++; speakingNow = false; if (supported) synth.cancel(); }
+  function hush() {
+    run++; speakingNow = false;
+    if (supported) synth.cancel();
+    if (player) { player.onended = player.onerror = null; player.pause(); }
+  }
   function speakList(list, myRun, done) {
     var k = 0;
+    if (window.__voCapture) list.forEach(function (t) { window.__voCapture.add(t); });
     function next() {
       if (myRun !== run) return;
       if (k >= list.length) { speakingNow = false; if (done) done(); return; }
-      var u = new SpeechSynthesisUtterance(list[k++]);
+      var text = list[k++], clip = clipFor(text);
+      speakingNow = true;
+      if (clip && player) {
+        if (!clip.p.buf) setLabel("Loading the narrator’s voice…");
+        loadPack(clip.p).then(function () {
+          if (myRun !== run) return;
+          player.onended = function () { if (myRun === run) next(); };
+          player.onerror = function () { if (myRun === run) device(text); };
+          player.src = clipSrc(clip);
+          player.playbackRate = pref.rate;
+          var pr = player.play();
+          if (pr && pr.catch) pr.catch(function () { if (myRun === run) device(text); });
+          if (labelEl && /^Loading/.test(labelEl.textContent)) setLabel(sectionName(lit) );
+        }, function () { if (myRun === run) device(text); });
+        return;
+      }
+      device(text);
+    }
+    function device(text) {
+      if (!supported) { next(); return; }
+      var u = new SpeechSynthesisUtterance(text);
       var v = currentVoice();
       if (v) { u.voice = v; u.lang = v.lang; } else u.lang = "en-US";
       u.rate = pref.rate;
       u.onend = next;
       u.onerror = function (e) { if (e.error === "interrupted" || e.error === "canceled") return; next(); };
-      speakingNow = true;
       synth.speak(u);
     }
     /* Chrome drops an utterance queued in the same tick as cancel() */
@@ -186,7 +279,7 @@
 
   /* say one thing now (interaction feedback, a single block); stops continuous reading */
   function sayNow(textOrEl) {
-    if (!pref.on || !supported) return;
+    if (!pref.on || (!supported && !player)) return;
     var el = typeof textOrEl === "string" ? null : textOrEl;
     var text = el ? extract(el) : clean(textOrEl);
     if (!text) return;
@@ -228,7 +321,7 @@
       var k = RATES.indexOf(pref.rate); pref.rate = RATES[(k + 1) % RATES.length]; savePref(); paintDock();
       if (playing) playFrom(idx);
     });
-    voiceSel.addEventListener("change", function () { pref.voice = voiceSel.value; savePref(); if (playing) playFrom(idx); else sayNow("This is the " + voiceSel.options[voiceSel.selectedIndex].text + " voice."); });
+    voiceSel.addEventListener("change", function () { pref.voice = voiceSel.value; savePref(); if (playing) playFrom(idx); else sayNow(SAMPLE); });
     loadVoices();
     if (supported && "onvoiceschanged" in synth) synth.addEventListener("voiceschanged", loadVoices);
   }
@@ -243,18 +336,20 @@
     document.querySelectorAll("[data-vo-toggle]").forEach(function (b) { b.setAttribute("aria-pressed", pref.on); b.classList.toggle("on", pref.on); });
   }
   function setOn(on) {
-    if (on && !supported) { if (HUB.api) HUB.api.toast("This browser can’t read aloud. Try Chrome, Edge, or Safari."); return; }
-    pref.on = on; savePref();
+    if (on && !supported && !player) { if (HUB.api) HUB.api.toast("This browser can’t read aloud. Try Chrome, Edge, or Safari."); return; }
+    pref.on = on; savePref(); warm();
+    if (on) unlock();
     if (!on) { hush(); playing = false; highlight(null); }
     paintDock();
-    if (on) sayNow("Voice-over on. Press play to hear this page, or tap any paragraph.");
+    if (on) sayNow(ON_MSG);
   }
 
   /* ---------- per-view wiring ---------- */
-  function mount(kind, root, extraSay) {
+  function mount(kind, root, extraSay, pack) {
     hush(); playing = false; lit = null; idx = 0;
     if (observer) { observer.disconnect(); observer = null; }
-    view = { kind: kind, root: root, blocks: [], extra: extraSay || [] };
+    view = { kind: kind, root: root, blocks: [], extra: extraSay || [], pack: pack || kind };
+    loadVoices(); warm();
     collect();
     setLabel(kind === "home" ? "Course map · tap Play or any chapter" : "Tap Play, or tap any paragraph");
     paintDock();
@@ -321,7 +416,7 @@
     busy: function () { return pref.on && speakingNow; },
     toggle: function () { setOn(!pref.on); },
     on: function () { if (!pref.on) setOn(true); },
-    listenAll: function () { if (!supported) { setOn(true); return; } if (!pref.on) { pref.on = true; savePref(); paintDock(); } playFrom(0); },
+    listenAll: function () { if (!supported && !player) { setOn(true); return; } if (!pref.on) { pref.on = true; savePref(); paintDock(); } playFrom(0); },
     mount: mount,
     say: sayNow,
     decorateQuiz: decorateQuiz,
@@ -331,7 +426,14 @@
       var i = view.blocks.indexOf(first);
       if (i >= 0 && i !== idx) playFrom(i);
     },
-    iconSpeaker: IC.spk
+    iconSpeaker: IC.spk,
+    /* build hooks for tools/narrate: every sentence currently readable in the view */
+    _allSentences: function () {
+      var out = [];
+      collect().forEach(function (el) { out = out.concat(sentences(extract(el))); });
+      return out;
+    },
+    _fixed: function () { return sentences(clean(ON_MSG)).concat(sentences(clean(SAMPLE))); }
   };
 
   buildDock();

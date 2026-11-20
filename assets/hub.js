@@ -133,7 +133,7 @@
     setupFocus(body);
     var lb = document.getElementById("listen-btn");
     lb.addEventListener("click", function () { if (HUB.voice) HUB.voice.listenAll(); });
-    if (HUB.voice) HUB.voice.mount("lesson", app, def.pronounce);
+    if (HUB.voice) HUB.voice.mount("lesson", app, def.pronounce, id);
   }
 
   /* ---------- focus mode: one section at a time, no site chrome ---------- */
