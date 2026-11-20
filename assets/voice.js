@@ -18,7 +18,8 @@
       ".sec h2", ".sec h3", ".sec > p", ".sec > ul > li", ".sec > ol > li", ".callout",
       ".flow-detail", ".user-card", ".lane-src", ".lane", ".setter", ".converge", ".goal",
       ".flip", ".era-body", ".sim-ctrl > label", ".sim-month", ".meter", ".stmt", ".verdict",
-      "table.compare tr", ".sorter-item", ".quiz-q", ".quiz-result", ".recap li"
+      "table.compare tr", ".sorter-item", ".quiz-q",
+      ".statement", ".jr-entry", ".ws-say", ".tacct", ".eq-now", ".st-body", ".wk-q", ".wk-step", ".wk-ans", ".calc-field", ".calc-res", "table.ledger tbody tr", ".rule", ".sec > .scroll-x > table tr", ".fig-cap", ".quiz-result", ".recap li"
     ].join(","),
     home: ".home-hero h1, .home-hero p, .ledger-card, .unit-head, .chapter, .exam-milestone",
     soon: ".soon-page h1, .soon-page p"
@@ -29,7 +30,7 @@
     [/\bA\/C\b/g, "A.C."], [/\bPP&E\b/g, "property, plant, and equipment"], [/\bvs\.\s/g, "versus "],
     [/\bYr (\d)/g, "year $1"], [/\bAC-297P-01\b/g, "A.C. 297 P"], [/\bAC-297P\b/g, "A.C. 297 P"],
     [/\(\$([\d,.]+)\)/g, "minus $$$1"], [/(\d{4})s[–-](\d{4})s/g, "$1s to $2s"], [/(\d)[–-](\d)/g, "$1 to $2"],
-    [/→|⇄|↗|↓|←/g, " "], [/[·•]/g, ", "], [/[✓✕▶❚]/g, ""], [/[“”]/g, '"'], [/—/g, ", "]
+    [/\s=\s/g, " equals "], [/\s\+\s/g, " plus "], [/−/g, "minus "], [/→|⇄|↗|↓|←/g, " "], [/[·•]/g, ", "], [/[✓✕▶❚]/g, ""], [/[“”]/g, '"'], [/—/g, ", "]
   ];
 
   var pref = (function () {
@@ -45,6 +46,7 @@
   /* ---------- text extraction ---------- */
   var BREAK = /^(block|flex|grid|list-item|table|table-row|table-cell|inline-flex|inline-grid|inline-block)$/;
   function extract(el) {
+    if (el.hasAttribute("data-say")) return clean(el.getAttribute("data-say"));
     /* mark layout on the live element so the clone knows where lines break and what is hidden */
     var orig = [el].concat(Array.prototype.slice.call(el.querySelectorAll("*")));
     var marks = orig.map(function (x) {
@@ -54,7 +56,8 @@
     var c = el.cloneNode(true);
     var copy = [c].concat(Array.prototype.slice.call(c.querySelectorAll("*")));
     copy.forEach(function (x, k) { if (marks[k]) x.setAttribute("data-vo", marks[k]); });
-    c.querySelectorAll('[data-vo="hide"]').forEach(function (x) { x.remove(); });
+    c.querySelectorAll('[data-vo="hide"], [hidden]').forEach(function (x) { x.remove(); });
+    c.querySelectorAll("[data-say]").forEach(function (x) { x.textContent = x.getAttribute("data-say") + " "; });
     c.querySelectorAll("svg, style, script, .vo-btn, .cue, .panel-title .hint, .flip-face.back .term, input, [data-no-voice]").forEach(function (x) { x.remove(); });
     c.querySelectorAll(".opt .letter").forEach(function (x) { x.textContent = "Option " + x.textContent + ": "; });
     c.querySelectorAll(".stem .n").forEach(function (x) { x.textContent = "Question " + parseInt(x.textContent, 10) + ". "; });
@@ -67,7 +70,10 @@
     c.querySelectorAll('[data-vo="br"]').forEach(function (x) { x.appendChild(document.createTextNode(". ")); });
     var t = c.textContent;
     if (el.matches(".lesson-title h1")) { var tab = document.querySelector(".lesson-tab"); t = "Lesson " + (tab ? tab.textContent : "") + ". " + t; }
-    if (el.matches(".sorter-item")) t += " Financial, or managerial?";
+    if (el.matches(".sorter-item")) {
+      var ch = Array.prototype.map.call(el.querySelectorAll(".choice"), function (b) { return b.textContent.replace(/ \/ /g, " or "); });
+      if (ch.length) t += " " + ch.slice(0, -1).join(", ") + (ch.length > 1 ? ", or " : "") + ch[ch.length - 1] + "?";
+    }
     return clean(t);
   }
   function clean(t) {
@@ -219,6 +225,9 @@
     var all = Array.prototype.slice.call(view.root.querySelectorAll(sel));
     var list = all.filter(function (el) {
       if (el.closest(".lesson-foot, .focusbar")) return false;
+      for (var x = el; x && x !== view.root; x = x.parentElement) {
+        if (x.hidden && !x.matches("section[data-toc], .lesson-hero")) return false;
+      }
       var up = el.parentElement && el.parentElement.closest(sel);
       return !(up && view.root.contains(up));
     });
