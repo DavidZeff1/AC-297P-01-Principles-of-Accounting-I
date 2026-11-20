@@ -23,8 +23,11 @@ sections, and `Esc` to exit. The setting is remembered.
 
 ## Voice-over
 
-Press **Voice** in the top bar (or the `V` key) to turn on voice-over. It uses the browser's
-built-in speech engine, so it works offline and needs no account.
+Press **Voice** in the top bar (or the `V` key) to turn on voice-over. Lessons are narrated by
+**Michael**, a natural neural voice recorded ahead of time with the open-source
+[Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) model (Apache-2.0). There is one voice by design. The
+rare sentence without a recording (such as a changed progress count) is read by the device's closest
+male voice.
 
 - **Listen to this lesson** reads the whole lesson from the top, highlighting each block as it goes.
   In focus mode it turns the sections for you.
@@ -32,7 +35,7 @@ built-in speech engine, so it works offline and needs no account.
   Each section has a **Listen from here** button, and each quiz question has a speaker button.
 - Interactive pieces speak their results: diagram stages, user groups, simulator outcomes, flipped
   flashcards, and quiz and sorter feedback.
-- The player bar at the bottom has previous/next, play/pause (`P`), speed (0.75× to 1.75×), and a voice picker.
+- The player bar at the bottom has previous/next, play/pause (`P`), and speed (0.75× to 1.75×).
 
 Abbreviations are given spoken forms (FASB, GAAP, IFRS, …) in `assets/voice.js`. A lesson can add its own
 with `pronounce: [[/regex/g, "spoken form"]]`.
@@ -43,7 +46,9 @@ with `pronounce: [[/regex/g, "spoken form"]]`.
 | --- | --- |
 | `index.html` | Page shell: top bar, script tags for every built lesson |
 | `assets/course.js` | Course map: units, chapters, and lesson titles from Canvas |
-| `assets/voice.js` | Voice-over engine: reading order, spoken text cleanup, player bar |
+| `assets/voice.js` | Voice-over engine: reading order, spoken text cleanup, recorded clips, player bar |
+| `audio/<pack>/` | Recorded narration: `clips.mp3` bundle and `index.js` clip map, per lesson plus `home` and `common` |
+| `tools/narrate-capture.js`, `tools/narrate.py` | Collect every sentence a page can say, then record them with Kokoro |
 | `assets/hub.js` | Router (`#home`, `#lesson-1-1`), progress, and shared widgets |
 | `assets/hub.css` | Design tokens (light and dark) and shared component styles |
 | `lessons/<ch>-<n>.js` | One file per lesson, e.g. `lessons/1-1.js` |

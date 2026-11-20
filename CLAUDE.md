@@ -20,3 +20,16 @@ interactive examples, flashcards, practice quiz). See README.md for the file lay
 - Focus mode and voice-over work automatically when the lesson uses `section.sec[data-toc]`, the
   shared widgets, and `aria-live` on panels whose text changes with interaction.
 - Update the status table in README.md.
+- Record narration for the new lesson (and refresh `home`, whose text lists every lesson):
+  ```
+  python3 -m venv /tmp/tts && /tmp/tts/bin/pip install kokoro-onnx soundfile num2words huggingface_hub
+  node tools/narrate-capture.js /tmp/sentences.json <lessonId>
+  /tmp/tts/bin/python tools/narrate.py /tmp/sentences.json --voice am_michael
+  ```
+  Then add `<script src="audio/<lessonId>/index.js"></script>` to `index.html` beside the others.
+  The capture step clicks through every interactive state, so new widget types that change spoken
+  text should be clickable elements listed in `CLICKABLES` in `tools/narrate-capture.js` (or carry
+  `data-voice-state`). The narrator is always Michael (`am_michael`, Kokoro-82M): the user wants one natural male voice and no voice picker.
+- Hosting limits for the artifact: at most ~511 files and 256 MB per version, 15 MB per binary file.
+  Each lesson's narration is one bundle of roughly 5–7 MB at 32 kbps; if the total nears 256 MB,
+  re-record at `--bitrate 24k` or split packs across artifacts.

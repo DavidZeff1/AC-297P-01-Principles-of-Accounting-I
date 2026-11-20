@@ -398,6 +398,5 @@ body.vo-on { padding-bottom: 88px; }
 .vo-k { font: 700 11px/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; color: #9cc9b3; }
 #vo-label { font-size: 14px; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .vo-rate { flex: none; border: 1px solid rgba(255, 255, 255, .25); background: transparent; color: #e9f3ee; border-radius: 999px; padding: 6px 10px; font: 600 13px/1 var(--f-mono); cursor: pointer; min-width: 3.6em; }
-.vo-voice { flex: none; max-width: 150px; background: rgba(255, 255, 255, .08); color: #e9f3ee; border: 1px solid rgba(255, 255, 255, .25); border-radius: 8px; padding: 6px 8px; font: 500 13px/1.2 var(--f-body); color-scheme: dark; }
 .vo-x { width: 32px; height: 32px; font-size: 14px; opacity: .8; }
-@media (max-width: 560px) { .vo-voice { display: none; } .vo-dock { gap: 2px; } .vo-ctl { width: 34px; height: 34px; } .vo-main { width: 42px; height: 42px; } }
+@media (max-width: 560px) { 
