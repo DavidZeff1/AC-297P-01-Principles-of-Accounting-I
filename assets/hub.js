@@ -8,8 +8,8 @@
 
   /* ---------- progress (browser storage is a convenience; never required) ---------- */
   function load() {
-    try { var s = JSON.parse(localStorage.getItem(KEY) || "{}"); return { done: s.done || {}, quiz: s.quiz || {}, last: s.last || null }; }
-    catch (e) { return { done: {}, quiz: {}, last: null }; }
+    try { var s = JSON.parse(localStorage.getItem(KEY) || "{}"); return { done: s.done || {}, quiz: s.quiz || {}, last: s.last || null, focus: !!s.focus }; }
+    catch (e) { return { done: {}, quiz: {}, last: null, focus: false }; }
   }
   var state = load();
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable */ } }
@@ -93,7 +93,14 @@
     }
     state.last = id; save();
 
-    var h = '<header class="lesson-hero"><div class="wrap">' + crumbs;
+    var h = '<div class="focusbar" id="focusbar"><div class="wrap fb-row">' +
+      '<button type="button" class="fb-exit" id="fb-exit" aria-label="Exit focus mode">✕<span> Exit focus</span></button>' +
+      '<div class="fb-title"><span class="num">' + meta.num + '</span> <span id="fb-sec"></span></div>' +
+      '<span class="fb-count num" id="fb-count"></span></div>' +
+      '<div class="wrap fb-segs" id="fb-segs"></div></div>';
+    h += '<header class="lesson-hero"><div class="wrap">';
+    h += '<div class="hero-top">' + crumbs + '<button type="button" class="btn ghost small focus-btn" id="focus-btn" title="Show one section at a time, without the rest of the site (F)">' +
+      '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><circle cx="12" cy="12" r="2.5"/></svg>Focus mode</button></div>';
     h += '<div class="lesson-title"><div class="lesson-tab">' + meta.num + '</div><h1>' + esc(meta.title) + '</h1></div>';
     if (def.summary) h += '<p class="lesson-sub">' + def.summary + '</p>';
     if (def.objectives) {
@@ -104,6 +111,7 @@
     h += '</div></header>';
     h += '<div class="wrap lesson-layout"><aside class="toc"><div class="eyebrow">In this lesson</div><ol id="toc"></ol></aside>';
     h += '<main class="lesson-body" id="lesson-body">' + def.html;
+    h += '<nav class="focus-nav" id="focus-nav"><button type="button" id="fn-prev"></button><button type="button" class="next" id="fn-next"></button></nav>';
     h += '<footer class="lesson-foot"><div class="complete-row"><button class="btn" id="complete-btn"></button><span class="hint" id="complete-hint"></span></div>';
     h += '<nav class="foot-nav">';
     h += prev ? '<a href="#lesson-' + prev.id + '"><span class="dir">← Previous</span>' + prev.num + ' ' + esc(prev.title) + '</a>' : '<span><span class="dir">Start of course</span>—</span>';
@@ -118,7 +126,69 @@
     if (typeof def.init === "function") {
       try { def.init(body, api); } catch (e) { console.error("Lesson init failed", e); }
     }
+    setupFocus(body);
   }
+
+  /* ---------- focus mode: one section at a time, no site chrome ---------- */
+  var focusCtl = null;
+  function setupFocus(body) {
+    var secs = Array.prototype.slice.call(body.querySelectorAll("section[data-toc]"));
+    if (!secs.length) return;
+    var hero = document.querySelector(".lesson-hero"), foot = body.querySelector(".lesson-foot");
+    var segs = document.getElementById("fb-segs"), prevB = document.getElementById("fn-prev"), nextB = document.getElementById("fn-next");
+    var i = 0;
+    segs.innerHTML = secs.map(function (s, j) {
+      return '<button type="button" class="seg-b" data-j="' + j + '" aria-label="Section ' + (j + 1) + ': ' + esc(s.getAttribute("data-toc")) + '"><i></i></button>';
+    }).join("");
+    function label(dir, j) { return '<span class="dir">' + dir + '</span>' + esc(secs[j].getAttribute("data-toc")); }
+    function paint() {
+      var on = !!state.focus;
+      document.body.classList.toggle("focus-mode", on);
+      secs.forEach(function (s, j) { s.hidden = on && j !== i; });
+      hero.hidden = on && i !== 0;
+      foot.hidden = on && i !== secs.length - 1;
+      if (!on) return;
+      document.getElementById("fb-sec").textContent = secs[i].getAttribute("data-toc");
+      document.getElementById("fb-count").textContent = (i + 1) + " / " + secs.length;
+      segs.querySelectorAll(".seg-b").forEach(function (b, j) { b.classList.toggle("done", j < i); b.classList.toggle("on", j === i); });
+      prevB.hidden = i === 0; nextB.hidden = i === secs.length - 1;
+      if (i > 0) prevB.innerHTML = label("← Previous section", i - 1);
+      if (i < secs.length - 1) nextB.innerHTML = label("Next section →", i + 1);
+    }
+    function go(j) { i = Math.max(0, Math.min(secs.length - 1, j)); paint(); window.scrollTo(0, 0); }
+    function currentInView() {
+      var k = 0;
+      secs.forEach(function (s, j) { if (s.getBoundingClientRect().top < 140) k = j; });
+      return window.scrollY < 200 ? 0 : k;
+    }
+    function set(on) {
+      if (on) i = currentInView();
+      state.focus = on; save(); paint();
+      if (on) window.scrollTo(0, 0); else secs[i].scrollIntoView({ block: "start" });
+    }
+    document.getElementById("focus-btn").addEventListener("click", function () { set(true); });
+    document.getElementById("fb-exit").addEventListener("click", function () { set(false); });
+    prevB.addEventListener("click", function () { go(i - 1); });
+    nextB.addEventListener("click", function () { go(i + 1); });
+    segs.addEventListener("click", function (e) { var b = e.target.closest(".seg-b"); if (b) go(+b.getAttribute("data-j")); });
+    focusCtl = {
+      key: function (e) {
+        if (e.key === "f" || e.key === "F") { set(!state.focus); return true; }
+        if (!state.focus) return false;
+        if (e.key === "Escape") { set(false); return true; }
+        if (e.key === "ArrowRight") { go(i + 1); return true; }
+        if (e.key === "ArrowLeft") { go(i - 1); return true; }
+        return false;
+      }
+    };
+    paint();
+  }
+  document.addEventListener("keydown", function (e) {
+    if (!focusCtl || e.metaKey || e.ctrlKey || e.altKey) return;
+    var t = e.target, tag = t && t.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (t && t.isContentEditable)) return;
+    if (focusCtl.key(e)) e.preventDefault();
+  });
 
   function wireComplete(id) {
     var btn = document.getElementById("complete-btn"), hint = document.getElementById("complete-hint");
@@ -267,6 +337,8 @@
   function route() {
     var hsh = (location.hash || "").replace(/^#/, "");
     var m = /^lesson-(\d+-\d+)$/.exec(hsh);
+    focusCtl = null;
+    document.body.classList.remove("focus-mode");
     if (m) renderLesson(m[1]); else renderHome();
     window.scrollTo(0, 0);
     updateProgress();

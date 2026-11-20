@@ -15,6 +15,12 @@ Then visit http://localhost:8000. GitHub Pages works too (Settings → Pages →
 
 Progress (completed lessons, quiz scores) is saved in your browser only.
 
+## Focus mode
+
+On any lesson, press **Focus mode** (or the `F` key) to hide the rest of the site and read one
+section at a time. Use the progress bar, the previous/next buttons, or `←` `→` to move between
+sections, and `Esc` to exit. The setting is remembered.
+
 ## Layout
 
 | Path | What it is |
