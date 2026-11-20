@@ -604,3 +604,20 @@ table.sheet tfoot td { border-top: 2px solid var(--ink); font-weight: 600; }
 .offer { background: var(--mgr-soft); border-radius: var(--r); padding: 16px; display: grid; gap: 8px; align-content: start; }
 .offer-n { font: 800 clamp(28px, 4vw, 40px)/1 var(--f-display); font-stretch: 80%; font-variant-numeric: tabular-nums; }
 .wk > *, .wk-steps > *, .st-body > *, .steps-w > *, .calc > *, .calc-out > *, .eq-w > *, .ledger-w > * { min-width: 0; }
+
+/* worksheet */
+.ws-w { display: grid; gap: 10px; }
+table.ws { border-collapse: collapse; min-width: 1180px; width: 100%; font-size: 13px; background: var(--card); }
+table.ws caption { text-align: left; font: 700 15px/1.4 var(--f-display); padding-bottom: 6px; }
+table.ws th { font: 600 11px/1.2 var(--f-body); letter-spacing: .05em; text-transform: uppercase; color: var(--ink-2); padding: 6px; border: 1px solid var(--rule); text-align: center; }
+table.ws td { padding: 4px 6px; border: 1px solid var(--rule-2); }
+table.ws td.num { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.ws td[data-g="1"], table.ws td[data-g="3"], table.ws td[data-g="5"] { background: var(--greenbar); }
+.ws-n { white-space: nowrap; }
+.ws-key { color: var(--mgr); font-size: 11px; }
+table.ws td.off { color: transparent; }
+table.ws td.off .ws-key { color: transparent; }
+table.ws td.now { background: var(--marker) !important; color: var(--marker-ink); }
+.ws-tot td { font-weight: 700; border-top: 2px solid var(--ink); }
+.ws-final td { border-bottom: 3px double var(--ink); }
+.ws-ni td { font-style: italic; }

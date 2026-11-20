@@ -47,3 +47,44 @@ HUB.cases.xao = (function () {
   }
   return { entries: J, chart: CHART, ledger: ledger, balance: balance, journal: journal, tacct: tacct, trial: trial };
 })();
+
+/* England Tours Company, 20X3 (chapter 4). Anchors from the reading: revenue $32,800, expenses $30,200,
+   net income $2,600, dividends $1,000, ending retained earnings $1,600 (first year, no beginning balance). */
+HUB.cases.england = (function () {
+  /* [account, type, normal side, unadjusted balance] in trial balance order */
+  var A = [
+    ["Cash", "A", "dr", 8100], ["Accounts Receivable", "A", "dr", 2500], ["Supplies", "A", "dr", 1800],
+    ["Prepaid Insurance", "A", "dr", 3600], ["Equipment", "A", "dr", 15000], ["Accumulated Depreciation", "XA", "cr", 0],
+    ["Accounts Payable", "L", "cr", 2300], ["Unearned Revenue", "L", "cr", 4000], ["Wages Payable", "L", "cr", 0],
+    ["Interest Payable", "L", "cr", 0], ["Note Payable", "L", "cr", 10000], ["Capital Stock", "E", "cr", 5000],
+    ["Retained Earnings", "E", "cr", 0], ["Dividends", "D", "dr", 1000], ["Revenue", "R", "cr", 30300],
+    ["Wages Expense", "X", "dr", 14000], ["Rent Expense", "X", "dr", 4800], ["Utilities Expense", "X", "dr", 800],
+    ["Supplies Expense", "X", "dr", 0], ["Insurance Expense", "X", "dr", 0], ["Depreciation Expense", "X", "dr", 0], ["Interest Expense", "X", "dr", 0]
+  ];
+  var ADJ = [
+    { key: "a", date: "Dec. 31", lines: [["Supplies Expense", 1400, 0], ["Supplies", 0, 1400]], memo: "(a) Supplies used: $1,800 on hand less $400 counted" },
+    { key: "b", date: "Dec. 31", lines: [["Insurance Expense", 1800, 0], ["Prepaid Insurance", 0, 1800]], memo: "(b) Six months of a one-year policy bought July 1 expired" },
+    { key: "c", date: "Dec. 31", lines: [["Depreciation Expense", 5000, 0], ["Accumulated Depreciation", 0, 5000]], memo: "(c) Depreciation: $15,000 equipment over 3 years" },
+    { key: "d", date: "Dec. 31", lines: [["Unearned Revenue", 1500, 0], ["Revenue", 0, 1500]], memo: "(d) Tours delivered that customers had paid for in advance" },
+    { key: "e", date: "Dec. 31", lines: [["Accounts Receivable", 1000, 0], ["Revenue", 0, 1000]], memo: "(e) Tours given in December, not yet billed" },
+    { key: "f", date: "Dec. 31", lines: [["Wages Expense", 2000, 0], ["Wages Payable", 0, 2000]], memo: "(f) Wages earned by guides, not yet paid" },
+    { key: "g", date: "Dec. 31", lines: [["Interest Expense", 400, 0], ["Interest Payable", 0, 400]], memo: "(g) Interest accrued on the note" }
+  ];
+  function adj(name) {
+    var dr = 0, cr = 0, keys = [];
+    ADJ.forEach(function (e) { e.lines.forEach(function (l) { if (l[0] === name) { dr += l[1]; cr += l[2]; keys.push(e.key); } }); });
+    return { dr: dr, cr: cr, keys: keys };
+  }
+  function adjusted(name) {
+    var a = A.filter(function (x) { return x[0] === name; })[0], j = adj(name);
+    return a[2] === "dr" ? a[3] + j.dr - j.cr : a[3] + j.cr - j.dr;
+  }
+  function tb(adjustedToo, skipZero) {
+    return A.filter(function (a) { return !skipZero || (adjustedToo ? adjusted(a[0]) : a[3]); }).map(function (a) {
+      var v = adjustedToo ? adjusted(a[0]) : a[3];
+      return a[2] === "dr" ? [a[0], v, 0] : [a[0], 0, v];
+    });
+  }
+  return { accounts: A, adjustments: ADJ, adj: adj, adjusted: adjusted, tb: tb,
+    revenue: 32800, expenses: 30200, netIncome: 2600, dividends: 1000, endingRE: 1600 };
+})();

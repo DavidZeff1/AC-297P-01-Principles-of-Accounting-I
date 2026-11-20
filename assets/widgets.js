@@ -127,6 +127,66 @@
     el.innerHTML = h;
   };
 
+  /* ---------- worksheet: the 12-column worksheet, filled one column pair at a time ----------
+     { entity, date, rows: [{ n: name, t: "A"|"XA"|"L"|"E"|"RE"|"D"|"R"|"X", tb: [dr, cr], adj: [dr, cr], keys: "a,b" }] } */
+  W.worksheet = function (el, d) {
+    var G = ["Trial balance", "Adjustments", "Adjusted trial balance", "Income statement", "Retained earnings", "Balance sheet"];
+    var tot = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var body = "";
+    d.rows.forEach(function (r) {
+      var nd = r.tb[0] - r.tb[1] + r.adj[0] - r.adj[1], at = nd >= 0 ? [nd, 0] : [0, -nd];
+      var dest = (r.t === "R" || r.t === "X") ? 3 : (r.t === "RE" || r.t === "D") ? 4 : 5;
+      var cells = [r.tb[0], r.tb[1], r.adj[0], r.adj[1], at[0], at[1], 0, 0, 0, 0, 0, 0];
+      cells[dest * 2] = at[0]; cells[dest * 2 + 1] = at[1];
+      cells.forEach(function (v, i) { tot[i] += v; });
+      body += '<tr><td class="ws-n">' + r.n + '</td>' + cells.map(function (v, i) {
+        var g = Math.floor(i / 2), key = (g === 1 && v && r.keys) ? '<span class="ws-key">(' + r.keys + ')</span> ' : "";
+        return '<td class="num" data-g="' + g + '">' + (v ? key + plain(v) : "") + '</td>';
+      }).join("") + '</tr>';
+    });
+    var ni = tot[7] - tot[6], ret = tot[9] + Math.max(ni, 0) - tot[8] - Math.max(-ni, 0);
+    function row(label, cells, cls) {
+      return '<tr class="' + (cls || "") + '"><td class="ws-n">' + label + '</td>' + cells.map(function (v, i) {
+        var g = Math.floor(i / 2); return '<td class="num" data-g="' + g + '" data-gb="' + (g >= 3 ? 6 : g) + '">' + (v === null ? "" : plain(v)) + '</td>'; }).join("") + '</tr>';
+    }
+    var sub = tot.slice();
+    var foot = row("Totals", sub, "ws-tot");
+    var niRow = [null, null, null, null, null, null, ni >= 0 ? ni : null, ni < 0 ? -ni : null, ni < 0 ? -ni : null, ni >= 0 ? ni : null, null, null];
+    foot += row(ni >= 0 ? "Net income" : "Net loss", niRow, "ws-ni");
+    var t2 = [null, null, null, null, null, null, sub[6] + (niRow[6] || 0), sub[7] + (niRow[7] || 0), sub[8] + (niRow[8] || 0), sub[9] + (niRow[9] || 0), null, null];
+    foot += row("Subtotals", t2, "ws-tot");
+    foot += row("Ending retained earnings", [null, null, null, null, null, null, null, null, ret, null, null, ret], "ws-ni");
+    foot += row("Totals", [null, null, null, null, null, null, t2[6], t2[7], t2[8] + ret, t2[9], sub[10], sub[11] + ret], "ws-tot ws-final");
+    var head = '<tr><th rowspan="2">Account</th>' + G.map(function (g, i) { return '<th colspan="2" data-g="' + i + '">' + g + '</th>'; }).join("") + '</tr><tr>' +
+      G.map(function (g, i) { return '<th class="num" data-g="' + i + '">Dr</th><th class="num" data-g="' + i + '">Cr</th>'; }).join("") + '</tr>';
+    var say = [
+      "Start with the unadjusted trial balance.",
+      "Enter the adjusting entries, keyed by letter, in the adjustments columns.",
+      "Combine the first two pairs of columns into the adjusted trial balance.",
+      "Extend revenues and expenses to the income statement columns.",
+      "Extend dividends and beginning retained earnings to the retained earnings columns.",
+      "Extend assets, liabilities, and capital stock to the balance sheet columns.",
+      (ni >= 0 ? "Net income of $" + ni.toLocaleString() + " balances the income statement columns and is carried to retained earnings as a credit." : "The net loss of $" + (-ni).toLocaleString() + " is a credit in the income statement columns and a debit in retained earnings.") + " Ending retained earnings of $" + ret.toLocaleString() + " moves to the balance sheet, and every pair balances."
+    ];
+    el.innerHTML = '<div class="ws-w"><p class="verdict ws-say" aria-live="polite"></p><div class="scroll-x"><table class="ws"><caption>' + (d.entity || "") + ' · Worksheet · ' + (d.date || "") + '</caption><thead>' + head + '</thead><tbody>' + body + foot + '</tbody></table></div>' +
+      '<div class="w-ctl"><button type="button" class="btn small ws-next" data-voice-repeat>Fill next columns</button><button type="button" class="btn ghost small ws-all">Show completed worksheet</button><button type="button" class="btn ghost small ws-reset">Start over</button></div></div>';
+    var step = 0, tbl = el.querySelector(".ws"), sayEl = el.querySelector(".ws-say");
+    function paint(speak) {
+      tbl.querySelectorAll("[data-g]").forEach(function (c) {
+        var g = +(c.getAttribute("data-gb") || c.getAttribute("data-g"));
+        c.classList.toggle("off", g > step && !(c.tagName === "TH"));
+        c.classList.toggle("now", g === step && step > 0 && c.tagName === "TD");
+      });
+      sayEl.setAttribute("aria-live", speak ? "polite" : "off");
+      sayEl.textContent = "Step " + (step + 1) + " of 7: " + say[step];
+      el.querySelector(".ws-next").disabled = step >= 6;
+    }
+    el.querySelector(".ws-next").addEventListener("click", function () { if (step < 6) { step++; paint(true); } });
+    el.querySelector(".ws-all").addEventListener("click", function () { step = 6; paint(true); });
+    el.querySelector(".ws-reset").addEventListener("click", function () { step = 0; paint(false); });
+    paint(false);
+  };
+
   /* ---------- taccounts: T-accounts with running balance ----------
      { accounts: [{ name, dr: [[label, amt]], cr: [[label, amt]], open: [side, amt] }] } */
   W.taccounts = function (el, d) {
