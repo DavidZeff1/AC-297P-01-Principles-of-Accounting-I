@@ -655,3 +655,15 @@ table.journal.nodate th.num, table.journal.nodate td.num { width: 6.5em; }
 .timeline-note span { padding: 10px 12px; min-width: 0; }
 .tn-a { flex: 1; background: var(--ledger-soft); color: var(--ledger); }
 .tn-b { flex: 2; background: var(--mgr-soft); color: var(--mgr); }
+/* nail barrel (lesson 8.2) */
+.barrel-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; margin-top: 14px; align-items: start; }
+@media (max-width: 640px) { .barrel-wrap { grid-template-columns: minmax(0, 1fr); } }
+.barrel { display: flex; flex-direction: column; height: 260px; border: 3px solid var(--ink-3); border-top: 0; border-radius: 0 0 26px 26px; overflow: hidden; background: var(--rule-2); }
+.layer { position: relative; display: flex; align-items: center; border-top: 1px dashed var(--ink-3); min-height: 0; }
+.layer-in { position: absolute; inset: 0 auto 0 0; transition: width .4s; }
+.layer.l0 .layer-in { background: rgba(27, 106, 80, .35); }
+.layer.l1 .layer-in { background: rgba(154, 85, 18, .35); }
+.layer.l2 .layer-in { background: rgba(178, 60, 42, .30); }
+.layer-t { position: relative; padding: 0 12px; font: 600 13px/1.2 var(--f-mono); }
+@media (prefers-reduced-motion: reduce) { .layer-in { transition: none; } }
+table.plain thead th.num { font-family: var(--f-display); }
