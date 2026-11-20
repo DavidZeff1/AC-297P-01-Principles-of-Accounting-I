@@ -21,12 +21,29 @@ On any lesson, press **Focus mode** (or the `F` key) to hide the rest of the sit
 section at a time. Use the progress bar, the previous/next buttons, or `←` `→` to move between
 sections, and `Esc` to exit. The setting is remembered.
 
+## Voice-over
+
+Press **Voice** in the top bar (or the `V` key) to turn on voice-over. It uses the browser's
+built-in speech engine, so it works offline and needs no account.
+
+- **Listen to this lesson** reads the whole lesson from the top, highlighting each block as it goes.
+  In focus mode it turns the sections for you.
+- With voice-over on, tap any paragraph, card, table, or panel to hear it and keep reading from there.
+  Each section has a **Listen from here** button, and each quiz question has a speaker button.
+- Interactive pieces speak their results: diagram stages, user groups, simulator outcomes, flipped
+  flashcards, and quiz and sorter feedback.
+- The player bar at the bottom has previous/next, play/pause (`P`), speed (0.75× to 1.75×), and a voice picker.
+
+Abbreviations are given spoken forms (FASB, GAAP, IFRS, …) in `assets/voice.js`. A lesson can add its own
+with `pronounce: [[/regex/g, "spoken form"]]`.
+
 ## Layout
 
 | Path | What it is |
 | --- | --- |
 | `index.html` | Page shell: top bar, script tags for every built lesson |
 | `assets/course.js` | Course map: units, chapters, and lesson titles from Canvas |
+| `assets/voice.js` | Voice-over engine: reading order, spoken text cleanup, player bar |
 | `assets/hub.js` | Router (`#home`, `#lesson-1-1`), progress, and shared widgets |
 | `assets/hub.css` | Design tokens (light and dark) and shared component styles |
 | `lessons/<ch>-<n>.js` | One file per lesson, e.g. `lessons/1-1.js` |

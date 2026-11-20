@@ -74,6 +74,7 @@
     });
     h += '</main>';
     app.innerHTML = h;
+    if (HUB.voice) HUB.voice.mount("home", app);
   }
 
   /* ---------- lesson ---------- */
@@ -89,6 +90,7 @@
       app.innerHTML = '<main class="wrap soon-page">' + crumbs + '<div class="eyebrow">Lesson ' + meta.num + '</div><h1>' + esc(meta.title) + '</h1>' +
         '<p>This lesson has not been built yet. Paste the module text from Canvas into the chat and it will be added here.</p>' +
         '<p><a class="btn ghost" href="#home">Back to the course map</a></p></main>';
+      if (HUB.voice) HUB.voice.mount("soon", app);
       return;
     }
     state.last = id; save();
@@ -96,11 +98,13 @@
     var h = '<div class="focusbar" id="focusbar"><div class="wrap fb-row">' +
       '<button type="button" class="fb-exit" id="fb-exit" aria-label="Exit focus mode">✕<span> Exit focus</span></button>' +
       '<div class="fb-title"><span class="num">' + meta.num + '</span> <span id="fb-sec"></span></div>' +
-      '<span class="fb-count num" id="fb-count"></span></div>' +
+      '<span class="fb-count num" id="fb-count"></span>' +
+      '<button type="button" class="fb-exit fb-voice" data-vo-toggle aria-pressed="false" aria-label="Voice-over">' + (HUB.voice ? HUB.voice.iconSpeaker : '') + '<span> Voice</span></button></div>' +
       '<div class="wrap fb-segs" id="fb-segs"></div></div>';
     h += '<header class="lesson-hero"><div class="wrap">';
     h += '<div class="hero-top">' + crumbs + '<button type="button" class="btn ghost small focus-btn" id="focus-btn" title="Show one section at a time, without the rest of the site (F)">' +
-      '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><circle cx="12" cy="12" r="2.5"/></svg>Focus mode</button></div>';
+      '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><circle cx="12" cy="12" r="2.5"/></svg>Focus mode</button>' +
+      '<button type="button" class="btn ghost small listen-btn" id="listen-btn" title="Read this lesson aloud (V toggles voice-over)">' + (HUB.voice ? HUB.voice.iconSpeaker : '') + 'Listen to this lesson</button></div>';
     h += '<div class="lesson-title"><div class="lesson-tab">' + meta.num + '</div><h1>' + esc(meta.title) + '</h1></div>';
     if (def.summary) h += '<p class="lesson-sub">' + def.summary + '</p>';
     if (def.objectives) {
@@ -127,6 +131,9 @@
       try { def.init(body, api); } catch (e) { console.error("Lesson init failed", e); }
     }
     setupFocus(body);
+    var lb = document.getElementById("listen-btn");
+    lb.addEventListener("click", function () { if (HUB.voice) HUB.voice.listenAll(); });
+    if (HUB.voice) HUB.voice.mount("lesson", app, def.pronounce);
   }
 
   /* ---------- focus mode: one section at a time, no site chrome ---------- */
@@ -155,7 +162,15 @@
       if (i > 0) prevB.innerHTML = label("← Previous section", i - 1);
       if (i < secs.length - 1) nextB.innerHTML = label("Next section →", i + 1);
     }
-    function go(j) { i = Math.max(0, Math.min(secs.length - 1, j)); paint(); window.scrollTo(0, 0); }
+    function go(j) {
+      i = Math.max(0, Math.min(secs.length - 1, j)); paint(); window.scrollTo(0, 0);
+      if (HUB.voice) HUB.voice.sectionChanged(secs[i]);
+    }
+    HUB.focusReveal = function (el) {
+      if (!state.focus) return;
+      var j = el.closest(".lesson-hero") ? 0 : secs.findIndex(function (s) { return s.contains(el); });
+      if (j >= 0 && j !== i) { i = j; paint(); }
+    };
     function currentInView() {
       var k = 0;
       secs.forEach(function (s, j) { if (s.getBoundingClientRect().top < 140) k = j; });
@@ -239,7 +254,10 @@
         '<div class="flip-face back"><span class="term">' + c.term + '</span><span>' + c.back + '</span></div></div></button>';
     }).join("");
     el.querySelectorAll(".flip").forEach(function (f) {
-      f.addEventListener("click", function () { var on = f.classList.toggle("on"); f.setAttribute("aria-pressed", on); });
+      f.addEventListener("click", function () {
+        var on = f.classList.toggle("on"); f.setAttribute("aria-pressed", on);
+        if (on && HUB.voice) HUB.voice.say(f.querySelector(".flip-face.back").textContent.replace(f.querySelector(".back .term").textContent, ""));
+      });
     });
   }
 
@@ -269,6 +287,7 @@
           fb.className = "feedback " + (ok ? "right" : "wrong");
           fb.innerHTML = (ok ? "<b>Correct.</b> " : "<b>Not quite.</b> ") + it.why;
           row.appendChild(fb);
+          if (HUB.voice) HUB.voice.say(fb);
           answered++; if (ok) score++;
           scoreEl.textContent = answered === cfg.items.length ? "You sorted " + score + " of " + cfg.items.length + " correctly." : answered + " of " + cfg.items.length + " sorted · " + score + " correct";
         });
@@ -287,7 +306,8 @@
     });
     h += '<div class="quiz-result" hidden></div>';
     el.innerHTML = h;
-    var result = el.querySelector(".quiz-result");
+    var result = el.querySelector(".quiz-result"), fbLast = null;
+    if (HUB.voice) HUB.voice.decorateQuiz(el);
     el.querySelectorAll(".quiz-q").forEach(function (qe) {
       var q = qs[+qe.getAttribute("data-i")];
       qe.querySelectorAll(".opt").forEach(function (b) {
@@ -302,6 +322,8 @@
           fb.className = "feedback " + (ok ? "right" : "wrong");
           fb.innerHTML = (ok ? "<b>Correct.</b> " : "<b>Not quite.</b> ") + q.why;
           qe.appendChild(fb);
+          fbLast = fb;
+          if (HUB.voice && answered + 1 < qs.length) HUB.voice.say(fb);
           answered++; if (ok) right++;
           if (answered === qs.length) finish();
         });
@@ -319,6 +341,7 @@
         '</div><button type="button" class="btn ghost small">Retake</button>';
       result.querySelector("button").addEventListener("click", function () { quiz(el, qs, id); el.scrollIntoView({ block: "start" }); });
       if (pass) toast("Passed · lesson marked complete");
+      if (HUB.voice) HUB.voice.say(fbLast.textContent + " " + result.textContent.replace("Retake", ""));
     }
   }
 
@@ -337,7 +360,7 @@
   function route() {
     var hsh = (location.hash || "").replace(/^#/, "");
     var m = /^lesson-(\d+-\d+)$/.exec(hsh);
-    focusCtl = null;
+    focusCtl = null; HUB.focusReveal = null;
     document.body.classList.remove("focus-mode");
     if (m) renderLesson(m[1]); else renderHome();
     window.scrollTo(0, 0);
