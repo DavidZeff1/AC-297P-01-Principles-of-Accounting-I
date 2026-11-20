@@ -238,7 +238,15 @@
 
   /* ---------- widgets ---------- */
   function mountWidgets(body, def, id) {
-    body.querySelectorAll("[data-widget]").forEach(function (el) {
+    /* repeat so a widget whose output contains another widget (e.g. a journal entry inside a worked solution) gets mounted too */
+    for (var pass = 0; pass < 3; pass++) {
+      var todo = body.querySelectorAll("[data-widget]:not([data-mounted])");
+      if (!todo.length) break;
+      todo.forEach(function (el) { el.setAttribute("data-mounted", ""); mountOne(el, def, id); });
+    }
+  }
+  function mountOne(el, def, id) {
+    (function () {
       var kind = el.getAttribute("data-widget"), key = el.getAttribute("data-key");
       if (kind === "cards") cards(el, (def.cards || {})[key] || []);
       else if (kind === "sorter") sorter(el, (def.sorters || {})[key]);
@@ -248,7 +256,7 @@
         if (data) { try { HUB.widgets[kind](el, data, key); } catch (e) { console.error("Widget " + kind + "/" + key + " failed", e); } }
         else console.error("No data for widget " + kind + "/" + key);
       }
-    });
+    })();
   }
 
   function cards(el, list) {
