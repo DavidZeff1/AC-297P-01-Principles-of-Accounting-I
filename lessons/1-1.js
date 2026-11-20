@@ -185,7 +185,7 @@
   .scale text { fill: var(--ink); font: 600 13px var(--f-body); text-anchor: middle; }
   @media (prefers-reduced-motion: reduce) { .scale .beam { transition: none; } }
 
-  .recap { counter-reset: r; list-style: none; padding: 0; margin: 0; display: grid; gap: 0; max-width: 72ch; }
+  .recap { counter-reset: r; list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
   .recap li { counter-increment: r; display: grid; grid-template-columns: 2.4em minmax(0, 1fr); gap: 8px; padding: 12px 0; border-top: 1px solid var(--rule); line-height: 1.5; }
   .recap li::before { content: counter(r, decimal-leading-zero); font: 600 15px/1.6 var(--f-mono); color: var(--ledger); }
 </style>
