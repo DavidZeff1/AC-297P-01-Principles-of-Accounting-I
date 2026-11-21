@@ -48,6 +48,7 @@ interactive examples, flashcards, practice quiz). See README.md for the file lay
   `account_get_usage` before generating and keep scripts around 3,000–3,500 characters (3–4 minutes).
 - Script style: start straight in (no "Welcome back"; the user asked for it removed). A chapter's first lesson
   may open with "Welcome to chapter N." Keep the friendly tutor tone and a short recap at the end.
-- Chapters 1–3 have audio lessons; chapters 4–7 are in progress, in lesson order. Credits reset monthly.
+- Chapters 1–8 have audio lessons (42 of 75). Next: 9.1 onward, in lesson order, when credits allow
+  (Creator plan; credits reset monthly around the 21st).
   Generate more only when the user asks, and say how many credits it will use.
 
