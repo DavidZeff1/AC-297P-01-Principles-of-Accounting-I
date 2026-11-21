@@ -88,3 +88,30 @@ HUB.cases.england = (function () {
   return { accounts: A, adjustments: ADJ, adj: adj, adjusted: adjusted, tb: tb,
     revenue: 32800, expenses: 30200, netIncome: 2600, dividends: 1000, endingRE: 1600 };
 })();
+
+/* Embassy Corporation (chapter 14): stockholders' equity, reconstructed around the reading's stated figures
+   (preferred 200,000 × $100 par 8% cumulative; common 400,000 × $1 par; legal capital $20,400,000; total paid-in $56,400,000) */
+HUB.cases.embassy = (function () {
+  /* opts: { treasury: true } adds 10,000 common shares reacquired at $60; { split: 4 } applies a 4-for-1 split */
+  function equity(opts) {
+    opts = opts || {};
+    var sp = opts.split || 1, par = 1 / sp, issued = 400000 * sp, auth = 1000000 * sp, tr = opts.treasury;
+    var parTxt = par === 1 ? "$1" : "$" + par.toFixed(2);
+    var rows = [
+      { l: "Paid-in capital", head: true },
+      { l: "Preferred stock, $100 par, 8% cumulative, 500,000 shares authorized, 200,000 shares issued and outstanding", a: 20000000, ind: 1 },
+      { l: "Common stock, " + parTxt + " par, " + auth.toLocaleString() + " shares authorized, " + issued.toLocaleString() + " shares issued" + (tr ? ", " + (issued - 10000 * sp).toLocaleString() + " outstanding" : " and outstanding"), a: 400000, ind: 1, mark: sp > 1 },
+      { l: "Paid-in capital in excess of par: preferred", a: 1000000, ind: 1 },
+      { l: "Paid-in capital in excess of par: common", a: 35000000, ind: 1, ua: true },
+      { l: "Total paid-in capital", b: 56400000, ind: 1 },
+      { l: "Retained earnings", b: 43600000, ub: !tr },
+    ];
+    if (tr) {
+      rows.push({ l: "Subtotal", b: 100000000, ind: 1 });
+      rows.push({ l: "Less: treasury stock, 10,000 common shares at cost", b: -600000, ub: true, mark: true });
+    }
+    rows.push({ l: "Total stockholders’ equity", b: tr ? 99400000 : 100000000, bold: true, uub: true });
+    return { entity: "Embassy Corporation", title: "Stockholders’ Equity", date: "December 31, 20X5", cols: 2, rows: rows };
+  }
+  return { equity: equity, prefDiv: 1600000 };
+})();

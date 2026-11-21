@@ -50,7 +50,7 @@
       if (r.gap) { h += '<div class="st-row gap" aria-hidden="true"></div>'; return; }
       var amt = r.b !== undefined ? r.b : r.a;
       var sayRow = strip(r.l) + (amt !== undefined && amt !== "" ? ": " + (typeof amt === "number" ? sayMoney(amt) : amt) : "");
-      h += '<div class="st-row' + (r.head ? " head" : "") + (r.bold ? " bold" : "") + '" style="--ind:' + (r.ind || 0) + '"' + (r.link ? ' data-link="' + r.link + '" tabindex="0" role="button"' : '') + ' data-say="' + sayRow.replace(/"/g, "&quot;") + '.">';
+      h += '<div class="st-row' + (r.head ? " head" : "") + (r.bold ? " bold" : "") + (r.mark ? " mark" : "") + '" style="--ind:' + (r.ind || 0) + '"' + (r.link ? ' data-link="' + r.link + '" tabindex="0" role="button"' : '') + ' data-say="' + sayRow.replace(/"/g, "&quot;") + '.">';
       h += '<span class="st-l">' + r.l + '</span>';
       if (two) h += '<span class="st-a"><span class="' + (r.uua ? "uu" : r.ua ? "u" : "") + '">' + money(r.a) + '</span></span>';
       var uu = two ? r.uub : (r.uub || r.uua), u = two ? r.ub : (r.ub || r.ua);
