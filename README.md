@@ -46,7 +46,7 @@ with `pronounce: [[/regex/g, "spoken form"]]`.
 ## Audio lessons
 
 Lessons with an audio lesson show a player under the summary (and a headphone mark on the course map):
-a 3–4 minute talk where a teacher walks through the lesson, recorded with ElevenLabs (voice: Rob, an easygoing
+a 2½–4 minute talk where a teacher walks through the lesson, recorded with ElevenLabs (voice: Rob, an easygoing
 American male, model `eleven_v4`; `talks/voices.json` notes the few still in the earlier voice). The player has play/pause, ±15 s, speed (0.85×–1.5×), and a transcript
 that highlights the paragraph being spoken; click a paragraph to jump there. Position and speed are remembered.
 
@@ -92,12 +92,12 @@ A lesson definition can provide:
 | --- | --- | --- | --- |
 | 1. Welcome to the World of Accounting | 1.1–1.5 | yes | yes |
 | 2. Information Processing | 2.1–2.6 | yes | yes |
-| 3. Income Measurement | 3.1–3.6 | yes | — |
-| 4. The Reporting Cycle | 4.1–4.5 | yes | — |
-| 5. Special Issues for Merchants | 5.1–5.5 | yes | — |
-| 6. Cash and Highly Liquid Investments | 6.1–6.5 | pending | — |
-| 7. Accounts Receivable | 7.1–7.4 | pending | — |
-| 8. Inventory | 8.1–8.6 | pending | — |
+| 3. Income Measurement | 3.1–3.6 | yes | yes |
+| 4. The Reporting Cycle | 4.1–4.5 | yes | yes |
+| 5. Special Issues for Merchants | 5.1–5.5 | yes | yes |
+| 6. Cash and Highly Liquid Investments | 6.1–6.5 | pending | yes |
+| 7. Accounts Receivable | 7.1–7.4 | pending | yes |
+| 8. Inventory | 8.1–8.6 | pending | yes |
 | 9. Long-term Investments | 9.1–9.5 | pending | — |
 | 10. Property, Plant, and Equipment | 10.1–10.6 | pending | — |
 | 11. Advanced PP&E Issues, Natural Resources, and Intangibles | 11.1–11.6 | pending | — |
