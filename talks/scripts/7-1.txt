@@ -1,0 +1,13 @@
+[warmly] Welcome to chapter seven, which is all about receivables: money that others owe the company.
+
+Receivables come in two flavors. Trade receivables are the big ones. They come from selling products or services to customers on credit, and they're recorded in Accounts Receivable. Nontrade receivables come from everything else, like an advance to an employee, or a deposit with a utility company. And receivables are classified as current or noncurrent, depending on how long they'll take to collect.
+
+So why sell on credit at all? Because it brings in customers. Plenty of people and businesses won't buy, or won't buy as much, if they have to pay cash on the spot. But credit isn't free. [pause] It costs money to investigate customers' credit, to bill them, and to chase them when they're late. While you wait, you can't use that money for anything else. And some customers will simply never pay. So every business has to weigh the extra sales against those costs.
+
+That's a big reason credit cards are so popular with merchants. Companies like Visa, Mastercard, and American Express handle the whole credit operation. They earn money from merchant fees, usually a percentage of each sale, plus interest and charges to cardholders. Merchants happily pay the fee, because collection is practically guaranteed and fast, often the same day, and they don't need their own credit department.
+
+There are two ways a card sale gets recorded. With many bank cards, the money hits the merchant's bank almost immediately, so it's treated basically like a cash sale. Say Rayyan Company sells a thousand dollars of merchandise, and the bank charges two percent. Rayyan debits Cash nine hundred eighty, debits a service charge expense of twenty, and credits Sales for the full thousand.
+
+With other cards, the merchant has to wait to be paid. Then the sale is recorded first as a credit sale, with the card company as the one who owes the money. So the merchant debits a receivable from the card company and credits Sales. Later, when the money arrives, it debits Cash, records the service charge as an expense, and credits the receivable.
+
+[warmly] So, the takeaways. Trade receivables come from customers; nontrade receivables come from everything else. Credit boosts sales but has real costs. And card sales are recorded either like cash, with the fee as an expense, or as a receivable from the card company until it pays. See you next lesson.

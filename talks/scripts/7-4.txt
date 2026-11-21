@@ -1,0 +1,19 @@
+[warmly] Let's wrap up chapter seven with notes receivable.
+
+A note receivable is a written promise from a customer to pay a definite amount on a specific future date, usually with interest. Notes are common when a company extends credit to a new customer with no track record, because a signed note makes the debt clearly legal and enforceable.
+
+Some vocabulary. The maker is the one promising to pay. The payee is the one who gets paid. The principal is the stated amount of the note. And the maturity date is the day it's due.
+
+Interest follows a simple formula you've seen before: principal, times rate, times time. Take a one-thousand-dollar note at twelve percent for sixty days. That's one thousand, times twelve percent, times sixty over three hundred sixty. Twenty dollars of interest. [pause] Notice the three-hundred-sixty-day year. It's an old convention from before calculators, it makes the math easier, and it slightly favors the lender. Let the buyer beware.
+
+Now let's follow a note from start to finish. Butchko sells ten thousand dollars of merchandise to Hewlett, on account. Hewlett needs more time, so it signs a three-month, twelve percent note. Butchko swaps the receivable for a note: debit Notes Receivable, credit Accounts Receivable, ten thousand each.
+
+Interest on the note: ten thousand, times twelve percent, times three twelfths. That's three hundred dollars.
+
+At maturity, Hewlett pays ten thousand three hundred. Butchko debits Cash ten thousand three hundred, credits Notes Receivable ten thousand, and credits Interest Income three hundred.
+
+But what if Hewlett refuses to pay? Then the note is dishonored. Butchko moves the whole amount, the principal plus the interest it earned, back into Accounts Receivable, and keeps trying to collect. If collection looks doubtful, it sets up an allowance, just like last lesson.
+
+One more wrinkle: a note that crosses year end. Say the note was signed June first, and Butchko's fiscal year ends June thirtieth. By year end, one month of interest has been earned, a hundred dollars, even though nothing's been collected. So Butchko accrues it: debit Interest Receivable, credit Interest Income, one hundred dollars. The other two hundred is earned in the new year, and recorded when the note is collected.
+
+[warmly] So, the takeaways. A note is a written promise to pay principal, usually with interest, on a maturity date. Interest is principal times rate times time. At maturity, debit Cash and credit the note and interest income. A dishonored note goes back to Accounts Receivable. And accrue any interest earned by year end. That wraps up chapter seven. Nice job.
