@@ -30,6 +30,9 @@ interactive examples, flashcards, practice quiz). See README.md for the file lay
   The capture step clicks through every interactive state, so new widget types that change spoken
   text should be clickable elements listed in `CLICKABLES` in `tools/narrate-capture.js` (or carry
   `data-voice-state`). The narrator is always Michael (`am_michael`, Kokoro-82M): the user wants one natural male voice and no voice picker.
+- The user wants each spoken word highlighted in time with the audio (subtle grow and color change).
+  `narrate.py` records with the timestamped Kokoro export and stores word start times per clip; clips
+  without timings are re-recorded on the next run. Don't drop the timings when changing the recorder.
 - Hosting limits for the artifact: at most ~511 files and 256 MB per version, 15 MB per binary file.
-  Each lesson's narration is one bundle of roughly 5–7 MB at 32 kbps; if the total nears 256 MB,
+  Each lesson's narration is one bundle of roughly 2–4 MB at 24 kbps; if the total nears 256 MB,
   re-record at `--bitrate 24k` or split packs across artifacts.

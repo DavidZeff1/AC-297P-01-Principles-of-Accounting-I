@@ -8,7 +8,10 @@ Needs: pip install kokoro-onnx soundfile num2words huggingface_hub, and ffmpeg.
 The Kokoro-82M model (Apache-2.0) downloads from Hugging Face on first run.
 
 Output per pack: audio/<pack>/clips.mp3 (every clip's mp3 bytes back to back) and
-audio/<pack>/index.js, which registers each clip's hash, byte offset, and length with the page.
+audio/<pack>/index.js, which registers each clip's hash, byte offset, length, and word timings with the page.
+Word timings come from the timestamped export of the same model (it also reports phoneme durations):
+one start time per whitespace-separated word of the sentence, in centiseconds, so the page can highlight
+each word as it is spoken.
 Bundling keeps the hosted page under its file-count limit. Clips already in the bundle are reused,
 clips no longer used are dropped, and changing the voice re-records the pack.
 """
@@ -28,6 +31,8 @@ from num2words import num2words
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 REPO = "onnx-community/Kokoro-82M-v1.0-ONNX"
+TIMED = "onnx-community/Kokoro-82M-v1.0-ONNX-timestamped"
+PUNCT = set('.,;:!?—…"()“”«» ')
 LABELS = {"am_michael": "Michael", "am_fenrir": "Fenrir", "am_puck": "Puck", "am_onyx": "Onyx", "am_eric": "Eric",
           "am_liam": "Liam", "am_adam": "Adam", "bm_george": "George", "bm_lewis": "Lewis", "bm_daniel": "Daniel", "bm_fable": "Fable"}
 
@@ -67,6 +72,58 @@ def normalize(t):
     return re.sub(r"\s+", " ", t).strip()
 
 
+def b36(n):
+    return np.base_repr(int(n), 36).lower()
+
+
+def spoken_words(text):
+    return [x for x in normalize(text).split() if re.search(r"[A-Za-z0-9]", x)]
+
+
+def word_starts(text, spoken):
+    """Start time (seconds) of each whitespace-separated word of `text`, from the model's phoneme timings."""
+    groups, cur = [], None  # spoken words: [start, end, phoneme count]
+    for t in spoken:
+        if t.phoneme == " ":
+            cur = None
+            continue
+        if t.phoneme in PUNCT:
+            continue
+        if cur is None:
+            cur = [t.start, t.end, 0]
+            groups.append(cur)
+        cur[1] = t.end
+        cur[2] += 1
+    words = text.split()
+    if not groups:
+        return [0.0] * len(words)
+    counts = [len(spoken_words(w)) for w in words]
+    out = []
+    if sum(counts) == len(groups):  # one-to-one: exact
+        k = 0
+        for c in counts:
+            out.append(groups[min(k, len(groups) - 1)][0] if c else None)
+            k += c
+    else:  # spelling and phonemes disagree: place words by their share of the letters spoken
+        weights = [len(re.sub(r"[^a-z0-9]", "", normalize(w).lower())) for w in words]
+        total, ph = sum(weights) or 1, sum(g[2] for g in groups)
+        acc = 0
+        for wt in weights:
+            p, k = acc / total * ph, 0
+            while k < len(groups) - 1 and p >= groups[k][2]:
+                p -= groups[k][2]
+                k += 1
+            g = groups[k]
+            out.append(g[0] + (g[1] - g[0]) * min(1.0, p / max(1, g[2])) if wt else None)
+            acc += wt
+    for i in range(len(out) - 1, -1, -1):  # silent tokens (dashes, symbols) start with the next word
+        if out[i] is None:
+            out[i] = out[i + 1] if i + 1 < len(out) else groups[-1][1]
+    for i in range(1, len(out)):
+        out[i] = max(out[i], out[i - 1])
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("sentences")
@@ -76,11 +133,12 @@ def main():
     args = ap.parse_args()
 
     data = json.loads(pathlib.Path(args.sentences).read_text(encoding="utf-8"))
-    model = hf_hub_download(REPO, "onnx/model.onnx")
+    model = hf_hub_download(TIMED, "onnx/model.onnx")
     voice = np.fromfile(hf_hub_download(REPO, f"voices/{args.voice}.bin"), dtype=np.float32).reshape(-1, 1, 256)
     with tempfile.TemporaryDirectory() as tmp:
         np.savez(f"{tmp}/v.npz", **{args.voice: voice})
         tts = Kokoro(model, f"{tmp}/v.npz")
+    tts.has_timings = True  # this export names its output "durations"
     lang = "en-gb" if args.voice.startswith("b") else "en-us"
     label = LABELS.get(args.voice, args.voice)
 
@@ -93,34 +151,34 @@ def main():
             meta = index.read_text()
             if f'voice: "{args.voice}"' in meta:
                 blob = bundle.read_bytes()
-                for h, off, ln in re.findall(r"([0-9a-z]+):([0-9a-z]+):([0-9a-z]+)", meta.split('clips: "')[1]):
+                for h, off, ln, tm in re.findall(r"([0-9a-z]+):([0-9a-z]+):([0-9a-z]+):([0-9a-z.]+)", meta.split('clips: "')[1]):
                     off, ln = int(off, 36), int(ln, 36)
-                    have[h] = blob[off:off + ln]
-        for f in folder.glob("*.mp3"):  # loose clips from an interrupted or older run
+                    have[h] = (blob[off:off + ln], tm)  # clips without word timings are re-recorded
+        for f in folder.glob("*.mp3"):  # loose clips from an older run (no timings)
             if f.name != "clips.mp3":
-                have.setdefault(f.stem, f.read_bytes())
                 f.unlink()
         todo = [(h, t) for h, t in clips.items() if h not in have]
         t0, secs = time.time(), 0.0
         for i, (h, text) in enumerate(todo, 1):
-            audio, sr = tts.create(normalize(text), voice=args.voice, speed=args.speed, lang=lang)
+            audio, sr, spoken = tts.create_timed(normalize(text), voice=args.voice, speed=args.speed, lang=lang)
+            starts = word_starts(text, spoken)
             secs += len(audio) / sr
             with tempfile.TemporaryDirectory() as tmp:
                 sf.write(f"{tmp}/a.wav", audio, sr)
                 subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", f"{tmp}/a.wav", "-af", "apad=pad_dur=0.12",
                                 "-ac", "1", "-c:a", "libmp3lame", "-b:a", args.bitrate, f"{tmp}/a.mp3"], check=True)
-                have[h] = pathlib.Path(f"{tmp}/a.mp3").read_bytes()
+                have[h] = (pathlib.Path(f"{tmp}/a.mp3").read_bytes(), ".".join(b36(round(x * 100)) for x in starts))
             if i % 50 == 0:
                 print(f"  {pack}: {i}/{len(todo)} clips", flush=True)
         parts, entries, off = [], [], 0
         for h in sorted(clips):
-            b = have[h]
+            b, tm = have[h]
             parts.append(b)
-            entries.append(f"{h}:{np.base_repr(off, 36).lower()}:{np.base_repr(len(b), 36).lower()}")
+            entries.append(f"{h}:{b36(off)}:{b36(len(b))}:{tm}")
             off += len(b)
         bundle.write_bytes(b"".join(parts))
         index.write_text(
-            "/* Generated by tools/narrate.py: recorded narration clips (hash:offset:length, base 36) in clips.mp3. */\n"
+            "/* Generated by tools/narrate.py: narration clips in clips.mp3 (hash:offset:length:word starts in centiseconds, base 36). */\n"
             f'HUB.narrationPack("{pack}", {{ voice: "{args.voice}", label: "{label}", clips: "{" ".join(entries)}" }});\n',
             encoding="utf-8")
         print(f"{pack}: {len(clips)} clips, {len(todo)} new ({secs / 60:.1f} min audio in {time.time() - t0:.0f}s), {off / 1e6:.1f} MB", flush=True)

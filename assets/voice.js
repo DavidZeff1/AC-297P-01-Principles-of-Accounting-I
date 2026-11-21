@@ -106,7 +106,7 @@
     var map = {};
     p.clips.split(" ").forEach(function (e) {
       var f = e.split(":");
-      if (f.length === 3) map[f[0]] = [parseInt(f[1], 36), parseInt(f[2], 36)];
+      if (f.length >= 3) map[f[0]] = [parseInt(f[1], 36), parseInt(f[2], 36), f[3] ? f[3].split(".").map(function (x) { return parseInt(x, 36) / 100; }) : null];
     });
     packs[id] = { voice: p.voice, label: p.label || p.voice, file: "audio/" + id + "/clips.mp3", map: map, buf: null, ready: null };
   };
@@ -151,6 +151,111 @@
   }
   ["pointerdown", "keydown"].forEach(function (ev) { document.addEventListener(ev, unlock, true); });
 
+  /* ---------- word-by-word highlight ----------
+     The spoken sentence is matched to the words on screen; a floating copy of the current word
+     (same font, same spot) gently grows and changes color, so the page itself is never modified. */
+  function keyOf(w) { return w.toLowerCase().replace(/[^a-z0-9]/g, ""); }
+  var SKIP = "svg, script, style, input, .vo-btn, .cue, [data-no-voice], .vo-word";
+  function domWords(el) {
+    var out = [], tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n;
+    while ((n = tw.nextNode())) {
+      var par = n.parentElement;
+      if (!par || par.closest(SKIP) || !par.getClientRects().length) continue;
+      var re = /\S+/g, m;
+      while ((m = re.exec(n.data))) { var k = keyOf(m[0]); if (k) out.push({ node: n, a: m.index, b: m.index + m[0].length, k: k }); }
+    }
+    return out;
+  }
+  /* one aligner per block: consecutive sentences walk forward through the block's words */
+  function aligner(el) {
+    var dom = domWords(el), cur = 0;
+    return function (text) {
+      var say = text.split(/\s+/), map = say.map(function () { return -1; }), anchors = [], start = cur;
+      say.forEach(function (w, i) {
+        var k = keyOf(w); if (!k) return;
+        for (var j = cur; j < Math.min(dom.length, cur + 10); j++) if (dom[j].k === k) { map[i] = j; anchors.push(i); cur = j + 1; return; }
+      });
+      /* words that didn't match (spoken forms like "minus" or "Fazz-bee") share the screen words between two matches;
+         with nothing in between they keep the previous word lit */
+      var pi = -1, pd = start - 1;
+      anchors.forEach(function (ai) {
+        var n = ai - pi - 1, m = map[ai] - pd - 1;
+        for (var r = 0; n > 0 && m > 0 && r < n; r++) map[pi + 1 + r] = pd + 1 + Math.floor(r * m / n);
+        pi = ai; pd = map[ai];
+      });
+      return map.map(function (j) { return j < 0 ? null : dom[j]; });
+    };
+  }
+  var pool = [], shown = null;
+  function overlay() {
+    var o = pool.shift();
+    if (!o) { o = document.createElement("span"); o.className = "vo-word"; o.setAttribute("aria-hidden", "true"); }
+    return o;
+  }
+  function retire(o) {
+    o.classList.remove("on");
+    clearTimeout(o._t);
+    o._t = setTimeout(function () { o.remove(); pool.push(o); }, 260);
+  }
+  function showWord(w) {
+    if (shown && w && shown.w === w) return;
+    if (shown) { retire(shown.o); shown = null; }
+    if (!w || !w.node.isConnected) return;
+    var r = document.createRange();
+    try { r.setStart(w.node, w.a); r.setEnd(w.node, w.b); } catch (e) { return; }
+    var box = r.getClientRects()[0];
+    if (!box || !box.width) return;
+    var cs = getComputedStyle(w.node.parentElement), o = overlay();
+    clearTimeout(o._t);
+    o.textContent = w.node.data.slice(w.a, w.b);
+    o.style.setProperty("--from", cs.color);
+    ["fontFamily", "fontSize", "fontWeight", "fontStyle", "letterSpacing", "textTransform", "fontVariantNumeric", "fontFeatureSettings", "fontStretch"].forEach(function (k) { o.style[k] = cs[k]; });
+    o.style.lineHeight = box.height + "px";
+    o.style.left = (box.left + scrollX) + "px"; o.style.top = (box.top + scrollY) + "px";
+    o.style.width = box.width + "px"; o.style.height = box.height + "px";
+    o.classList.remove("on");
+    document.body.appendChild(o);
+    void o.offsetWidth; /* start the grow from the resting size */
+    o.classList.add("on");
+    shown = { w: w, o: o };
+  }
+  var tick = null;
+  function stopWords() { if (tick) { cancelAnimationFrame(tick); tick = null; } showWord(null); }
+  /* follow a recorded clip: its word start times are in media time, so playback speed is handled for free */
+  function followClip(words, times, text) {
+    stopWords();
+    if (!words) return;
+    var est = null;
+    function starts() {
+      if (times && times.length === words.length) return times;
+      if (est || !isFinite(player.duration)) return est;
+      /* older clips without timings: share the clip by word length */
+      var parts = text.split(/\s+/), wt = parts.map(function (w) { return w.length + 1 + (/[,;:.!?]$/.test(w) ? 3 : 0); });
+      var tot = wt.reduce(function (a, b) { return a + b; }, 0), span = Math.max(0.1, player.duration - 0.3), acc = 0;
+      est = wt.map(function (x) { var t = 0.15 + acc / tot * span; acc += x; return t; });
+      return est;
+    }
+    (function loop() {
+      var st = starts(), t = player.currentTime + 0.04, k = -1;
+      if (st) for (var i = 0; i < st.length && st[i] <= t; i++) k = i;
+      if (k >= 0 && words[k]) showWord(words[k]);
+      tick = requestAnimationFrame(loop);
+    })();
+  }
+  /* the device voice reports word boundaries as character offsets */
+  function followBoundary(u, words, text) {
+    stopWords();
+    if (!words) return;
+    var offs = [], re = /\S+/g, m;
+    while ((m = re.exec(text))) offs.push(m.index);
+    u.onboundary = function (e) {
+      if (e.name && e.name !== "word") return;
+      var k = 0;
+      while (k + 1 < offs.length && offs[k + 1] <= e.charIndex) k++;
+      if (words[k]) showWord(words[k]);
+    };
+  }
+
   var voices = [];
   /* relaxed, clear male voices first, by platform: Edge natural voices, Apple enhanced voices, Google, Windows */
   var MALE = [/Andrew.*Natural/i, /Brian.*Natural/i, /Christopher.*Natural/i, /Guy.*Natural/i, /Eric.*Natural/i, /Davis.*Natural/i, /Roger.*Natural/i, /Steffan.*Natural/i, /Ryan.*Natural/i, /Thomas.*Natural/i,
@@ -168,38 +273,42 @@
     run++; speakingNow = false;
     if (supported) synth.cancel();
     if (player) { player.onended = player.onerror = null; player.pause(); }
+    stopWords();
   }
-  function speakList(list, myRun, done) {
-    var k = 0;
+  function speakList(list, myRun, done, el) {
+    var k = 0, align = el && !window.__voCapture ? aligner(el) : null;
     if (window.__voCapture) list.forEach(function (t) { window.__voCapture.add(t); });
     function next() {
       if (myRun !== run) return;
       if (k >= list.length) { speakingNow = false; if (done) done(); return; }
-      var text = list[k++], clip = clipFor(text);
+      var text = list[k++], clip = clipFor(text), words = align ? align(text) : null;
       speakingNow = true;
+      stopWords();
       if (clip && player) {
         if (!clip.p.buf) setLabel("Loading the narrator’s voice…");
         loadPack(clip.p).then(function () {
           if (myRun !== run) return;
-          player.onended = function () { if (myRun === run) next(); };
-          player.onerror = function () { if (myRun === run) device(text); };
+          player.onended = function () { if (myRun === run) { stopWords(); next(); } };
+          player.onerror = function () { if (myRun === run) device(text, words); };
           player.src = clipSrc(clip);
           player.playbackRate = pref.rate;
           var pr = player.play();
-          if (pr && pr.catch) pr.catch(function () { if (myRun === run) device(text); });
+          followClip(words, clip.at[2], text);
+          if (pr && pr.catch) pr.catch(function () { if (myRun === run) device(text, words); });
           if (labelEl && /^Loading/.test(labelEl.textContent)) setLabel(sectionName(lit) );
-        }, function () { if (myRun === run) device(text); });
+        }, function () { if (myRun === run) device(text, words); });
         return;
       }
-      device(text);
+      device(text, words);
     }
-    function device(text) {
+    function device(text, words) {
       if (!supported) { next(); return; }
       var u = new SpeechSynthesisUtterance(text);
       var v = currentVoice();
       if (v) { u.voice = v; u.lang = v.lang; } else u.lang = "en-US";
       u.rate = pref.rate;
-      u.onend = next;
+      followBoundary(u, words, text);
+      u.onend = function () { stopWords(); next(); };
       u.onerror = function (e) { if (e.error === "interrupted" || e.error === "canceled") return; next(); };
       synth.speak(u);
     }
@@ -259,7 +368,7 @@
     setLabel(sectionName(el) + " · " + (i + 1) + " of " + blocks.length);
     var parts = sentences(extract(el));
     if (!parts.length) { readBlock(i + 1, myRun); return; }
-    speakList(parts, myRun, function () { readBlock(i + 1, myRun); });
+    speakList(parts, myRun, function () { readBlock(i + 1, myRun); }, el);
   }
   function pause() { hush(); playing = false; paintDock(); setLabel("Paused · " + sectionName(view.blocks[idx])); }
 
@@ -273,7 +382,7 @@
     if (playing) { playing = false; paintDock(); }
     if (el) highlight(el);
     var myRun = run;
-    speakList(sentences(text), myRun, function () { if (myRun === run && lit === el && el) highlight(null); });
+    speakList(sentences(text), myRun, function () { if (myRun === run && lit === el && el) highlight(null); }, el);
   }
 
   /* ---------- dock & toggles ---------- */
