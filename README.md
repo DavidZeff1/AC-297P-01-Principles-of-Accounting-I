@@ -71,6 +71,19 @@ A lesson definition can provide:
 
 ## Status
 
-| Chapter | Built |
-| --- | --- |
-| 1. Welcome to the World of Accounting | 1.1 |
+| Chapter | Lessons | Narration |
+| --- | --- | --- |
+| 1. Welcome to the World of Accounting | 1.1–1.5 | yes |
+| 2. Information Processing | 2.1–2.6 | yes |
+| 3. Income Measurement | 3.1–3.6 | yes |
+| 4. The Reporting Cycle | 4.1–4.5 | yes |
+| 5. Special Issues for Merchants | 5.1–5.5 | yes |
+| 6. Cash and Highly Liquid Investments | 6.1–6.5 | pending |
+| 7. Accounts Receivable | 7.1–7.4 | pending |
+| 8. Inventory | 8.1–8.6 | pending |
+| 9. Long-term Investments | 9.1–9.5 | pending |
+| 10. Property, Plant, and Equipment | 10.1–10.6 | pending |
+| 11. Advanced PP&E Issues, Natural Resources, and Intangibles | 11.1–11.6 | pending |
+| 12. Current Liabilities and Employer Obligations | 12.1–12.5 | pending |
+| 13. Long-Term Obligations | 13.1–13.6 | pending |
+| 14. Corporate Equity Accounting | 14.1–14.5 | pending |

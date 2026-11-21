@@ -686,3 +686,54 @@ table.plain thead th.num { font-family: var(--f-display); }
 .dc-key { display: flex; gap: 16px; font-size: 13px; color: var(--ink-2); }
 .dc-key span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
 .dc-key .dep::before { background: var(--ledger); } .dc-key .mnt::before { background: var(--mgr); }
+/* promissory note mock (lesson 12.2) */
+.note-doc { border: 1px solid var(--rule); border-radius: 8px; background: var(--card); padding: 16px 18px; display: grid; gap: 8px; max-width: 640px; font-family: var(--f-body); }
+.nd-top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
+.nd-top b { font-family: var(--f-display); font-size: 17px; }
+/* contingency decision (lesson 12.3) */
+.cont-out { margin-top: 14px; }
+.cont-res { border-radius: var(--r); padding: 14px 16px; display: grid; gap: 4px; }
+.cont-res b { font: 800 22px/1.1 var(--f-display); font-stretch: 85%; }
+.cont-res.rec { background: var(--bad-soft); } .cont-res.rec b { color: var(--bad); }
+.cont-res.note { background: var(--mgr-soft); } .cont-res.note b { color: var(--mgr); }
+.cont-res.none { background: var(--rule-2); }
+
+/* bond carrying-value chart (13.3) */
+.bc-line { fill: none; stroke-width: 3; stroke-linecap: round; }
+.bc-dot { stroke: none; }
+.bc-line.bc-premium { stroke: var(--mgr); } .bc-dot.bc-premium { fill: var(--mgr); }
+.bc-line.bc-par { stroke: var(--ink-3); } .bc-dot.bc-par { fill: var(--ink-3); }
+.bc-line.bc-discount { stroke: var(--ledger); } .bc-dot.bc-discount { fill: var(--ledger); }
+.bc-dim { opacity: .22; }
+.dc-key .bk-premium::before { background: var(--mgr); } .dc-key .bk-par::before { background: var(--ink-3); } .dc-key .bk-discount::before { background: var(--ledger); }
+.dc-key { flex-wrap: wrap; }
+table.plain tr.tot td { border-top: 2px solid var(--ink); }
+table.plain tr.hl td { background: var(--marker); color: var(--marker-ink); }
+.ei-bar { fill: var(--ledger); } .ei-bar.prem { fill: var(--mgr); }
+.ei-sl { stroke: var(--ink); stroke-width: 2; stroke-dasharray: 6 5; fill: none; }
+.dc-key .bk-sl::before { background: none; border-top: 2px dashed var(--ink); height: 0; vertical-align: 3px; border-radius: 0; }
+.cal-key .k-acc::before { background: var(--mgr-soft); outline: 1px solid var(--mgr); } .cal-key .k-use::before { background: var(--ledger-soft); outline: 1px solid var(--ledger); }
+.st-row.mark .st-l { background: linear-gradient(transparent 55%, var(--marker) 55%); background-clip: content-box; }
+
+/* dividend dates timeline (14.2) */
+.xd { padding: 34px 6px 8px; }
+.xd-line { position: relative; height: 10px; border-radius: 6px; background: var(--rule-2); margin: 0 4px 92px; }
+.xd-zone { position: absolute; top: 0; bottom: 0; background: var(--mgr-soft); border-radius: 6px 0 0 6px; }
+.xd-zone.ok { background: var(--ledger-soft); border-radius: 0 6px 6px 0; }
+.xd-pt { position: absolute; top: -4px; width: 0; }
+.xd-pt::before { content: ""; position: absolute; left: -9px; top: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--ink); border: 3px solid var(--card); box-sizing: border-box; }
+.xd-pt b, .xd-pt span { position: absolute; left: 0; transform: translateX(-50%); white-space: nowrap; font-size: 13px; }
+.xd-pt b { top: 26px; } .xd-pt span { top: 44px; color: var(--ink-3); font-family: var(--f-mono); font-size: 12px; }
+.xd-pt.r2 b { top: 64px; } .xd-pt.r2 span { top: 82px; }
+.xd-pt.start b, .xd-pt.start span { transform: none; left: -6px; }
+.xd-pt.end b, .xd-pt.end span { transform: translateX(-100%); left: 6px; }
+.xd-sell { position: absolute; bottom: 18px; transform: translateX(-50%); background: var(--marker); color: var(--marker-ink); font: 700 12px/1 var(--f-body); padding: 6px 8px; border-radius: 6px; white-space: nowrap; transition: left .3s; }
+.xd-sell::after { content: ""; position: absolute; left: 50%; bottom: -6px; margin-left: -6px; border: 6px solid transparent; border-bottom: 0; border-top-color: var(--marker); }
+
+/* split pie (14.4) */
+.pie-row { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.pie-svg { width: 160px; height: 160px; flex: none; }
+.pie-sl { fill: var(--ledger-soft); stroke: var(--card); stroke-width: 2; }
+.pie-sl.b { fill: var(--mgr-soft); }
+.pie-n { font: 700 11px var(--f-mono); fill: var(--ink); paint-order: stroke; stroke: var(--card); stroke-width: 3px; }
+.pie-row > .grid2 { flex: 1 1 300px; }

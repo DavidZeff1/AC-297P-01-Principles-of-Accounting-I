@@ -238,6 +238,7 @@
 
   /* ---------- widgets ---------- */
   function mountWidgets(body, def, id) {
+    HUB.mountIn = function (el) { mountWidgets(el, def, id); };
     /* repeat so a widget whose output contains another widget (e.g. a journal entry inside a worked solution) gets mounted too */
     for (var pass = 0; pass < 3; pass++) {
       var todo = body.querySelectorAll("[data-widget]:not([data-mounted])");

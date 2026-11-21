@@ -19,7 +19,7 @@
       ".flow-detail", ".user-card", ".lane-src", ".lane", ".setter", ".converge", ".goal",
       ".flip", ".era-body", ".sim-ctrl > label", ".sim-month", ".meter", ".stmt", ".verdict",
       "table.compare tr", ".sorter-item", ".quiz-q",
-      ".statement", ".jr-entry", ".ws-say", ".tacct", ".eq-now", ".st-body", ".wk-q", ".wk-step", ".wk-ans", ".calc-field", ".calc-res", "table.ledger tbody tr", ".rule", ".sec > .scroll-x > table tr", ".fig-cap", ".quiz-result", ".recap li"
+      ".statement", ".jr-entry", ".ws-say", ".cont-res", ".tacct", ".eq-now", ".st-body", ".wk-q", ".wk-step", ".wk-ans", ".calc-field", ".calc-res", "table.ledger tbody tr", ".rule", ".sec > .scroll-x > table tr", ".fig-cap", ".quiz-result", ".recap li"
     ].join(","),
     home: ".home-hero h1, .home-hero p, .ledger-card, .unit-head, .chapter, .exam-milestone",
     soon: ".soon-page h1, .soon-page p"
