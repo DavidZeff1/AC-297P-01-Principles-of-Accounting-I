@@ -1,0 +1,15 @@
+[warmly] Today's lesson is about a little bit of caution in accounting, called conservatism, and what it means for inventory.
+
+Accountants try to be unbiased. But when things are uncertain, they lean a little toward caution. Don't overstate assets or income. And when in doubt about a liability, lean toward the higher amount. It's not a hard rule; it's a general principle.
+
+Inventory is a great place to apply it, because inventory can face a rough future. Products go out of style or become obsolete. The market gets flooded. Items turn out defective. Prices drop. If inventory is sitting on the books at more than it could realistically bring in, it has to be written down.
+
+Written down to what? To its net realizable value, or N R V. That's the estimated selling price in the normal course of business, minus any reasonably predictable costs to complete, sell, and ship the goods. [pause] For example, say some phones cost a company two hundred dollars each. A newer model came out, and now they'll only sell for one hundred eighty, and it costs ten dollars to ship each one. So N R V is one hundred seventy. Since that's below the two-hundred-dollar cost, the company writes each phone down by thirty dollars. The entry debits a Loss for Decline in Net Realizable Value, and credits Inventory. That loss reduces income.
+
+These estimates take judgment, of course. Nobody knows future selling prices for sure.
+
+The comparison can be done item by item, or for the inventory as a whole. Item by item, every item that's below cost gets written down. But in the aggregate, gains on some items can offset declines on others, so you only write down if the total N R V is below the total cost.
+
+One last rule. Once inventory is written down, that lower amount becomes its new cost basis. Under U S GAAP, you can't write it back up later, even if prices recover. International standards, though, do allow reversing the write-down.
+
+[warmly] So, the takeaways. Conservatism means don't overstate assets or income. Net realizable value is selling price minus the costs to complete, sell, and ship. If cost is higher, write inventory down and record a loss. You can compare item by item or in aggregate. And under U S GAAP, write-downs aren't reversed. See you next lesson.

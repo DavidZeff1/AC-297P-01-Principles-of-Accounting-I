@@ -1,0 +1,13 @@
+[warmly] Let's finish chapter eight with two practical topics: managing how much inventory to hold, and what happens when you count it wrong.
+
+First, how much inventory? It's a balancing act. Inventory is expensive to hold. It ties up cash, takes up space, and can be lost, stolen, or spoiled. But running out is costly too, because customers go elsewhere. So well-run companies hold enough to serve customers, and no more.
+
+To keep an eye on this, companies use inventory turnover: cost of goods sold divided by average inventory. It tells you how many times a year the inventory sells and gets replaced. Is eight times a year good? [pause] It depends completely on the business. For a bakery, eight times a year would be terrible; the bread would be stale. For a lumber yard, it could be just fine. So compare a company with similar businesses, and with its own past. A falling turnover might mean poor management, slow-moving products, or a weakening economy.
+
+Now, counting errors. They're easy to make. Goods get overlooked, counted twice, or added up wrong. And an inventory error ripples through two years.
+
+Say ending inventory in year one is overstated. More inventory means less cost of goods sold, so year one's income is too high. But here's the twist. Year one's ending inventory becomes year two's beginning inventory. In year two, that overstated beginning inventory makes cost of goods sold too high, so year two's income is too low, by the same amount.
+
+Let's put numbers on it. Suppose the correct ending inventory is four thousand dollars, and both years should show thirteen thousand of income. If ending inventory is overstated by a thousand, year one shows fourteen thousand, and year two shows twelve thousand. Add them up, and the two-year total is still twenty-six thousand, exactly right. That's why we say inventory errors counterbalance. But each individual year is wrong, and anyone judging the trend would be misled.
+
+[warmly] So, the takeaways. Hold enough inventory to serve customers, but not more than you need. Inventory turnover is cost of goods sold divided by average inventory, and it only means something compared with peers and the past. And an overstated ending inventory overstates this year's income and understates next year's. That wraps up chapter eight. Nice job.
