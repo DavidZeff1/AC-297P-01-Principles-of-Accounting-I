@@ -1,0 +1,19 @@
+[warmly] Last time we saw why the allowance method beats direct write-off. Today, let's actually do it.
+
+Start with the goal. The balance sheet should show what the company expects to collect. Ito Company has four hundred twenty-five thousand dollars of accounts receivable at year end, but expects that twenty-five thousand five hundred of it will never be collected. So the balance sheet shows the full receivables, minus an Allowance for Uncollectible Accounts. That allowance is a contra-asset. Receivables minus the allowance is called net realizable value, the amount you really expect to collect.
+
+Now, how do you estimate the allowance? You can't name the specific customers who won't pay. If you could, you wouldn't have sold to them! So you estimate for the whole balance, based on experience. A popular tool is an aging of accounts receivable. You sort receivables by how long they've been outstanding, and apply a historical bad debt percentage to each group. The older the account, the more likely it goes bad.
+
+For Ito: current accounts, two hundred fifty thousand, at two percent, is five thousand. Thirty-one to sixty days, one hundred thousand, at five percent, is five thousand. Sixty-one to ninety days, fifty thousand, at fifteen percent, is seven thousand five hundred. And over ninety days, twenty-five thousand, at thirty-two percent, is eight thousand. Total: twenty-five thousand five hundred. That's the target balance for the allowance.
+
+[pause] Here's the part people miss. The adjusting entry isn't the full twenty-five thousand five hundred. It's whatever it takes to get the allowance to that target. Ito's allowance already has a ten-thousand-dollar credit balance. So the entry is fifteen thousand five hundred: debit Uncollectible Accounts Expense, credit the Allowance.
+
+Later, when a specific customer's five-thousand-dollar account is finally deemed uncollectible, we write it off. Debit the Allowance, credit Accounts Receivable. No expense! The expense was already estimated. Both receivables and the allowance drop by five thousand, so net realizable value stays exactly the same: three hundred ninety-nine thousand five hundred, before and after.
+
+And what if that customer surprises everyone and pays after all? Two steps. Reverse the write-off, putting the receivable and allowance back. Then record the cash collection as usual.
+
+Of course, the best approach is to avoid bad debts in the first place. Check credit histories, get references and credit reports, and when needed, ask for payment up front or a guarantee, like a bank letter of credit.
+
+Finally, keep an eye on how fast you collect. Receivables turnover is net credit sales divided by average net receivables. And days outstanding is three hundred sixty-five divided by turnover. If collections start slowing, that's often one of the first warning signs of trouble.
+
+[warmly] So, the takeaways. Receivables minus the allowance equals net realizable value. Use an aging to set the target allowance, and adjust to it. Write-offs hit the allowance, not income. And track turnover and days outstanding. Great work today.

@@ -1,0 +1,13 @@
+[warmly] Here's an uncomfortable truth about selling on credit: some customers never pay. They go broke, they get unhappy and refuse, or they just don't keep their end of the deal. And taking them to court often doesn't work. So accounting needs a way to handle these uncollectible accounts, usually called bad debts.
+
+The simplest approach is the direct write-off method. You wait until you're sure a specific customer won't pay, and then you remove that receivable. Debit Uncollectible Accounts Expense, credit Accounts Receivable. Easy.
+
+But there's a catch. The direct write-off method is only acceptable when bad debts are immaterial. So what does material mean? [pause] An amount is material if it's big enough to affect the judgment of an informed person reading the financial statements. When something is immaterial, accountants can use a simpler method, even if it's technically not perfect. Deciding what's material always takes judgment.
+
+So what's wrong with direct write-off, when bad debts ARE material? It breaks the matching principle. Remember, matching says the costs of earning revenue belong in the same period as that revenue. Think about it. You make a sale in December of this year. The customer drags it out, and you finally give up and write it off next August. So the revenue landed in this year, but the bad debt expense landed next year. This year's income looks too good, and next year's looks too bad.
+
+There's a second problem. Until you write off those bad accounts, the balance sheet shows accounts receivable at their full amount, even though you know some of it will never be collected. That overstates the asset.
+
+The fix is the allowance method. Instead of waiting, you estimate bad debt expense in the same period as the related sales. And you report receivables at the amount you actually expect to collect. Then, later, when a specific account goes bad, writing it off generally doesn't touch income at all, because the expense was already recorded. Next lesson walks through exactly how that works.
+
+[warmly] So, the recap. The direct write-off method records bad debt expense only when a specific account is deemed uncollectible. It's simple, but only acceptable when bad debts are immaterial, because it breaks the matching principle. Allowance methods estimate bad debts in the period of the sale and give a fairer picture of receivables. See you next time.
