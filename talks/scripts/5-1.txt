@@ -1,0 +1,17 @@
+[warmly] Welcome to chapter five. So far, our examples have mostly been service businesses, like law firms and consultants. Now we turn to merchants: businesses that buy inventory and resell it for more, in stores or online.
+
+A merchant's income statement adds an important middle step called gross profit. Gross profit equals sales, minus the cost of the goods that were sold. Why does it matter? Because it tells you whether the company sells its products for comfortably more than they cost. If the gross profit margin is thin, the business can struggle to make money even as sales grow. But if it's strong, every extra sale can really boost net income, especially when operating expenses stay about the same.
+
+Let's look at how sales get recorded. When a merchant sells goods, it credits Sales, a revenue account, and debits either Cash or Accounts Receivable, depending on whether the customer paid now or later.
+
+Now, what if a customer returns something? Say a customer returns a thousand dollars of goods they bought on account. You might expect us to just reverse the sale. But we don't. Instead, we debit a special account called Sales Returns and Allowances, and credit Accounts Receivable. That account is a contra-revenue account, meaning it's subtracted from sales. [pause] Why the extra account? Because managers want to keep an eye on returns. A rising level of returns can signal unhappy customers. Sales, minus returns and allowances, gives us net sales.
+
+An allowance is a little different from a return. If an item is slightly damaged, the customer might keep it in exchange for a price reduction. That reduction is an allowance, and it uses the same accounts.
+
+Next, trade discounts. Catalogs often show a list price, but customers actually pay a lower invoice price after a trade discount. Accountants simply record the sale at the invoice price, the actual exchange price. The trade discount itself is never recorded.
+
+Credit cards. Store-issued cards encourage spending and can earn interest, but they come with costs: bad debts, a credit department, billing. Bank cards like Visa and Mastercard are simpler. The merchant gets paid almost right away, minus a fee of roughly one to three percent. Most merchants record the full sale as revenue and the card fee as an expense. So a thousand-dollar sale with a two percent fee is a thousand of revenue and twenty dollars of expense.
+
+Finally, cash discounts, which reward fast payment. You'll see terms like two ten, net thirty. That means a two percent discount if paid within ten days, otherwise the full amount is due within thirty. Say Barber Shop Supply sells a thousand dollars of goods on those terms. If the customer pays within ten days, it sends nine hundred eighty. Barber Shop debits Cash nine eighty, debits Sales Discounts twenty, and credits Accounts Receivable the full thousand, because the whole debt is settled. Sales Discounts is another contra-revenue account.
+
+[warmly] So, the recap. Gross profit is sales minus cost of goods sold. Returns, allowances, and discounts go to contra-revenue accounts that reduce net sales. Trade discounts aren't recorded. Card fees are an expense. And two ten, net thirty means two percent off within ten days. See you next lesson.

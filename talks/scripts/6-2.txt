@@ -1,0 +1,19 @@
+[warmly] Today is about managing cash. And it really comes down to three jobs: have enough of it, don't let extra cash sit idle, and protect it.
+
+Having enough cash is the treasurer's job. The treasurer studies the company's cash flows to spot upcoming periods of surplus or shortage. The main tool is a cash budget, a plan of the cash coming in and going out over a period. And here's something that surprises people: a cash shortage isn't always a sign of weakness. Fast-growing, successful companies often run short of cash, because growth eats it up: new locations, more inventory, bigger receivables. Growth has to be planned for.
+
+So how can a company improve its cash flow? There are outside sources and inside ones.
+
+From the outside, it can issue stock. That brings in cash with no obligation to pay it back. The catch? Existing owners get diluted. In effect, they're selling off a piece of the business. Or it can borrow. No dilution, but the money has to be repaid with interest, which adds cost and risk. Many companies pay a fee to keep a line of credit ready, just in case.
+
+From the inside, the company can collect faster, with electronic payments, credit cards, and discounts for paying early. And it can pay later, waiting as long as its terms allow. [pause] One clear line, though: writing a check when there isn't enough money in the bank to cover it is illegal.
+
+Now, protecting cash. The same control ideas from chapter five apply. Limit access to a few authorized people. Separate incompatible duties. And build in accountability, like prenumbered checks.
+
+For cash sales, control starts at the register. Use point-of-sale terminals, compare the actual cash in the drawer at the end of each day with the register's report, and deposit the cash every day.
+
+For checks that arrive in the mail, separation of duties is built right into the process. One person opens the mail and makes a list of every check. A cashier deposits the checks. And the accounting department records the receipts, then compares that list against the bank deposit slip. Nobody controls the whole chain, so nobody can quietly pocket a check.
+
+For paying money out, disbursements should be authorized, made by check or electronic transfer rather than cash, supported by documents like an approved invoice, and later reconciled to the bank statement.
+
+[warmly] So, the recap. Plan for surpluses and shortages with a cash budget. Raise cash by issuing stock or borrowing, or improve it by collecting faster and paying later, legally. And protect cash with limited access, separated duties, daily deposits, and documented payments. Nice work today.

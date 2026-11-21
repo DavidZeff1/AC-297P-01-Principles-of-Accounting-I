@@ -1,0 +1,21 @@
+[warmly] Let's finish chapter six with a question: what happens when a company invests its extra cash in the stock market, planning to sell soon?
+
+First, a distinction. Some investments are made for the long haul, or to gain control of another company. Those are long-term, and we'll cover them in chapter nine. But investments bought simply to resell in the near future, for a quick profit, are short-term. They're current assets, listed right after cash.
+
+The accounting has two steps. At purchase, the investment is recorded at cost, including any brokerage fees. Then, at every reporting date, it's adjusted to its fair value, and the change goes right into income. This is called mark-to-market accounting. Fair value is basically the price you'd get if you sold it in a normal transaction today.
+
+Let's follow Webster Company. Webster has extra cash that's earning almost nothing. It thinks business is about to pick up for a competitor, Merriam Corporation, whose stock trades at ten dollars a share. So on March third, Webster buys five thousand shares for fifty thousand dollars, hoping for a quick profit.
+
+By March thirty-first, the stock has dropped to nine dollars. The shares are now worth forty-five thousand. So Webster writes the investment down by five thousand and records a five-thousand-dollar loss in March's income.
+
+By April thirtieth, the stock jumps to twelve dollars. The shares are worth sixty thousand. So Webster writes the investment up by fifteen thousand and records a fifteen-thousand-dollar gain in April.
+
+[pause] Add it up: a five-thousand loss and a fifteen-thousand gain, for a total gain of ten thousand. And that exactly matches the stock's total rise, from fifty thousand to sixty thousand. These gains and losses are called unrealized, because they're recorded before the shares are actually sold.
+
+So why use fair value here, instead of historical cost? Two reasons. Market prices for these stocks are easy to find and reliable. And since the company plans to sell soon, those price changes will very likely turn into real cash gains or losses. So the rules recognize them as they happen.
+
+A couple of extras. Some companies keep the investment at its original cost and track the changes in a separate valuation adjustment account. The results are identical, and it keeps the original cost visible, which helps with taxes, since tax rules use original cost. Dividends and interest received are simply recorded as income.
+
+And finally, derivatives. Things like commodity futures, interest rate swaps, and options are called derivatives, because their value derives from something else. A cotton futures contract gets its value from the price of cotton. They follow the same approach: fair value, with changes recorded in income.
+
+[warmly] So, the takeaways. Short-term investments are current assets. Record them at cost, then mark them to fair value at each reporting date, with unrealized gains and losses in income. That wraps up chapter six. Nice job.

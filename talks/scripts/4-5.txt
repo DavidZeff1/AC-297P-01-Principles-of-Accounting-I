@@ -1,0 +1,19 @@
+[warmly] Let's finish chapter four with a practical question every lender and investor asks: can this company pay its bills as they come due? That ability is called liquidity.
+
+Liquidity really matters. A company can have great long-term prospects and tons of valuable assets, and still go under if it can't pay this month's bills.
+
+The simplest measure is working capital: current assets minus current liabilities. Take Classy Company, from last lesson. It has four hundred fifty thousand dollars of current assets and one hundred fifty thousand of current liabilities. So working capital is three hundred thousand. You'd hope to see a positive number. A negative one can be a sign of financial stress.
+
+But be careful, because negative working capital isn't always bad. A company might have a standby line of credit at the bank. Or think about a fast-food burger chain. Customers pay in cash, so there are almost no receivables. Bread and milk don't keep, so there's very little inventory. But there are sizable bills owed to suppliers. On paper, working capital might be negative. Yet the business thrives, because cash flows through it so fast, at good margins, that it easily pays its bills and even funds new restaurants.
+
+Here's another problem with working capital. Is one million dollars a lot? For a giant corporation, it's a drop in the bucket. For a family business, it could be plenty. So we use ratios, which put the pieces in proportion.
+
+The current ratio is current assets divided by current liabilities. For Classy, four hundred fifty thousand divided by one hundred fifty thousand. That's three to one.
+
+The quick ratio is tougher. It only counts the most liquid assets: cash, short-term investments, and receivables. It leaves out inventory and prepaid expenses. For Classy, that's one hundred thousand of cash, fifty thousand of investments, and seventy-five thousand of receivables, which is two hundred twenty-five thousand, divided by one hundred fifty thousand. That's one and a half to one.
+
+[pause] Why bother with the quick ratio? Because a company could be sitting on a mountain of inventory that just won't sell. Its current ratio looks great, but it can't actually pay its bills. The quick ratio catches that.
+
+One more warning. Ratios can be manipulated. Here's a classic trick. Use cash to pay off some bills right before year end. Both current assets and current liabilities drop by the same amount, and the current ratio actually goes up. Nothing about the business got better, but the ratio looks better. So never draw a blanket conclusion from any single number.
+
+[warmly] So, the takeaways. Liquidity is the ability to pay near-term bills. Working capital is current assets minus current liabilities. The current ratio divides the two. The quick ratio is a stricter test, leaving out inventory and prepaids. And always look behind the ratios. That wraps up chapter four. Nice job.
