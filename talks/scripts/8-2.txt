@@ -1,0 +1,23 @@
+[warmly] Today might be the most important inventory lesson, because it shows how the way you count inventory directly changes profit.
+
+Here's the key idea. The goods available for sale during a year get split two ways: what's left in ending inventory, and what went to cost of goods sold. So every dollar less you put in ending inventory is a dollar more in cost of goods sold, and a dollar less of gross profit.
+
+First, what goes into inventory cost? Everything ordinary and necessary to get the goods in place and ready for sale. The purchase price, freight-in, and so on. Costs of storing or selling them are expensed instead.
+
+Now the big question. Picture Mueller Hardware's nail barrel. They filled it three times during the year: a hundred pounds at a dollar and one cent, eighty pounds at a dollar ten, and ninety pounds at a dollar thirty. Customers scooped from all over the barrel, so nobody knows which nails are left. At year end, one hundred twenty pounds remain. What did they cost?
+
+You need a cost flow assumption, and it doesn't have to match how the nails physically moved.
+
+FIFO, first-in, first-out, assumes the oldest costs were sold first, so the newest costs stay in inventory. For Mueller, that's ninety pounds at a dollar thirty plus thirty pounds at a dollar ten, or one hundred fifty dollars.
+
+LIFO, last-in, first-out, assumes the newest costs were sold first, so the oldest stay in inventory. That's a hundred pounds at a dollar and one cent plus twenty at a dollar ten, or one hundred twenty-three dollars.
+
+Weighted average divides total cost by total pounds: three hundred six dollars over two hundred seventy pounds, about a dollar thirteen a pound. So ending inventory is about one hundred thirty-six dollars.
+
+[pause] Notice the pattern. When prices are rising, FIFO gives the highest profit, LIFO the lowest, and average falls in between. Why would anyone choose LIFO, then? Lower profit means lower taxes. And in the U S, if you use LIFO for taxes, you generally have to use it in your financial statements too. Many other countries don't allow LIFO at all.
+
+There's a fourth method, specific identification, where you track the actual cost of each unit. It's used for unique, expensive items like cars or fine jewelry, where every unit has a serial number.
+
+Whatever method a company picks, it has to disclose it and use it consistently.
+
+[warmly] So, the takeaways. Inventory cost includes what it takes to get goods ready for sale. FIFO keeps the newest costs in inventory, LIFO the oldest, and average blends them. With rising prices, FIFO means the highest income and LIFO the lowest. Great work today.

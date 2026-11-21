@@ -1,0 +1,13 @@
+[warmly] Welcome to chapter eight, all about inventory. And the first question is surprisingly tricky: which goods actually belong in a company's inventory?
+
+For a merchant, it's simple. Inventory is the goods available for resale. Manufacturers have three kinds. Raw materials, the stuff they'll use to make products. Work in process, products that are partly built. And finished goods, completed products waiting to be sold. All three are usually current assets.
+
+Now, the tricky part: goods in transit. At year end, there might be a truckload of goods somewhere on the highway. Whose inventory are they? [pause] The answer is: whoever owns them. And remember F O B terms from chapter five? They don't just decide who pays the freight. They decide who owns the goods on the way.
+
+With F O B shipping point, the buyer owns the goods the moment they leave the seller's dock. So goods still in transit at year end belong in the buyer's inventory, even though the buyer hasn't seen them yet. With F O B destination, the seller keeps ownership until the goods arrive. So goods in transit belong in the seller's inventory.
+
+Next, consigned goods. This is when one company holds goods that are actually owned by another. The owner is called the consignor. The one holding the goods is the consignee. The consignee takes care of the goods and tries to sell them. When it makes a sale, it keeps a cut and sends the rest to the consignor. But here's the rule: consigned goods belong in the consignor's inventory, because the consignor still owns them. The consignee does NOT count them, even though they're sitting on its shelves.
+
+Why would anyone do this? Picture an auto parts maker. It wants its specialized, expensive parts on store shelves everywhere. But a store can't afford to stock every variety, and it's afraid of getting stuck with parts that become obsolete. Consignment solves both problems. The catch is record keeping. When counting inventory, you have to separate goods you've consigned out, which you include, from goods consigned to you, which you leave out.
+
+[warmly] So, the takeaways. Manufacturers hold raw materials, work in process, and finished goods. Goods in transit belong to whoever owns them: the buyer under F O B shipping point, the seller under F O B destination. And consigned goods stay in the consignor's inventory. See you next lesson.

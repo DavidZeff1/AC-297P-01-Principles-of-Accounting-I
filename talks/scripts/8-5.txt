@@ -1,0 +1,19 @@
+[warmly] Normally, a company counts its inventory, and that count is treated as correct. But sometimes counting just isn't possible, or isn't worth the effort. Think monthly or quarterly reports, where a full count would be too expensive. Or worse, a fire that destroyed everything. In those cases, accountants estimate inventory. There are two main methods.
+
+The first is the gross profit method. You use the company's normal gross profit rate to estimate cost of goods sold, and then back into ending inventory.
+
+Let's try it with Tiki, whose inventory was destroyed by fire. Before the fire, Tiki had sales of one million dollars, beginning inventory of five hundred thousand, and purchases of eight hundred thousand. And Tiki normally earns a forty percent gross profit.
+
+Step one: goods available for sale. Beginning inventory plus purchases, five hundred thousand plus eight hundred thousand, is one million three hundred thousand.
+
+Step two: estimate cost of goods sold. If gross profit is forty percent of sales, then cost of goods sold is the other sixty percent. Sixty percent of one million is six hundred thousand.
+
+Step three: back into ending inventory. One million three hundred thousand available, minus six hundred thousand sold, leaves about seven hundred thousand dollars of inventory that was destroyed. [pause] That's the estimate Tiki would take to its insurance company.
+
+The second is the retail method, which is popular with stores. It only works for categories of goods with a consistent markup. The idea is to track goods at both cost and retail prices, and figure out the cost-to-retail percentage. Say goods that cost sixty dollars sell for a hundred. The cost-to-retail percentage is sixty percent.
+
+Then, to find ending inventory at cost, you take ending inventory at retail prices and multiply by that percentage. If the store has ten thousand dollars of pots on the shelves at retail prices, at sixty percent that's six thousand dollars at cost. And ending inventory at retail can come from a quick count of price tags, or from goods available at retail minus the sales.
+
+A handy reminder: to go from retail to cost, multiply by the percentage. To go from cost to retail, divide by it.
+
+[warmly] So, the takeaways. Physical counts are presumed correct, and estimates are used when counting isn't possible or practical. The gross profit method estimates cost of goods sold from the normal margin and backs into inventory. And the retail method multiplies inventory at retail by the cost-to-retail percentage. See you next lesson.

@@ -1,0 +1,19 @@
+[warmly] Last lesson, we assigned inventory costs at the end of the year, under the periodic system. Today, we do it as we go, with a perpetual system.
+
+A perpetual system keeps a running record of units and costs after every purchase and every sale. Modern software makes this easy. Think of inventory as stacked layers, one layer for each purchase at its own price. Every sale peels off some layers.
+
+Let's use Gonzales Chemical. It starts the year with four thousand units at twelve dollars. Then it buys more in March and September, and makes two big sales.
+
+Under FIFO, the April sale of seven thousand units peels off the oldest layers first: all four thousand beginning units, plus three thousand from the March purchase. That leaves three thousand units from March still on hand.
+
+Here's a neat fact. Perpetual FIFO always gives the same answer as periodic FIFO. For Gonzales, cost of goods sold is one hundred eighty thousand dollars either way. Why? Because you're always peeling off the oldest layers in the same order, whether you do it during the year or all at once at the end.
+
+[pause] LIFO is different. Under perpetual LIFO, each sale takes the newest layer available at the moment of the sale. So the April sale can't use September's purchase, because September hasn't happened yet. But periodic LIFO, figured at year end, can use September's costs. That's why perpetual and periodic LIFO usually give different answers.
+
+The entries are the same as you saw in chapter five. Purchases are debited to Inventory. And each sale gets two entries: one recording the sale at selling price, and one moving the cost from Inventory to Cost of Goods Sold. The only thing that changes between FIFO and LIFO is the cost amount.
+
+And the average method, done perpetually, becomes a moving average. You recalculate the average cost after every purchase. After March, Gonzales has ten thousand units costing one hundred thirty-two thousand dollars, so thirteen dollars and twenty cents each. Each sale uses whatever the average is at that moment.
+
+Just like before, with rising prices, LIFO produces the lowest gross profit, FIFO the highest, and moving average lands in between.
+
+[warmly] So, the recap. A perpetual system tracks units and cost layers after every transaction. Perpetual FIFO matches periodic FIFO, but perpetual LIFO usually doesn't match periodic LIFO. And moving average recomputes the average after each purchase. See you next lesson.
