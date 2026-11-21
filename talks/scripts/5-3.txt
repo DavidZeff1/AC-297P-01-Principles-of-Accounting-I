@@ -1,0 +1,15 @@
+[warmly] Last lesson used the periodic inventory system, where you only find out what's in inventory when you count it at the end of the period. Today, its high-tech cousin: the perpetual inventory system.
+
+Here's the problem with periodic. Between counts, you have no real-time information. You don't know how much inventory you have, or what your gross profit is, until you close the books. For a business with lots of inventory, that can get very expensive. Managers need to know what's selling and what isn't, right now.
+
+That's where perpetual comes in. Think about the checkout at a big store. The cashier scans a bar code, and that scan doesn't just speed up the line. It feeds the accounting system. Every purchase and every sale updates inventory and cost of goods sold immediately.
+
+So how do the entries change? First, there's no Purchases account. When the store buys merchandise, it debits Inventory directly. Freight-in gets added straight to Inventory too. And discounts and returns reduce Inventory.
+
+Then every sale takes two entries. [pause] Entry one records the revenue, at selling price: debit Cash or Accounts Receivable, credit Sales. Entry two moves the goods off the books, at cost: debit Cost of Goods Sold, credit Inventory. Picture a shop starting with three thousand dollars of inventory. Scan a sweater that sells for sixty dollars and cost the shop twenty-five. Sales goes up sixty. Cost of goods sold goes up twenty-five. And inventory drops to two thousand nine hundred seventy-five, instantly.
+
+Now, the entries look simpler, but the system is harder. Why? Because you need to know the cost of every single item at the moment it's sold. In a big store with thousands of products, that's nearly impossible by hand. It only became practical as computers and software got cheap enough to do it automatically. Today, it's everywhere.
+
+And here's an important point: even with perpetual, you still count. Theft, spoilage, breakage, and simple errors make the records drift away from what's actually on the shelves. So merchants still take physical counts every so often, and adjust the Inventory account to match reality. The difference is often called shrinkage.
+
+[warmly] So, the recap. Periodic gives you no real-time inventory data. Perpetual updates inventory and cost of goods sold with every transaction. Purchases go straight to Inventory, and every sale needs two entries: one at selling price, one at cost. And you still need physical counts to catch theft and errors. See you next lesson.

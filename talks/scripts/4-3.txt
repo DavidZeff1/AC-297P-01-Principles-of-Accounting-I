@@ -1,0 +1,15 @@
+[warmly] Today's lesson is a short one, about a handy little shortcut called the reversing entry.
+
+A reversing entry is an optional journal entry, made on the very first day of a new period. And it's the exact opposite of an adjusting entry you made at the end of the last period. Why would you ever undo something you just did? Because it can make the next routine entry much simpler. Let's see how.
+
+Here's the setup. At the end of twenty X three, employees have earned two thousand dollars of salaries that haven't been paid yet. So the adjusting entry was: debit Salaries Expense two thousand, credit Salaries Payable two thousand. Then, on the next payday, January fifteenth, twenty X four, employees get paid five thousand dollars. Two thousand of that is for work at the end of last year, and three thousand is for work this January.
+
+Option one: no reversing entry. On January fifteenth, the bookkeeper has to remember that accrual from last year and split the payment. Debit Salaries Payable two thousand, debit Salaries Expense three thousand, and credit Cash five thousand. That works, but it means somebody has to remember. And in a busy office with lots of accruals, people forget.
+
+Option two: use a reversing entry. On January first, you flip last year's adjustment: debit Salaries Payable two thousand, and credit Salaries Expense two thousand. [pause] Then, on January fifteenth, payroll is completely normal. Debit Salaries Expense five thousand, credit Cash five thousand. No remembering, no splitting.
+
+Now, that January first credit to an expense account looks strange on its own. An expense with a credit balance? But it only makes sense paired with the January fifteenth debit. Five thousand debit, minus two thousand credit, leaves three thousand of salary expense for twenty X four, which is exactly right. And Salaries Payable ends at zero either way.
+
+So which adjustments are worth reversing? Ordinarily, the ones that record accrued revenues and accrued expenses, specifically when there's a future cash flow coming. Accrued salaries, accrued interest, revenue you'll collect later. Those are the ones where a routine cash entry is coming, and reversing lets you record it normally.
+
+[warmly] So, the takeaways. A reversing entry is the exact opposite of an adjusting entry, made on the first day of the new period. It's optional. It lets the next routine entry be recorded without special attention. And with or without it, the final balances come out exactly the same. See you next lesson.

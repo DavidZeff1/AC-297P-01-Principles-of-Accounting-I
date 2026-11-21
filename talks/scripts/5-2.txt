@@ -1,0 +1,19 @@
+[warmly] Last time we looked at selling. Today we flip to the other side: how a merchant records buying its inventory.
+
+Walk into almost any store, and you'll see a huge investment in inventory. Managing it well matters, because goods that sit too long can go out of style or become obsolete. There are two systems for tracking it. The periodic system is simpler: purchases are recorded during the period, and inventory is physically counted at the end. The perpetual system updates inventory in real time with every sale, and it's a much better management tool. We'll cover perpetual next lesson. Today is periodic.
+
+Under the periodic system, purchases go into an account called Purchases. Here's a subtle point. Purchases isn't really an asset or an expense on its own. It's a holding bucket. At the end of the period, its total gets split between cost of goods sold, for what was resold, and inventory, for what's still on the shelf.
+
+Returning goods to a supplier works like returns on the selling side. The buyer debits Accounts Payable and credits Purchase Returns and Allowances.
+
+Cash discounts show up here too. Terms like two ten, net thirty look small, but they're very much worth taking. [pause] Here's why. Skip a two percent discount to keep your money for twenty more days, and that's like paying about thirty-six percent interest per year. So smart businesses build systems to grab every discount, like filing invoices by discount date or scheduling payments for the last allowed day.
+
+There are two ways to record discounts. The gross method records the purchase at the full invoice price, and tracks the discounts you take. The net method records it at the discounted amount, and tracks discounts lost. The net method has a nice feature: a Purchase Discounts Lost account shows up as an expense, putting a spotlight on missed discounts.
+
+Next, freight. Shipping can easily be more than ten percent of a deal, so it's always negotiated. The key term is F O B, free on board, which marks the point where ownership changes hands. With F O B destination, the seller owns the goods until they arrive, and pays the freight. For the seller, that's freight-out, a selling expense. With F O B shipping point, the buyer owns them as soon as they ship, and pays the freight. For the buyer, that's freight-in, added to the cost of the goods. And note: cash discounts usually don't apply to the freight portion.
+
+Now let's put it together. Net purchases equals purchases, plus freight-in, minus discounts and returns. Then cost of goods sold equals beginning inventory, plus net purchases, minus ending inventory from the physical count.
+
+One last surprise: closing entries. Under the periodic system, nothing touches the Inventory account as goods are sold all year, so it still shows the beginning balance. Closing removes that beginning balance and records the new counted ending balance.
+
+[warmly] So, the recap. Periodic purchases go to the Purchases account. Take every discount you reasonably can. F O B tells you who pays freight. Net purchases, plus beginning inventory, minus ending inventory, gives cost of goods sold. Great work today.

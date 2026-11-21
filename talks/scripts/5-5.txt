@@ -1,0 +1,15 @@
+[warmly] Let's wrap up chapter five with a topic that every business depends on, even if customers never notice it: internal control.
+
+Internal control is the set of policies and procedures a company uses for four goals. Protect its assets. Keep its accounting information reliable. Make sure people follow company policies. And evaluate how efficiently things are running.
+
+There are some classic control procedures you'll see everywhere. Limited access: only authorized people can get to cash, inventory, and records. Separation of duties: the person who handles an asset shouldn't also keep the records for it, so one person can't steal and cover it up. Authorization of duties: specific people are allowed to approve specific things. Prenumbered documents, so a missing check or invoice stands out. Independent verification, where someone checks someone else's work. And outside review, like an audit.
+
+[pause] One important balance, though. Don't build a control system that costs more to run than it's worth. Controls should earn their keep.
+
+Let's walk through an electronics store. A retailer has a huge investment in inventory that can't easily be locked away, so theft is a constant risk. The goal is simple: make sure only purchased merchandise leaves the store. So you'll see security guards and cameras, sensor tags that beep at the door, expensive items in locked cages, and cash registers that need a key or a code. At the end of each shift, the cash drawer is counted and compared to the register's records. And cash is deposited at the bank every day.
+
+Now, behind the scenes, there's the purchasing cycle. Customers never see this, but it matters just as much. The goal here is to pay only for what you actually ordered and actually received. It works like a chain. Someone with authority submits a purchase request. The purchasing department gets competitive bids and issues a purchase order. When the goods arrive, the receiving department inspects them and prepares a receiving report. Then, before anyone pays, the accounting department matches three documents: the purchase order, the receiving report, and the supplier's invoice. If they all agree, the bill gets paid. In modern systems these documents are electronic, but the control is the same.
+
+Finally, why do auditors care so much about all this? Because an auditor isn't just checking whether a pile of debits and credits adds up. They study and test the control system to see if it works as designed. If it does, the system should produce reliable numbers, and they can spend less time checking individual transactions. Designing and testing controls is a huge part of what accountants actually do.
+
+[warmly] So, the takeaways. Internal control protects assets and keeps information reliable. Key tools include limited access, separation of duties, authorization, prenumbered documents, and independent checks. Retailers guard inventory and cash at the front end. And in purchasing, match the order, the receiving report, and the invoice before paying. That wraps up chapter five. Great job.

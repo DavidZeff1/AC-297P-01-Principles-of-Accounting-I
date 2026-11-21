@@ -1,0 +1,19 @@
+[warmly] Today we're going to make the balance sheet a lot more useful, by organizing it. The result is called a classified balance sheet.
+
+Quick reminder first. Not everything on a balance sheet is at current value. Some assets are at historical cost, and some valuable things, like a brand name, aren't reported at all. Even so, the balance sheet is essential for judging a company's financial health. And grouping the accounts into meaningful categories, with subtotals, makes that analysis much easier.
+
+Let's start with assets. There can be up to five sections.
+
+Current assets come first. That's cash, and things that will turn into cash or be used up soon: short-term investments, receivables, inventory, and prepaid expenses. They're listed in order of liquidity, most liquid first. And here's the key definition. "Current" means within one year, or within the operating cycle, whichever is longer. The operating cycle is the time it takes to turn cash back into cash: buy inventory, sell it on account, and collect the receivable. For most businesses, that's less than a year.
+
+Next come long-term investments, like stock in another company held for the long haul. Then property, plant, and equipment, the land, buildings, and machinery the business uses. Then intangible assets, things like patents and trademarks that have no physical form. And finally, other assets, for anything that doesn't fit elsewhere.
+
+Liabilities get split too. Current liabilities are due within one year or the operating cycle, and are normally paid from current assets. Long-term liabilities are everything else, like bank loans and mortgage notes. [pause] Here's a detail that trips people up. If a company has a long-term note, the part of the principal that's due next year is classified as current. The rest stays long-term.
+
+Then equity. For a corporation, that's capital stock, what investors paid for their shares, plus retained earnings, the profits plowed back into the business. A sole proprietorship just has one capital account for the owner. A partnership has one capital account for each partner. Newer business forms, like L L Cs, change the labels, but not the overall structure.
+
+Put it all together for Classy Company, and you get a balance sheet where you can see at a glance what's short-term, what's long-term, and who has claims on what.
+
+Last idea, and it's a big one. Notes to the financial statements. Many important facts can't be expressed as a dollar amount: accounting policies, major events, pending lawsuits. The full disclosure principle requires that the statements and their notes include every fact that would influence an investor's or creditor's judgment. Honestly, the notes are often longer than the statements themselves.
+
+[warmly] So, the recap. Asset sections: current assets, long-term investments, property, plant, and equipment, intangibles, and other assets. Current means within a year or the operating cycle, whichever is longer. Liabilities are current or long-term. And full disclosure means the notes tell the rest of the story. Great work today.
