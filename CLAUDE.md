@@ -46,6 +46,8 @@ interactive examples, flashcards, practice quiz). See README.md for the file lay
   All existing audio lessons are in Rob's voice; `talks/voices.json` would list any exceptions.
 - The user's ElevenLabs plan is Creator (about 121,000 credits a month, about 1 credit per character). Check
   `account_get_usage` before generating and keep scripts around 3,000–3,500 characters (3–4 minutes).
-- Chapters 1–2 have audio lessons. Credits reset monthly.
+- Script style: start straight in (no "Welcome back"; the user asked for it removed). A chapter's first lesson
+  may open with "Welcome to chapter N." Keep the friendly tutor tone and a short recap at the end.
+- Chapters 1–3 have audio lessons; chapters 4–7 are in progress, in lesson order. Credits reset monthly.
   Generate more only when the user asks, and say how many credits it will use.
 

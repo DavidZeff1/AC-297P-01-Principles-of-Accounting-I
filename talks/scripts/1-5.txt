@@ -1,4 +1,4 @@
-[warmly] Welcome back. Imagine someone offers you a chance to buy stock in a company. What would you want to know first? Is it profitable? Does it have cash? Does it owe a lot of money? Those are the questions financial statements are built to answer.
+[warmly] Imagine someone offers you a chance to buy stock in a company. What would you want to know first? Is it profitable? Does it have cash? Does it owe a lot of money? Those are the questions financial statements are built to answer.
 
 Some questions can't be answered with numbers, of course. Is management any good? Is a competitor about to crush them? For that, investors also read the notes to the statements, company websites, regulatory filings, and the financial press. But don't expect special private tips. Securities laws strictly limit companies from giving inside information to just one investor.
 

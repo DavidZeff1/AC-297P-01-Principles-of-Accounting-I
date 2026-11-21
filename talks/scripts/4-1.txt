@@ -1,0 +1,17 @@
+[warmly] Welcome to chapter four. In chapter three you learned the different kinds of adjusting entries. Now we put them to work on a real set of books, start to finish.
+
+Meet England Tours Company. It started operating early in twenty X three, and now it needs financial statements for the year ended December thirty-first. The bookkeeper has an unadjusted trial balance. If we built statements straight from that, they'd be incomplete and wrong. Insurance has been used up, equipment has worn out, salaries and other bills have built up. So first, adjustments.
+
+In practice, someone who knows the business well reviews the trial balance and lists the adjustments that are needed. And here's an important control point. Not just anyone should be able to enter year-end adjustments, or errors and even rogue entries can sneak in. So each proposed adjustment is written up on a form, often called a journal voucher, and approved by the chief accountant or controller. Those approved vouchers become the supporting documents for the entries.
+
+After the adjustments are posted, we prepare an adjusted trial balance. For England Tours, it still balances, now at sixty thousand dollars. And you'll notice some new accounts showing up: accumulated depreciation, a couple of payables, and several new expenses. Other balances have changed too.
+
+[pause] Here's the good news. The adjusted trial balance is usually all you need to prepare the financial statements. Revenues and expenses go to the income statement. Net income flows into the statement of retained earnings, along with dividends. And the assets, liabilities, and equity go onto the balance sheet. You can trace every number straight from the adjusted trial balance into the statements.
+
+Now, you might say: my software does all of that automatically. True! Once the adjustments are entered, any accounting package races through the rest. But that's a bit like saying you don't need to understand addition because you own a calculator. You still need to understand how the numbers flow, so you can spot when something's off.
+
+Finally, the worksheet. Sometimes you want adjusted statements without actually changing the journal and ledger. Maybe a manager wants monthly reports, but the company only books adjustments once a year. Or an auditor wants to see the effect of proposed adjustments first. A worksheet handles that. It's a big spreadsheet, filled in one pair of columns at a time: the trial balance, the adjustments, the adjusted trial balance, and then columns for the income statement, retained earnings, and the balance sheet.
+
+Each adjusted balance moves into exactly one pair of columns, on the same side. Cash, a debit, goes to the balance sheet debit column. Revenue, a credit, goes to the income statement credit column. For England Tours, the income statement credits are thirty-two thousand eight hundred and the debits are thirty thousand two hundred, so net income is two thousand six hundred. That net income moves over into the retained earnings columns. And after dividends of one thousand, retained earnings ends at one thousand six hundred, which carries to the balance sheet.
+
+[warmly] So, the recap. Trial balance, then approved adjusting entries, then the adjusted trial balance, then the statements. And a worksheet lets you see adjusted statements without touching the books. Nice work. See you next lesson.

@@ -1,4 +1,4 @@
-[warmly] Welcome back. Let's step back and look at everything we've done this chapter, because there's an interesting pattern hiding in it.
+[warmly] Let's step back and look at everything we've done this chapter, because there's an interesting pattern hiding in it.
 
 We analyzed a transaction and wrote the journal entry. Then we posted to the ledger, built a trial balance, and prepared financial statements. [pause] But think about which of those steps actually required thinking. Really, just the first one. Deciding which accounts are affected, and whether to debit or credit them, takes judgment. Everything after that is mechanical. Copying, adding, sorting, totaling.
 
