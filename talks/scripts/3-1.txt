@@ -1,0 +1,21 @@
+[warmly] Welcome to chapter three. This chapter is all about one big question: how do we measure income? And it turns out, it depends on who you ask.
+
+Ask an economist, and income is any increase in how well off you are. Your command over goods and services. Say you bought land years ago, and it's now worth a lot more. To an economist, you're richer, so you've earned income, even though you haven't sold anything.
+
+Ask an accountant, and the answer is more cautious. Accounting income focuses on transactions with other parties, recorded at historical cost. That land stays on the books at what you paid, until you actually sell it. [pause] Why so cautious? Because a sale gives us a real, verifiable number. An estimate of what the land might be worth is just an opinion. That said, accounting rules have slowly started allowing fair value for certain items, and the debate about when to record changes in value is still going.
+
+So accounting income is built from four pieces. Let's go through them.
+
+Revenues are the inflows a company gets from its central, ongoing operations. Delivering the goods and services it's in business to provide. A bakery selling bread, that's revenue.
+
+Expenses are the outflows and obligations from producing those goods and services. The bakery's flour, wages, and rent.
+
+Gains are like revenues, but they come from peripheral activities, things outside the main line of business. If the bakery sells an old delivery van for more than its book value, that's a gain, not revenue. Selling vans isn't what a bakery does.
+
+And losses are like expenses, but again from peripheral events. If the bakery sells that van for less than its book value, that's a loss.
+
+Put them together and you get the income formula: [pause] revenues plus gains, minus expenses and losses, equals income.
+
+Now, most of the time, an accounting measurement is triggered by an exchange. Someone buys, someone sells. But not always. Some events have to be recorded even when nothing is exchanged. Picture an uninsured building destroyed by a fire or a storm. Nobody bought or sold anything. But the asset is gone. So the accountant records an immediate loss: debit a loss, and credit the building to take it off the books. If we ignored it, the balance sheet would show a building that no longer exists.
+
+[warmly] So, the takeaways. Economists count any increase in wealth as income; accountants mostly wait for an exchange, at historical cost. Revenues and expenses come from the main business; gains and losses come from the side. Income is revenues plus gains, minus expenses and losses. And some events, like a fire, get recorded even with no exchange. See you next lesson.

@@ -1,0 +1,23 @@
+[warmly] This is one of the most important lessons in the whole course, so settle in. It's about adjusting entries.
+
+Here's the problem. Back in chapter two, we built statements straight from the trial balance, with a warning that adjustments might be needed. Why? Because time changes account balances, even when no transaction happens. Insurance gets used up day by day. Equipment wears out. Employees earn wages every hour. Nobody writes a journal entry for each of those moments. So at the end of every period, before we prepare statements, we catch the accounts up. Think of it like briefly shutting off a pipeline to measure what's inside.
+
+Adjustments come in two families. Multi-period items, which relate to more than one period. And accruals, things earned or incurred this period but not yet recorded. Let's walk through the main ones.
+
+First, prepaid expenses. Say a company buys a three-year insurance policy on January first for nine thousand dollars. At first, that's an asset: prepaid insurance. By December thirty-first, one-third has expired. So we debit Insurance Expense three thousand and credit Prepaid Insurance three thousand. The income statement shows three thousand of expense, and the balance sheet still shows six thousand of prepaid insurance for the next two years.
+
+Supplies work the same way, with a twist. You count what's left on the shelf, and back into the amount used. Whatever you had available, minus what's left, must have been used.
+
+Next, depreciation. A truck that cost one hundred fifty thousand dollars and lasts three years depreciates fifty thousand a year, using straight-line. We debit Depreciation Expense. But here's the key detail. [pause] We don't credit the Truck account. We credit Accumulated Depreciation, which is a contra asset. It sits right under the truck and gets subtracted from it. Cost minus accumulated depreciation is the truck's book value.
+
+Then unearned revenue. Sometimes a company collects cash before it delivers, like a magazine selling a three-year subscription. That cash creates a liability, Unearned Revenue, because the company still owes the magazines. As issues are delivered, we debit Unearned Revenue and credit Revenue for the part that's been earned.
+
+Now the accruals. Accrued salaries: employees earn a thousand dollars a day, the last payday was Friday, December twenty-sixth, and they work three more days before year end. So we record three thousand dollars of salaries expense and a salaries payable, even though payday isn't until January.
+
+Accrued interest works the same way. Borrow one hundred thousand dollars at six percent for eighteen months, and you'll owe nine thousand in interest. Even if it's all paid at the end, each period records its share as time passes. Interest equals principal, times rate, times time.
+
+And accrued revenue is the mirror image. An accounting firm does work in December but bills it in January. The revenue belongs in December, so we debit Accounts Receivable and credit Revenue.
+
+After all the adjustments, we prepare an adjusted trial balance, and the real financial statements come from that.
+
+[warmly] So, the big picture. Adjust at the end of every period. Prepaids and supplies get used up. Depreciation goes to a contra asset. Unearned revenue turns into revenue as it's earned. And accruals catch up what's been earned or incurred but not recorded. Get these right, and your income is right. Great work today.

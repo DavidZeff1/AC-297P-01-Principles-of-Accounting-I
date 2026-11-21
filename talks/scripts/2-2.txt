@@ -1,4 +1,4 @@
-[warmly] Welcome back. Now that you know debits and credits, where do we actually write them down? In the journal.
+[warmly] Now that you know debits and credits, where do we actually write them down? In the journal.
 
 Think of a ship captain's logbook. Everything that happens gets written down, in order, by date. An accounting journal is the same idea. It's a chronological list of every transaction a company makes. But instead of long stories, each entry uses shorthand: which accounts are involved, and whether each one is debited or credited.
 

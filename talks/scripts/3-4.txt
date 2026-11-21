@@ -1,0 +1,15 @@
+[warmly] Last time we figured out when to record revenue. Today, the other half: when does a cost become an expense?
+
+Here's the big idea. Accountants use one of three approaches, depending on the kind of cost.
+
+Approach one: cause and effect. Some costs are directly tied to specific revenue, so we record them in the same period as that revenue. This is called the matching principle. Think of a salesperson's commission. The commission exists because of a sale, so the commission expense is matched with that sale's revenue. Same with cost of goods sold. When a store sells a shirt, the cost of that shirt becomes an expense at the same time as the sale.
+
+Approach two: systematic and rational allocation. Some costs help a business for many years, but you can't point to any single sale they caused. Take a delivery truck. It might last eight years and help with thousands of deliveries. So instead of expensing it all at once, we spread its cost over the years it's used. That process is called depreciation, and you'll learn a lot more about it in chapter ten. For now, just picture a truck that costs forty thousand dollars and lasts eight years. Spreading it evenly, that's five thousand dollars of expense each year.
+
+Approach three: immediate recognition. Some costs have no link to revenue, and no future benefit. So we expense them right away. Severance pay for a laid-off employee is a good example. It doesn't produce any future revenue, so there's nothing to match it to and nothing to spread it over. It's an expense now.
+
+[pause] Now, here's the part that confuses a lot of people. When does cash change hands? Honestly, it doesn't matter for recognition. Revenue is recognized at the point of sale, whether the customer pays cash or promises to pay later. And expenses follow one of the three approaches, no matter when the bill actually gets paid.
+
+Why insist on that? Because most business is done on credit. If income simply followed cash in and cash out, it could give a really misleading picture. Imagine a company that makes a huge sale in December but doesn't collect until February. A cash-based report would make December look terrible and February look amazing. Accrual accounting puts the revenue in December, where it was actually earned.
+
+[warmly] So, the recap. Three ways to recognize expenses. Cause and effect, the matching principle, for costs like commissions and cost of goods sold. Systematic and rational allocation, for costs that help many periods, like depreciation. And immediate recognition, for costs with no future benefit, like severance. And cash timing doesn't decide any of it. See you next lesson.

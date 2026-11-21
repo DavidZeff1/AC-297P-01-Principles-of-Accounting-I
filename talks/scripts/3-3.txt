@@ -1,0 +1,21 @@
+[warmly] Today's question sounds simple: when has a company actually earned its revenue? It matters a lot, because many famous accounting scandals came down to recording revenue too early.
+
+First, a bit of vocabulary. To recognize something means to record it in the accounting records. So, when do we recognize revenue? Normally, when services are performed, or when goods are sold and delivered. And two conditions both have to be met.
+
+One: there's an exchange. Goods or services change hands with a customer.
+
+Two: the earnings process is complete. The company has done what it promised. It performed the service, or it delivered the goods.
+
+Let's test that with two situations that trip people up. A car rolls off the assembly line, finished. Revenue? [pause] Not yet. Nobody bought it, so there's no exchange. Now flip it around. A customer places an order for a car that hasn't been built. Revenue? Still no. There's an agreement, but the company hasn't delivered anything, so the earnings process isn't complete. Revenue waits until both conditions are true.
+
+Now, modern business makes this harder. Think about all the ways deals get structured today. Bundles, like a phone sold with a service plan. Intangibles, like a software license. Order routing, where an online store forwards your order straight to the manufacturer to ship. And milestones, where a company gets paid only when certain research results are reached. To handle all this consistently, standard setters created a five-step model.
+
+Step one: identify the contract with the customer. Step two: identify the performance obligations, meaning each distinct thing promised. Step three: determine the transaction price, what the customer will pay. Step four: allocate that price among the obligations. And step five: recognize revenue as each obligation is satisfied.
+
+Let's walk through it with a phone bundle. A carrier sells you a phone plus a twelve-month service plan, all for six hundred dollars. If sold separately, the phone would be three hundred and the plan five hundred.
+
+The contract: that's the deal you signed. The obligations: two of them. Hand over the phone, and provide twelve months of service. The price: six hundred dollars. Now allocate it, based on the stand-alone prices, which add up to eight hundred. The phone gets three hundred over eight hundred of the six hundred dollars. That's two hundred twenty-five. The service gets five hundred over eight hundred, which is three hundred seventy-five.
+
+And finally, recognize. The phone is delivered the moment you walk out of the store, so two hundred twenty-five dollars is revenue right away. The service is delivered over time, so the three hundred seventy-five is spread over twelve months, about thirty-one dollars and twenty-five cents each month.
+
+[warmly] So, to wrap up. Recognize means record. Revenue needs an exchange and a completed earnings process. Finishing production isn't enough, and neither is taking an order. And for complicated deals, follow the five steps: contract, obligations, price, allocate, recognize. Great job today.

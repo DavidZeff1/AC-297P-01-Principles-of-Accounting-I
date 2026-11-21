@@ -1,4 +1,4 @@
-[warmly] Welcome back. Last time we learned the big equation: assets equal liabilities plus owners' equity. Today we're going to put it to work, and watch what happens when a business actually DOES something.
+[warmly] Last time we learned the big equation: assets equal liabilities plus owners' equity. Today we're going to put it to work, and watch what happens when a business actually DOES something.
 
 Every time a business does something with money, we call it a transaction. Buying, selling, borrowing, paying. And each transaction changes the numbers. But here's the beautiful part. If it's recorded properly, a transaction never breaks the equation. Ever.
 

@@ -1,4 +1,4 @@
-[warmly] Welcome back. Last time we ended with a problem. The journal records everything in date order, but if you want to know how much cash a company has, you'd have to dig through every page. Today we fix that, with the general ledger.
+[warmly] Last time we ended with a problem. The journal records everything in date order, but if you want to know how much cash a company has, you'd have to dig through every page. Today we fix that, with the general ledger.
 
 Picture two notebooks. The first one is the journal: transactions, one after another, by date. The second notebook is the ledger. It has one page for every account the company uses. A page for Cash. A page for Accounts Receivable. A page for Land, for Capital Stock, for each kind of revenue and expense. Xao Corporation used nine accounts in January, so its ledger has nine pages.
 

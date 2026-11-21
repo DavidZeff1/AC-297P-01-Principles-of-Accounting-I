@@ -1,0 +1,17 @@
+[warmly] Here's a problem every business faces. Business never stops. Sales happen on Tuesday night, bills arrive on Sunday, customers pay whenever they feel like it. But to measure how a company is doing, we have to draw a line somewhere and say: this is the end of the period.
+
+That idea has a name: the periodicity assumption. It says business activity can be divided into measurement intervals, like months, quarters, and years.
+
+A company's year can follow the calendar, January first to December thirty-first, usually split into four quarters. Or it can use a fiscal year, which is any twelve-month period. Fiscal years often follow the natural rhythm of the business. Take a retailer. The holiday rush is in December, and then the returns pour in during January. So a retailer might end its year on January thirty-first, keeping the sales and the returns together in the same year.
+
+[pause] Here's a naming quirk to remember. A fiscal year is named for the year in which it ends. So a year running from February first, twenty X seven, through January thirty-first, twenty X eight, is called fiscal twenty X eight.
+
+Now, here's the catch. The shorter the period, the harder the measurement. Think about it. If you only reported once in a company's whole lifetime, every transaction would fall neatly inside it. But with monthly reports, lots of transactions cross the line. Insurance paid for a whole year. A project that runs for three months. Equipment that lasts for ten years. All of those have to be split across periods.
+
+So why not just wait until things settle down? Two reasons. First, you might wait a very long time before activities wrap up and become measurable with certainty. And second, investors and creditors can't wait years to find out how a business is doing. Information has to be timely to be useful. So we accept the difficulty in exchange for relevance.
+
+Once the period is set, accountants use accrual-basis accounting to assign revenues and expenses to it. Accrual accounting records revenues when they're earned and expenses when they're incurred, not just when cash changes hands. The word accrue means to come about naturally, to grow over time. That's exactly the idea: revenue builds as you earn it, regardless of when you get paid.
+
+Getting this assignment right really matters, because it determines reported income, which is what investors and lenders watch most closely. The next two lessons give the basic rules: when to recognize revenue, and when to recognize expenses.
+
+[warmly] So, the recap. The periodicity assumption chops continuous business activity into months, quarters, and years. A fiscal year is any twelve months, named for the year it ends. Shorter periods mean more transactions to split. And accrual accounting puts revenues where they're earned and expenses where they're incurred. Nice work. See you next time.

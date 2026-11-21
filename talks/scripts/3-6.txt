@@ -1,0 +1,17 @@
+[warmly] Let's finish chapter three with a story that shows why everything we've been learning actually matters.
+
+There are two main ways to keep score. The accrual basis records revenue when it's earned and expenses when they're incurred. That's what GAAP requires, and almost every large company uses it. The cash basis records revenue when cash comes in and expenses when cash goes out, no matter when the work happened. It's simple. But it can be really misleading in the short run, and it isn't GAAP. There's also a middle ground, the modified cash basis, which is cash basis except that big long-lived assets get recorded as assets and depreciated.
+
+Small businesses without outside investors or lenders don't have to follow GAAP, so some of them use the cash basis. Meet Ortiz Company. Ortiz designs websites and keeps its books like a checkbook register. In April, its cash went up by fifteen thousand seven hundred thirty-two dollars. On the cash basis, that's April's net income. Looks like a great month.
+
+Now here's the twist. A much bigger firm, Mega Impressions, offers to buy Ortiz for one hundred times its monthly net income, measured under GAAP. On the cash basis, one hundred times fifteen thousand seven hundred would be over one-and-a-half million dollars. Ortiz is thrilled. So an accounting firm prepares April's results on the accrual basis.
+
+Let's look at the revenue. Ortiz deposited nine thousand dollars in April, but it was an advance for work spread equally over April, May, and June. Only one-third, three thousand, was earned in April. Another deposit, about eleven thousand eight hundred dollars, collected payment for work done back in January and February. That's not April revenue at all. On the other hand, Ortiz did two thousand dollars of work in April that hasn't been collected yet. That is April revenue. Add a small job done and paid in April, and accrual revenue comes to six thousand two hundred fifty dollars.
+
+Expenses get the same treatment, and they come to about six thousand one hundred. [pause] So April's accrual net income is just one hundred forty-four dollars and twenty-five cents. Compare that to fifteen thousand seven hundred on the cash basis.
+
+One hundred times one hundred forty-four dollars is about fourteen thousand dollars. Ortiz was very disappointed, and turned the deal down.
+
+The lesson? Cash-basis results depend on when cash happens to move, so one month can look nothing like the real business. Converting to accrual strips out cash that belongs to other periods, and adds revenue earned but not collected and expenses incurred but not paid. That's why accrual accounting gives a far truer picture of each period.
+
+[warmly] So, the takeaways. GAAP requires the accrual basis. The cash basis is simple but can badly distort a period. And when real money is on the line, like selling your business, the difference can be enormous. That wraps up chapter three. Really nice work.

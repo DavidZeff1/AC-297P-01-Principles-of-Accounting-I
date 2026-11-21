@@ -1,4 +1,4 @@
-[warmly] Welcome back. Today we're looking at the single most important idea in this entire course. One equation. Every accounting system in the world, from a lemonade stand to a giant corporation, is built on it.
+[warmly] Today we're looking at the single most important idea in this entire course. One equation. Every accounting system in the world, from a lemonade stand to a giant corporation, is built on it.
 
 It goes back more than five hundred years, to a Renaissance monk named Luca Pacioli. He came up with a way for merchants to track whether their trading ventures were working. And his method is still the foundation of the most sophisticated software today.
 

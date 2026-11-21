@@ -1,4 +1,4 @@
-[warmly] Welcome back. So far we've analyzed transactions, written them in the journal, and posted them to the ledger. Today we do a quick self-check, called the trial balance.
+[warmly] So far we've analyzed transactions, written them in the journal, and posted them to the ledger. Today we do a quick self-check, called the trial balance.
 
 A trial balance is simply a list of every account in the ledger, with its balance. Accounts with debit balances, like assets and expenses, go in the debit column. Accounts with credit balances, like liabilities, equity, and revenue, go in the credit column. Then you add up both columns. Since every journal entry had equal debits and credits, the two totals should match. For Xao, both columns come to sixty-one thousand three hundred dollars. [pause] Balanced.
 

@@ -1,0 +1,29 @@
+[warmly] Over the last few chapters, you've learned a whole series of steps. Today, we put them together into one big loop, called the accounting cycle, and add the very last step: closing the books.
+
+Here's the cycle. Journalize transactions. Post them to the ledger. Prepare a trial balance. Make adjusting entries. Prepare an adjusted trial balance. Prepare the financial statements. Close the books. And prepare a post-closing trial balance. Then, the next period, it all starts again. It captures every transaction, moves it in an orderly way into useful statements, and leaves a complete record behind. No wonder it's lasted for centuries.
+
+So why do we need to close? Closing has two goals.
+
+Goal one: update Retained Earnings. Here's something sneaky. When we record revenues, expenses, and dividends during the year, we never actually touch the Retained Earnings account. So until we close, the ledger still shows the beginning-of-year balance. Closing brings it up to date.
+
+Goal two: reset the temporary accounts. Revenues, expenses, and dividends measure just one period. Next year has to start fresh, at zero. That's why they're called temporary, or nominal, accounts. Assets, liabilities, and equity are different. They're permanent, or real, accounts, and their balances carry forward. You wouldn't start the new year pretending you have no cash.
+
+[pause] Closing takes four entries, and they use a special temporary account called Income Summary. Think of it as a funnel.
+
+Entry one: close the revenues. Debit each revenue account for its balance, and credit Income Summary. Now revenues are zero.
+
+Entry two: close the expenses. Credit each expense account, and debit Income Summary. Now expenses are zero too.
+
+At this point, Income Summary holds the period's net income. For England Tours, that's thirty-two thousand eight hundred of revenue credits, minus thirty thousand two hundred of expense debits, leaving a two thousand six hundred dollar credit.
+
+Entry three: close Income Summary to Retained Earnings. Debit Income Summary two thousand six hundred, credit Retained Earnings. Now Income Summary is zero.
+
+Entry four: close Dividends. Credit Dividends, and debit Retained Earnings.
+
+When the dust settles, every temporary account is zero, and Retained Earnings shows its updated balance. For England Tours, that's one thousand six hundred dollars. Beginning retained earnings, plus income, minus dividends, equals ending retained earnings.
+
+Last step: the post-closing trial balance. It lists the balances after closing, so it only has balance sheet accounts. It's one more check that debits still equal credits.
+
+One modern twist. Database-style accounting software can pull results for literally any time span, like the forty-five days ending October fifteenth, years ago. So in those systems, the idea of closing the books matters less than it used to. But the logic is the same.
+
+[warmly] So, the recap. The accounting cycle runs from journalizing to the post-closing trial balance, every period. Closing updates Retained Earnings and zeroes out revenues, expenses, and dividends, using four entries through Income Summary. Great work today.
