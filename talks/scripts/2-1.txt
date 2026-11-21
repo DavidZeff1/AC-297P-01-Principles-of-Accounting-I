@@ -1,0 +1,27 @@
+[warmly] Welcome to chapter two. Today we learn the actual language accountants write in: debits and credits. Stick with me, because once this clicks, everything else gets easier.
+
+First, why do businesses need a system at all? In chapter one, we updated the balance sheet after each transaction. Picture a real company doing that on a giant whiteboard, erasing and rewriting all day. Chaos. And afterward, no one could explain where the numbers came from. So every business needs a reliable accounting system, one that processes transactions into reports and keeps a record of every single one.
+
+The basic building block is the account. An account is a record for one item: one for Cash, one for Inventory, one for each kind of revenue and expense. All the accounts together are called the general ledger. Picture a notebook with a separate page for every account.
+
+Now, instead of saying an account went "up" or "down," accountants say it was debited or credited. Debit simply means the left side. Credit means the right side. [pause] That's it. Left and right. Not good or bad.
+
+Why bother? Because of one powerful rule: in every correct entry, total debits equal total credits. So if they don't match, you know immediately that something's wrong. With plain pluses and minuses, a mistake can slip right by. Computer systems won't even accept an entry that doesn't balance.
+
+So which accounts go up with a debit, and which go up with a credit? Here's a memory trick. Two words: DEAD and RELIC.
+
+DEAD. Debits increase Expenses, Assets, and Dividends. D, E, A, D.
+
+RELIC. Revenues, Equity, and Liabilities Increase with Credits. R, E, L, I, C.
+
+Say them a few times. [pause] DEAD, RELIC. Honestly, it's like learning vocabulary in a new language. Memorize it first, and understanding follows fast.
+
+Let's try one. A customer pays ten thousand dollars they owed you. Which accounts? Cash and Accounts Receivable. Cash, an asset, goes up, so debit Cash. Accounts Receivable, also an asset, goes down, so credit it. Ten thousand on each side. Balanced.
+
+That's the two-step routine for every transaction. One: which accounts are affected, and are they going up or down? Two: apply the rules. What triggers the analysis? Usually a source document: a check, an invoice, a time card, a bank deposit slip. Good systems keep those documents and build in controls, like prenumbered forms and monthly bank reconciliations, so nothing slips through.
+
+To find an account's balance, start with the beginning balance and net out the debits and credits. Say Cash starts at fifty thousand, gets twenty-five thousand of debits and twelve thousand of credits. The balance is sixty-three thousand.
+
+Now let's bust two myths. Myth one: credits always mean decreases. That comes from stores saying "we'll credit your account" when you return something. But your account is a receivable on THEIR books, an asset, so yes, a credit reduces it. Myth two: credits always mean increases. That comes from banks. When you deposit money, the bank owes it to you, so it's a liability for the bank, and liabilities increase with credits. [pause] The truth? Whether a credit increases or decreases depends entirely on the type of account.
+
+[warmly] So, the takeaways. Each account tracks one item. Debits are left, credits are right, and they always balance. DEAD and RELIC tell you which way is up. Practice those, and you're speaking accounting. See you next lesson.

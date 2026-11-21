@@ -1,0 +1,15 @@
+[warmly] Welcome back. Last time we ended with a problem. The journal records everything in date order, but if you want to know how much cash a company has, you'd have to dig through every page. Today we fix that, with the general ledger.
+
+Picture two notebooks. The first one is the journal: transactions, one after another, by date. The second notebook is the ledger. It has one page for every account the company uses. A page for Cash. A page for Accounts Receivable. A page for Land, for Capital Stock, for each kind of revenue and expense. Xao Corporation used nine accounts in January, so its ledger has nine pages.
+
+So how do the amounts get from the first notebook to the second? That's called posting. To post means to copy each debit and credit from the journal onto the matching ledger page. Say the journal shows a debit to Cash and a credit to Capital Stock. You go to the Cash page and write the amount in the debit column. Then you go to the Capital Stock page and write it in the credit column. And each ledger page keeps a running balance, so after every posting you know exactly where that account stands.
+
+[pause] Now, two small habits make this system trustworthy. First, in the ledger, each line notes which journal page the amount came from. That keeps the ledger short, and it means anyone can trace any number back to the original entry. Second, in the journal, you put a check mark next to each entry once it's been posted. Why does that matter? Because in a manual system, it would be really easy to skip an entry, or post the same one twice. The check marks tell you exactly where you left off.
+
+Together, those cross-references create what's called an audit trail. You can start from a number on a financial statement, follow it into the ledger, then back to the journal, and all the way to the source document. Auditors love that. And honestly, so will you, the first time you need to find a mistake.
+
+So, remember last lesson, when we asked how much cash Xao had at the end of January? We had to hunt through the whole journal. Now, just flip to the Cash page in the ledger. There it is, twenty-six thousand three hundred dollars. Same answer, no hunting.
+
+Let's put the steps together so far. Step one: analyze each transaction. Which accounts are affected, and are they going up or down? Step two: journalize it, writing the debits and credits in the journal. Step three: periodically post those entries to the ledger. Analyze, journalize, post. That's the rhythm of accounting.
+
+[warmly] So, quick recap. The general ledger has one page per account, each with a running balance. Posting copies journal amounts into the ledger. Page references and check marks create an audit trail, so nothing gets missed or doubled. And now we always know every account's balance. Nicely done. See you next time.

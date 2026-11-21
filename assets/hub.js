@@ -65,7 +65,8 @@
         ch.lessons.forEach(function (t, i) {
           var id = ch.n + "-" + (i + 1), num = ch.n + "." + (i + 1), ready = !!HUB.lessons[id];
           var st = state.done[id] ? '<span class="status done">Done</span>' : ready ? '<span class="status ready">Open</span>' : '<span class="status soon">Soon</span>';
-          if (ready) h += '<li><a class="lesson-link ready" href="#lesson-' + id + '"><span class="num">' + num + '</span><span>' + esc(t) + '</span>' + st + '</a></li>';
+          var au = HUB.talk && HUB.talk.has(id) ? '<span class="has-talk" title="Has an audio lesson">' + HUB.talk.icon + '</span>' : '';
+          if (ready) h += '<li><a class="lesson-link ready" href="#lesson-' + id + '"><span class="num">' + num + '</span><span>' + esc(t) + au + '</span>' + st + '</a></li>';
           else h += '<li><a class="lesson-link pending" href="#lesson-' + id + '"><span class="num">' + num + '</span><span>' + esc(t) + '</span>' + st + '</a></li>';
         });
         h += '</ul></article>';
@@ -104,9 +105,10 @@
     h += '<header class="lesson-hero"><div class="wrap">';
     h += '<div class="hero-top">' + crumbs + '<button type="button" class="btn ghost small focus-btn" id="focus-btn" title="Show one section at a time, without the rest of the site (F)">' +
       '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><circle cx="12" cy="12" r="2.5"/></svg>Focus mode</button>' +
-      '<button type="button" class="btn ghost small listen-btn" id="listen-btn" title="Read this lesson aloud (V toggles voice-over)">' + (HUB.voice ? HUB.voice.iconSpeaker : '') + 'Listen to this lesson</button></div>';
+      '<button type="button" class="btn ghost small listen-btn" id="listen-btn" title="Read this lesson aloud (V toggles voice-over)">' + (HUB.voice ? HUB.voice.iconSpeaker : '') + 'Read aloud</button></div>';
     h += '<div class="lesson-title"><div class="lesson-tab">' + meta.num + '</div><h1>' + esc(meta.title) + '</h1></div>';
     if (def.summary) h += '<p class="lesson-sub">' + def.summary + '</p>';
+    if (HUB.talk && HUB.talk.has(id)) h += '<section class="talk" id="talk" aria-label="Audio lesson"></section>';
     if (def.objectives) {
       h += '<div class="objectives">';
       def.objectives.forEach(function (o, i) { h += '<div class="objective"><b>' + (i + 1) + '</b><span>' + o + '</span></div>'; });
@@ -134,6 +136,7 @@
     var lb = document.getElementById("listen-btn");
     lb.addEventListener("click", function () { if (HUB.voice) HUB.voice.listenAll(); });
     if (HUB.voice) HUB.voice.mount("lesson", app, def.pronounce, id);
+    if (HUB.talk && HUB.talk.has(id)) HUB.talk.mount(document.getElementById("talk"), id);
   }
 
   /* ---------- focus mode: one section at a time, no site chrome ---------- */
@@ -375,6 +378,7 @@
     var hsh = (location.hash || "").replace(/^#/, "");
     var m = /^lesson-(\d+-\d+)$/.exec(hsh);
     focusCtl = null; HUB.focusReveal = null;
+    if (HUB.talk) HUB.talk.stop();
     document.body.classList.remove("focus-mode");
     if (m) renderLesson(m[1]); else renderHome();
     window.scrollTo(0, 0);

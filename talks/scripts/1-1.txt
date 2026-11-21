@@ -1,0 +1,19 @@
+[warmly] Hey, welcome in. Get comfortable, because today we're starting at the very beginning: what accounting actually is, and why it matters to you.
+
+Most people picture an accountant hunched over a spreadsheet, typing numbers into little boxes. And sure, there's some of that. But really, accounting is a language. It's a set of concepts and techniques for measuring and reporting financial information about an economic unit. Usually that unit is one business, and its money is kept separate from the personal money of its owners.
+
+So who's listening when a business talks in this language? A lot of people. Managers use it to run the place. Owners and investors want to know if their money is growing. Banks and other creditors want to know if they'll be paid back. Government agencies use it for taxes and regulation. Analysts compare companies, and employees wonder if their jobs, and their raises, are safe. [pause] Each one is asking a question about their own stake in the business.
+
+Now here's the key insight. Managers sit INSIDE the company. They can ask for any report they want, in any format. Everyone else sits outside, and they only get what the company chooses to publish. That one difference splits accounting into two big branches.
+
+Financial accounting serves the outsiders. Because outsiders can't see the details, and they want to compare one company with another, everyone has to play by the same rules. Those rules are called generally accepted accounting principles, or GAAP. In the United States, the Financial Accounting Standards Board, the FASB, writes them. Internationally, the IASB issues International Financial Reporting Standards. The reports that come out are general purpose: they're not tailored to any one reader, they're meant to be neutral, relevant, and faithful to what really happened.
+
+Managerial accounting serves the insiders, and management sets the rules. If a manager thinks some development costs are really a long-term investment, they can leave them out of an internal profit report. That's their call. The reports should still be logical, but there's no rulebook they have to follow.
+
+Quick word on technology. The tedious bookkeeping, recording every transaction by hand, is now mostly done by software, and more and more by artificial intelligence. That frees accountants to do the interesting part: thinking, judging, and helping people make decisions.
+
+And judgment is a big deal, because accounting numbers are not as exact as they look. Here's an example. Lakeside Motors sells a car for thirty thousand dollars. The car cost them twenty-four thousand, and it comes with a three-year warranty. So how much profit did they make? [pause] Well, nobody will know the true warranty cost for three years. But nobody wants to wait three years for a profit number, because by then it's useless. So the dealer makes a reasonable estimate, say nine hundred dollars, and reports a profit of about five thousand one hundred. That's accounting: timely information built on careful estimates.
+
+One last idea. What's something worth? Many items, like land, are kept on the books at historical cost, the price actually paid. That number is reliable, because you can check the receipt. The alternative is fair value: what the item is worth today. That's more relevant, but it's an opinion, so it's less reliable. Standard setters keep moving the line between the two, a little more toward fair value over time.
+
+[warmly] So, to wrap up. Accounting measures and reports a business's finances for lots of different users. Financial accounting follows GAAP for outsiders. Managerial accounting follows management's own rules for insiders. And behind every number is some judgment. Keep that in mind, and the rest of this course will make a lot more sense. See you in the next lesson.
