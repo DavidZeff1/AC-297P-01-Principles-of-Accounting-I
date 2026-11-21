@@ -1,0 +1,15 @@
+[warmly] Today's topic is small, literally. It's about petty cash.
+
+Some payments are just too small to bother writing a check. A few dollars of postage due. Reimbursing an employee who grabbed some office supplies. For those, companies keep a petty cash fund, also called an imprest fund.
+
+Setting it up is easy. The company writes a check to cash, say for two hundred dollars, cashes it, and puts the money in a petty cash box. One person, the custodian, is responsible for it. The entry is: debit Petty Cash, credit Cash. That just moves part of the company's cash into a separate little account.
+
+Now, the rules. Company policy says what petty cash can be used for. And every time money comes out, a receipt goes in: a petty cash voucher showing the amount and what it was for. [pause] So here's the key check. At any moment, the cash in the box, plus the vouchers, should equal the fund's balance. Two hundred dollars, always.
+
+When the cash starts running low, the fund gets replenished. A check is written to bring the box back up to its original two hundred. The vouchers come out, and they're recorded as expenses: postage expense, supplies expense, and so on, with a credit to Cash. And here's the part people often miss: the Petty Cash account itself doesn't change when you replenish. It stays at two hundred.
+
+What if the box comes up a few dollars short, or has a little extra? Maybe someone made change wrong. The difference goes to an account called Cash Short and Over. A shortage is a debit, which acts like an expense. An overage is a credit, which acts like revenue. Retailers use this same account every day: if the register drawer has more or less cash than the recorded sales, the difference goes there too.
+
+Finally, as a company grows, it might need a bigger fund. Increasing it looks just like setting it up: debit Petty Cash, credit Cash for the increase. In fact, the only times you ever touch the Petty Cash account are when you create the fund or change its size.
+
+[warmly] So, the takeaways. Set up petty cash with a debit to Petty Cash and a credit to Cash, and give it a custodian. Cash plus vouchers always equals the fund. Replenishing records the expenses, not a change to Petty Cash. And small differences go to Cash Short and Over. See you next lesson.

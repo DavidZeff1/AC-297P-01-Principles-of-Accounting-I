@@ -1,0 +1,23 @@
+[warmly] Today we're going to do one of the most practical tasks in all of accounting: the bank reconciliation.
+
+Every month, a company has two records of the same cash. The bank sends a statement showing its version: deposits and other credits, checks and other debits, and an ending balance. And the company has its own Cash account in the ledger. These two almost never match exactly. A bank reconciliation explains the differences, catches errors, and tells you what entries still need to be made.
+
+One important control point. The reconciliation should be done promptly, by someone who doesn't otherwise handle cash receipts or payments. That way, stealing would require two people working together.
+
+The approach is simple: adjust both sides to the same, correct cash balance.
+
+On the bank side, you add deposits in transit, deposits the company made that the bank hasn't recorded yet. And you subtract outstanding checks, checks the company wrote that haven't cleared the bank yet.
+
+On the book side, you add things the bank knows about but the company doesn't yet: collections the bank made on the company's behalf, like a note receivable, and interest earned. And you subtract things like a customer's check that bounced, called an N S F check, for not sufficient funds, plus bank service charges and any withdrawals not yet recorded.
+
+Let's look at The Tackle Shop in July. The bank says fifty thousand six hundred seventy dollars. The books say forty-seven thousand five hundred thirty-five. After all the adjustments on both sides, they both come to fifty-two thousand five hundred three dollars and fifty-one cents. [pause] That's the true cash balance. And notice, the books needed to go up by about five thousand dollars.
+
+Here's the key rule: only the book-side items need journal entries. The bank-side items, like outstanding checks, will sort themselves out when they clear. But the book-side items are real events the company hasn't recorded yet.
+
+Debit cards make this trickier. They pull money out almost instantly, and each one has to be recorded. Reconciliations often turn up debit card withdrawals nobody entered.
+
+Now, a reconciliation can miss something. Imagine an employee writes an unauthorized five-thousand-dollar check to himself early in the month, then deposits five thousand back near the end, and records neither. The ending balances still agree, so the reconciliation shows nothing wrong. The fix is a proof of cash, which also compares total deposits and total checks for the month, not just the ending balance. That would catch it.
+
+And a quick word on check kiting, an old fraud where someone bounces checks between several banks so every account seems to have money. Holds on deposits, and faster electronic clearing, make it much harder today.
+
+[warmly] So, the takeaways. A bank reconciliation brings both sides to the correct cash balance. Bank side: add deposits in transit, subtract outstanding checks. Book side: add collections and interest, subtract N S F checks and fees. Only book-side items get journal entries. And a proof of cash catches what a reconciliation can miss. Great work.

@@ -1,0 +1,11 @@
+[warmly] Welcome to chapter six, which is all about cash. And we start with a question that sounds almost silly: what actually counts as cash?
+
+For accounting, cash means items a bank will accept for deposit, and that are free from restrictions, meaning available to pay current bills. So coins and currency, money in checking and savings accounts, checks you've received, and money orders all count.
+
+Now, some things look like cash but aren't. A postdated check, one dated for some future day, can't be deposited yet, so it's not cash; it's a receivable. A certificate of deposit usually ties your money up for a set term, so it's an investment. An I-O-U from an employee is a receivable. Postage stamps are a prepaid expense. And a travel advance given to an employee is also a receivable, or a prepaid, until it's spent.
+
+Then there's cash with strings attached. A compensating balance is an amount a bank requires you to leave on deposit, usually as part of a loan deal. You can't really use it, so it has to be disclosed, and if it's significant, reported separately from cash. A sinking fund is money set aside to pay off a debt someday, so it's often shown with long-term investments. And foreign currency that can't easily be moved or converted may also go into long-term investments.
+
+[pause] Finally, cash equivalents. Smart companies don't leave extra cash sitting idle. They park it in very safe, very short-term investments that turn back into cash within ninety days, like short-term government treasury bills. Those are so close to cash, and so easy to sell if money is needed, that they're reported right alongside cash, in one line called cash and cash equivalents. A note explains exactly what's included.
+
+[warmly] So, the takeaways. Cash is anything a bank will accept for deposit and that's free to use. Postdated checks, C Ds, I-O-Us, and stamps aren't cash. Restricted cash gets disclosed or moved elsewhere. And cash equivalents, like treasury bills maturing within ninety days, are reported together with cash. See you next lesson.
