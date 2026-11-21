@@ -36,3 +36,14 @@ interactive examples, flashcards, practice quiz). See README.md for the file lay
 - Hosting limits for the artifact: at most ~511 files and 256 MB per version, 15 MB per binary file.
   Each lesson's narration is one bundle of roughly 2–4 MB at 24 kbps; if the total nears 256 MB,
   re-record at `--bitrate 24k` or split packs across artifacts.
+
+## Audio lessons (ElevenLabs)
+
+- Each lesson can have a teacher-style audio lesson: `talks/scripts/<id>.txt` → ElevenLabs → `talks/audio/<id>.mp3`,
+  then `python3 tools/build_talks.py --encode <download dir>` (see README "Audio lessons").
+- Voice: Jeremy (`EwzF7Z2UMSib9JaKx0Kg`, calm relaxed American male), model `eleven_v4`, one take per script.
+  The user picked "male American, calm, relaxed". Keep the same voice for every lesson.
+- The user's ElevenLabs plan is Starter (40,000 credits a month, about 1 credit per character). Check
+  `account_get_usage` before generating and keep scripts around 3,000–3,500 characters (3–4 minutes).
+- Chapters 1–2 are done. Generate more only when the user asks, and say how many credits it will use.
+

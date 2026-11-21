@@ -1,0 +1,21 @@
+[warmly] Welcome back. Imagine someone offers you a chance to buy stock in a company. What would you want to know first? Is it profitable? Does it have cash? Does it owe a lot of money? Those are the questions financial statements are built to answer.
+
+Some questions can't be answered with numbers, of course. Is management any good? Is a competitor about to crush them? For that, investors also read the notes to the statements, company websites, regulatory filings, and the financial press. But don't expect special private tips. Securities laws strictly limit companies from giving inside information to just one investor.
+
+Financial accounting talks through four standard reports. Let's walk through them using Quartz Corporation.
+
+First, the income statement. It answers: how much did we earn? Quartz had revenues of six hundred sixty thousand dollars and expenses of five hundred eighty thousand, so net income was eighty thousand. Notice its heading says "For the Year Ended December thirty-first." It covers a period of time.
+
+Second, the statement of retained earnings. It's a bridge. Quartz started the year with two hundred twenty thousand of retained earnings. Add the eighty thousand of net income. Subtract thirty thousand of dividends. And it ends the year with two hundred seventy thousand.
+
+Third, the balance sheet. This one's a snapshot, at one moment: December thirty-first. Quartz has eight hundred thousand of assets, two hundred eighty thousand of liabilities, and five hundred twenty thousand of stockholders' equity. And look inside that equity. There's the two hundred seventy thousand of retained earnings, carried right over from the second statement.
+
+Fourth, the statement of cash flows. It explains why cash changed, in three groups. Operating activities, the day-to-day business, brought in thirty-five thousand. Investing activities used sixty thousand, to buy equipment. Financing activities brought in twenty thousand: a fifty thousand dollar loan, minus thirty thousand paid out as dividends. Net result, cash dropped five thousand, from sixty-five thousand down to sixty thousand.
+
+[pause] Wait a second, though. Quartz earned eighty thousand, but operations only brought in thirty-five thousand of cash. How? Because income and cash don't always arrive at the same time. If you do work on credit, you've earned the income, but the cash hasn't come in yet. Over time, those differences tend to even out.
+
+Two more traps. Dividends are NOT an expense. They're a distribution of income to the owners, so they show up on the retained earnings statement, not the income statement. And borrowing money brings in cash, but it isn't income. It's financing.
+
+Now here's my favorite part. These statements articulate, which means they lock together. Net income from the income statement flows into retained earnings. Ending retained earnings flows onto the balance sheet. And when you drop it in, [pause] the balance sheet balances. Exactly. It feels almost like magic, and it's why Pacioli's five-hundred-year-old system is still with us.
+
+[warmly] So, the takeaways. Four statements: income statement, retained earnings, balance sheet, and cash flows. The balance sheet is a moment in time; the others cover a period. Cash is not the same as income. And the statements all fit together like puzzle pieces. That wraps up chapter one. Really nice work.

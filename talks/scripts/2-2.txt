@@ -1,0 +1,19 @@
+[warmly] Welcome back. Now that you know debits and credits, where do we actually write them down? In the journal.
+
+Think of a ship captain's logbook. Everything that happens gets written down, in order, by date. An accounting journal is the same idea. It's a chronological list of every transaction a company makes. But instead of long stories, each entry uses shorthand: which accounts are involved, and whether each one is debited or credited.
+
+The general journal is called the book of original entry. Here's why. A transaction happens, someone looks at the source document, figures out the debits and credits, and this is the very first place it gets recorded. You can't make financial statements from the journal alone, but it's where everything starts.
+
+Every entry follows the same layout. The date. Then the debited accounts, listed first and flush left. Then the credited accounts, indented to the right. And finally a short explanation of what happened. Debits first, credits indented, explanation last. Always.
+
+Let's watch a company called Xao Corporation in its first month. On day one, investors put money into the business in exchange for stock. Cash goes up, so we debit Cash. Equity goes up, so we credit Capital Stock. Next, Xao pays for some advertising. Advertising expense goes up, so it's debited. Cash goes down, so it's credited. See how DEAD and RELIC from last time do all the work?
+
+[pause] Now, a transaction doesn't have to involve just two accounts. On January twenty-eighth, Xao buys land for thirty thousand dollars. It pays five thousand in cash and signs a note promising to pay the other twenty-five thousand later. So the entry has one debit, Land for thirty thousand, and two credits: Cash for five thousand and Notes Payable for twenty-five thousand. Total debits, thirty thousand. Total credits, five plus twenty-five, also thirty thousand. That's called a compound entry. More accounts, same rule: debits equal credits.
+
+Real businesses can have thousands of transactions, many exactly alike. So some use special journals for the repetitive stuff. A cash receipts journal for every dollar coming in. A cash payments journal for every dollar going out. A sales journal for sales on credit, a purchases journal for purchases on credit, and a payroll journal for paychecks. The general journal is still used for everything else. Special journals just clear out the clutter.
+
+Another nice detail: journal pages are numbered. That creates a trail. If someone questions a number on the financial statements, you can trace it back to the exact page and the exact entry behind it. Some companies give every transaction its own index number for the same reason.
+
+[pause] But here's the limitation. Suppose I ask you: how much cash does Xao have at the end of January? With just a journal, you'd have to hunt through every page, find every debit and credit to Cash, and add them up. Tedious, and really easy to mess up. Now imagine hundreds of pages. We need a better tool, and that's the general ledger, coming up next.
+
+[warmly] So, the recap. The journal is the book of original entry, every transaction in date order. Debits first, credits indented, and an explanation. Compound entries can have several accounts, but debits always equal credits. Great work. See you in the next one.

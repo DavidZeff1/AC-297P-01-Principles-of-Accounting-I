@@ -1,0 +1,21 @@
+[warmly] Welcome back. Today we're looking at the single most important idea in this entire course. One equation. Every accounting system in the world, from a lemonade stand to a giant corporation, is built on it.
+
+It goes back more than five hundred years, to a Renaissance monk named Luca Pacioli. He came up with a way for merchants to track whether their trading ventures were working. And his method is still the foundation of the most sophisticated software today.
+
+Here's the idea. A business is a collection of stuff it owns, plus the claims against that stuff. So: [pause] Assets equal Liabilities plus Owners' Equity.
+
+Let's unpack those three words. Assets are the resources a business controls, things expected to bring future benefits. Cash, inventory, equipment, land. Liabilities are what the business owes to others: loans, bills from suppliers, any existing obligation to pay or to do something. And owners' equity is what's left over for the owners.
+
+Because it's an equation, you can rearrange it. Assets minus Liabilities equals Owners' Equity. In plain English: if the business paid off every creditor, whatever remains belongs to the owners. That's why equity is also called net assets.
+
+Think of a house. Say it's worth three hundred thousand, and you owe two hundred thousand on the mortgage. Your equity is one hundred thousand. Same logic, exactly.
+
+Now, who the "owners" are depends on the type of business. A sole proprietorship has one owner, so one capital account. A partnership has one capital account for each partner. A corporation is owned by stockholders, and its equity comes in two pieces. Capital stock is what stockholders put in when they bought shares. Retained earnings are profits the company earned and kept, instead of paying them out.
+
+Retained earnings go up when the company earns net income. They go down with net losses, and with dividends. Dividends are payments to shareholders, a return on their investment. Once you pay earnings out, they're no longer retained. Makes sense, right?
+
+Now let's put the equation on paper. That's the balance sheet, also called the statement of financial position. It lists the assets, liabilities, and equity at one moment in time, like a snapshot. Take Edelweiss Corporation. It has assets of eight hundred ninety-five thousand dollars. It owes creditors one hundred seventy-five thousand. So stockholders' equity is seven hundred twenty thousand. And that equity came from two places: one hundred twenty thousand that stockholders invested, and six hundred thousand the company earned and kept over the years.
+
+[pause] Here's a trap, though. Is Edelweiss worth seven hundred twenty thousand dollars? No! Lots of assets are recorded at what they cost, not what they're worth today. Their land cost a hundred twenty-five thousand, but it could be worth much more now. And some valuable things aren't on the balance sheet at all, like a strong brand or a trade secret. Some risks, like a pending lawsuit, may not show up either.
+
+[warmly] So, the takeaway. Assets equal liabilities plus owners' equity, always. Equity is what's left for the owners. And the balance sheet shows that equation at a single point in time. Just remember, it's not a price tag for the whole business. Nice work today.

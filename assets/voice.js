@@ -354,6 +354,7 @@
     var blocks = collect();
     if (!blocks.length) return;
     hush();
+    if (HUB.talk) HUB.talk.stop();
     playing = true; paintDock();
     readBlock(Math.max(0, Math.min(i, blocks.length - 1)), run);
   }
@@ -508,6 +509,7 @@
     isOn: function () { return pref.on; },
     busy: function () { return pref.on && speakingNow; },
     toggle: function () { setOn(!pref.on); },
+    stop: function () { if (playing) pause(); },
     on: function () { if (!pref.on) setOn(true); },
     listenAll: function () { if (!supported && !player) { setOn(true); return; } if (!pref.on) { pref.on = true; savePref(); paintDock(); } playFrom(0); },
     mount: mount,

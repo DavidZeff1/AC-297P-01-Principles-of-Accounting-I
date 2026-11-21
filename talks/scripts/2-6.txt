@@ -1,0 +1,15 @@
+[warmly] Welcome back. This is the last lesson of chapter two, and it's a fun one: a simple tool you'll use constantly, the T-account.
+
+Grab a piece of paper and draw a big capital letter T. Write an account name across the top. Now, the left side is for debits, and the right side is for credits. [pause] That's a T-account. That's the whole thing.
+
+It's not how real businesses keep their books. It's a scratch pad. Accountants sketch T-accounts to think through a few transactions quickly, or to explain something to a colleague, or, honestly, to figure out a tricky homework problem.
+
+To find the balance, add up each side. Whichever side is bigger, the balance is the difference, on that side.
+
+Let's try it with Xao Corporation's Cash account. On the left, all the debits, money coming in, total thirty-three thousand eight hundred dollars. On the right, all the credits, money going out, total seven thousand five hundred. The debits are bigger, so Cash has a debit balance of thirty-three thousand eight hundred minus seven thousand five hundred. That's twenty-six thousand three hundred. And look: it's exactly the same balance we found in the ledger account. Same information, just a faster, more visual layout.
+
+Here's why I love T-accounts. Lay out one for every account a company uses, and you can see a whole month on one page. Every debit, every credit, and every balance, at a glance. If you do that for Xao's January, the balances match the trial balance perfectly.
+
+A tip for practicing. When you get a transaction, sketch the T-accounts for the accounts involved. Put the debit on the left of one, the credit on the right of the other, and check that they're equal. And remember DEAD and RELIC from lesson one of this chapter: assets, expenses, and dividends grow on the left; revenues, equity, and liabilities grow on the right. With those two words and a few T's on scratch paper, you can solve a surprising number of accounting problems.
+
+[warmly] So, the takeaways. A T-account has debits on the left and credits on the right. It's a thinking tool, not a bookkeeping system. And its balance is the bigger side minus the smaller side, which always matches the ledger. That wraps up chapter two. You now know how transactions travel from source document to journal, to ledger, to trial balance, to statements. That's a real accomplishment. Great work.

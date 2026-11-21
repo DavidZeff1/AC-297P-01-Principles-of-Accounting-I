@@ -1,0 +1,17 @@
+[warmly] Welcome back. Let's step back and look at everything we've done this chapter, because there's an interesting pattern hiding in it.
+
+We analyzed a transaction and wrote the journal entry. Then we posted to the ledger, built a trial balance, and prepared financial statements. [pause] But think about which of those steps actually required thinking. Really, just the first one. Deciding which accounts are affected, and whether to debit or credit them, takes judgment. Everything after that is mechanical. Copying, adding, sorting, totaling.
+
+And mechanical work is exactly what computers are great at. That's why transaction processing was one of the very first business tasks ever computerized. Today, almost no one keeps their books in paper notebooks.
+
+The software comes in every size. A small business can buy a basic package for under a hundred dollars. A big organization might install an enterprise-wide system that costs millions, including the consultants to set it up. And more and more systems are cloud-based, where you enter data and run reports right over the internet.
+
+So what does using one look like? The data entry screen looks surprisingly familiar. There's a date, the accounts, debit and credit columns, and a memo line for the explanation. In other words, a journal entry. Once you save it, the software posts it to the ledger automatically, updates the trial balance, and refreshes the financial statements. And here's a nice safety feature: the software won't let you save an entry unless the debits equal the credits.
+
+Most accounting software shares a few common features. Simplified data entry screens. Separate modules for things like sales, purchases, payroll, and inventory. Pick lists and auto-complete, so you choose accounts instead of typing them. The ability to search and query the data. Information that's always up to date. And lots and lots of reports, at the push of a button.
+
+[pause] Now, you might be thinking: if the computer does all that, why am I learning debits and credits? Great question. Here's the answer, and it's an old saying in tech: garbage in, garbage out. The computer only handles the mechanical part. A person still decides what goes into that first journal entry. If that person doesn't understand accounts and debits and credits, they'll make bad choices at data entry, and every report the system produces will be wrong. Confidently, beautifully formatted, and wrong.
+
+So the knowledge you're building is what makes the software useful. You need it to set up a system, use it correctly, and make sense of the reports it spits out.
+
+[warmly] So, the takeaways. After the first journal entry, accounting is mechanical, which is why computers took over. Software ranges from cheap small-business tools to huge enterprise and cloud systems. And no matter how good the software is, it needs someone who understands accounting at the keyboard. That's you. See you next time.

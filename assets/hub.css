@@ -748,3 +748,44 @@ table.plain tr.hl td { background: var(--marker); color: var(--marker-ink); }
 }
 .vo-word.on { opacity: 1; transform: scale(1.1); color: var(--vo-word-ink); box-shadow: 0 0 0 2px var(--vo-word-bg), 0 3px 10px rgba(0, 0, 0, .14); }
 @media (prefers-reduced-motion: reduce) { .vo-word, .vo-word.on { transform: none; transition: opacity .12s, color .12s; } }
+
+/* ---------- audio lesson player (assets/talk.js) ---------- */
+.talk { margin-top: 20px; background: var(--card); border: 1px solid var(--rule); border-radius: var(--r); box-shadow: var(--shadow); padding: 14px 16px 12px; max-width: 760px; }
+.talk-row { display: flex; align-items: center; gap: 14px; }
+.talk-play { flex: none; width: 52px; height: 52px; border-radius: 50%; border: 0; background: var(--ledger); color: var(--ledger-ink); display: grid; place-items: center; cursor: pointer; transition: transform .15s ease, box-shadow .2s ease; }
+.talk-play:hover { transform: scale(1.05); }
+.talk-play:focus-visible { outline: 3px solid var(--marker); outline-offset: 2px; }
+.talk.playing .talk-play { box-shadow: 0 0 0 6px var(--ledger-soft); }
+.talk-play svg { margin-left: 1px; }
+.talk.playing .talk-play svg { margin-left: 0; }
+.talk-main { flex: 1; min-width: 0; }
+.talk-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.talk-k { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-display); font-weight: 700; font-size: 1.02rem; color: var(--ink); }
+.talk-k svg { color: var(--ledger); }
+.talk-meta { color: var(--ink-3); font-size: .9rem; }
+.talk-bar { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.talk-time { font-family: var(--f-mono); font-size: .8rem; color: var(--ink-2); min-width: 2.6em; font-variant-numeric: tabular-nums; }
+.talk-dur { text-align: right; }
+.talk-seek { flex: 1; min-width: 0; height: 22px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; --p: 0%; }
+.talk-seek::-webkit-slider-runnable-track { height: 5px; border-radius: 3px; background: linear-gradient(to right, var(--ledger) var(--p), var(--rule) var(--p)); }
+.talk-seek::-moz-range-track { height: 5px; border-radius: 3px; background: linear-gradient(to right, var(--ledger) var(--p), var(--rule) var(--p)); }
+.talk-seek::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -4.5px; border-radius: 50%; background: var(--ledger); border: 2px solid var(--card); box-shadow: 0 0 0 1px var(--ledger); }
+.talk-seek::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; background: var(--ledger); border: 2px solid var(--card); }
+.talk-ctl { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding-left: 66px; }
+.talk-btn { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--rule); background: transparent; color: var(--ink-2); font: 600 .85rem var(--f-body); cursor: pointer; }
+.talk-btn:hover { border-color: var(--ledger); color: var(--ink); }
+.talk-btn span { font-family: var(--f-mono); font-size: .75rem; }
+.talk-btn.on { background: var(--ledger-soft); border-color: var(--ledger); color: var(--ink); }
+.talk-speed { font-family: var(--f-mono); min-width: 52px; justify-content: center; }
+.talk-tx { margin-top: 12px; max-height: 320px; overflow-y: auto; border-top: 1px solid var(--rule-2); padding: 8px 4px 0; scroll-behavior: smooth; }
+.talk-tx p { margin: 0 0 10px; padding: 6px 10px; border-radius: 6px; color: var(--ink-2); cursor: pointer; transition: background .3s ease, color .3s ease; }
+.talk-tx p:hover { background: var(--greenbar); }
+.talk-tx p.on { background: var(--ledger-soft); color: var(--ink); }
+@media (max-width: 560px) {
+  .talk { padding: 12px; }
+  .talk-play { width: 46px; height: 46px; }
+  .talk-ctl { padding-left: 0; }
+}
+body.focus-mode .talk { display: none; }
+.has-talk { display: inline-block; color: var(--ledger); margin-left: 7px; vertical-align: -2px; }
+.has-talk svg { display: block; width: 15px; height: 15px; }
