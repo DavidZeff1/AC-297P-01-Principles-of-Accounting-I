@@ -31,6 +31,9 @@ male voice.
 
 - **Listen to this lesson** reads the whole lesson from the top, highlighting each block as it goes.
   In focus mode it turns the sections for you.
+- Each word lights up as it is spoken: it grows slightly and shifts color, then settles back. Recorded
+  clips carry each word's start time (from the model's own phoneme timings), so the highlight follows the
+  audio at any speed. The device voice highlights words when the browser reports word boundaries.
 - With voice-over on, tap any paragraph, card, table, or panel to hear it and keep reading from there.
   Each section has a **Listen from here** button, and each quiz question has a speaker button.
 - Interactive pieces speak their results: diagram stages, user groups, simulator outcomes, flipped

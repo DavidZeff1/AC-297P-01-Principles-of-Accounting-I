@@ -356,9 +356,9 @@ body.focus-mode .focus-nav { display: grid; grid-template-columns: minmax(0, 1fr
 @media (max-width: 520px) { .fb-exit span { display: none; } }
 
 /* ---------- voice-over ---------- */
-:root { --vo-lit: rgba(246, 220, 107, .38); --vo-ring: #c9a20a; --vo-hover: rgba(27, 106, 80, .06); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --vo-lit: rgba(246, 220, 107, .16); --vo-ring: rgba(246, 220, 107, .7); --vo-hover: rgba(76, 192, 143, .07); } }
-:root[data-theme="dark"] { --vo-lit: rgba(246, 220, 107, .16); --vo-ring: rgba(246, 220, 107, .7); --vo-hover: rgba(76, 192, 143, .07); }
+:root { --vo-lit: rgba(246, 220, 107, .38); --vo-ring: #c9a20a; --vo-hover: rgba(27, 106, 80, .06); --vo-word-bg: #f6dc72; --vo-word-ink: #0b5e41; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --vo-lit: rgba(246, 220, 107, .16); --vo-ring: rgba(246, 220, 107, .7); --vo-hover: rgba(76, 192, 143, .07); --vo-word-bg: #4b4322; --vo-word-ink: #ffe48c; } }
+:root[data-theme="dark"] { --vo-lit: rgba(246, 220, 107, .16); --vo-ring: rgba(246, 220, 107, .7); --vo-hover: rgba(76, 192, 143, .07); --vo-word-bg: #4b4322; --vo-word-ink: #ffe48c; }
 .hero-top { justify-content: flex-start; }
 .hero-top .crumbs { margin-right: auto; }
 .listen-btn svg, .vo-toggle svg, .fb-voice svg { flex: none; }
@@ -737,3 +737,14 @@ table.plain tr.hl td { background: var(--marker); color: var(--marker-ink); }
 .pie-sl.b { fill: var(--mgr-soft); }
 .pie-n { font: 700 11px var(--f-mono); fill: var(--ink); paint-order: stroke; stroke: var(--card); stroke-width: 3px; }
 .pie-row > .grid2 { flex: 1 1 300px; }
+
+/* the word being spoken: a floating copy that grows a little and shifts color, then settles back */
+.vo-word {
+  position: absolute; z-index: 15; pointer-events: none; display: flex; align-items: center; justify-content: center;
+  white-space: pre; color: var(--from, var(--ink)); background: var(--vo-word-bg); border-radius: 5px;
+  box-shadow: 0 0 0 2px var(--vo-word-bg); opacity: 0; transform: scale(1); transform-origin: 50% 58%;
+  transition: transform .2s cubic-bezier(.25, .8, .35, 1), opacity .18s ease, color .2s ease, box-shadow .2s ease;
+  will-change: transform, opacity;
+}
+.vo-word.on { opacity: 1; transform: scale(1.1); color: var(--vo-word-ink); box-shadow: 0 0 0 2px var(--vo-word-bg), 0 3px 10px rgba(0, 0, 0, .14); }
+@media (prefers-reduced-motion: reduce) { .vo-word, .vo-word.on { transform: none; transition: opacity .12s, color .12s; } }
