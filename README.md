@@ -46,8 +46,8 @@ with `pronounce: [[/regex/g, "spoken form"]]`.
 ## Audio lessons
 
 Lessons with an audio lesson show a player under the summary (and a headphone mark on the course map):
-a 3–4 minute talk where a teacher walks through the lesson, recorded with ElevenLabs (voice: Jeremy, a calm
-American male, model `eleven_v4`). The player has play/pause, ±15 s, speed (0.85×–1.5×), and a transcript
+a 3–4 minute talk where a teacher walks through the lesson, recorded with ElevenLabs (voice: Rob, an easygoing
+American male, model `eleven_v4`; `talks/voices.json` notes the few still in the earlier voice). The player has play/pause, ±15 s, speed (0.85×–1.5×), and a transcript
 that highlights the paragraph being spoken; click a paragraph to jump there. Position and speed are remembered.
 
 To add one: write `talks/scripts/<id>.txt` (paragraphs separated by blank lines; `[warmly]`, `[pause]` and other
