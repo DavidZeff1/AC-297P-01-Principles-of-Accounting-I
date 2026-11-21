@@ -43,10 +43,9 @@ interactive examples, flashcards, practice quiz). See README.md for the file lay
   then `python3 tools/build_talks.py --encode <download dir>` (see README "Audio lessons").
 - Voice: **Rob** (`Cz0K1kOv9tD8l0b5Qu53`, easygoing, grounded American male), model `eleven_v4`, one take per script.
   The user chose Rob after finding the first voice (Jeremy) annoying. Use Rob for every lesson.
-  `talks/voices.json` lists lessons still recorded with Jeremy (1.2–2.6); re-record those with Rob when
-  credits allow (the scripts are in `talks/scripts/`) and remove them from that file.
-- The user's ElevenLabs plan is Starter (40,000 credits a month, about 1 credit per character). Check
+  All existing audio lessons are in Rob's voice; `talks/voices.json` would list any exceptions.
+- The user's ElevenLabs plan is Creator (about 121,000 credits a month, about 1 credit per character). Check
   `account_get_usage` before generating and keep scripts around 3,000–3,500 characters (3–4 minutes).
-- Chapters 1–2 have audio lessons (1.1 in Rob's voice). Credits reset monthly (next: Dec 21, 2026).
+- Chapters 1–2 have audio lessons. Credits reset monthly.
   Generate more only when the user asks, and say how many credits it will use.
 
