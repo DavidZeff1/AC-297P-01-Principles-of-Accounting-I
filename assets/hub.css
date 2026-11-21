@@ -697,3 +697,19 @@ table.plain thead th.num { font-family: var(--f-display); }
 .cont-res.rec { background: var(--bad-soft); } .cont-res.rec b { color: var(--bad); }
 .cont-res.note { background: var(--mgr-soft); } .cont-res.note b { color: var(--mgr); }
 .cont-res.none { background: var(--rule-2); }
+
+/* bond carrying-value chart (13.3) */
+.bc-line { fill: none; stroke-width: 3; stroke-linecap: round; }
+.bc-dot { stroke: none; }
+.bc-line.bc-premium { stroke: var(--mgr); } .bc-dot.bc-premium { fill: var(--mgr); }
+.bc-line.bc-par { stroke: var(--ink-3); } .bc-dot.bc-par { fill: var(--ink-3); }
+.bc-line.bc-discount { stroke: var(--ledger); } .bc-dot.bc-discount { fill: var(--ledger); }
+.bc-dim { opacity: .22; }
+.dc-key .bk-premium::before { background: var(--mgr); } .dc-key .bk-par::before { background: var(--ink-3); } .dc-key .bk-discount::before { background: var(--ledger); }
+.dc-key { flex-wrap: wrap; }
+table.plain tr.tot td { border-top: 2px solid var(--ink); }
+table.plain tr.hl td { background: var(--marker); color: var(--marker-ink); }
+.ei-bar { fill: var(--ledger); } .ei-bar.prem { fill: var(--mgr); }
+.ei-sl { stroke: var(--ink); stroke-width: 2; stroke-dasharray: 6 5; fill: none; }
+.dc-key .bk-sl::before { background: none; border-top: 2px dashed var(--ink); height: 0; vertical-align: 3px; border-radius: 0; }
+.cal-key .k-acc::before { background: var(--mgr-soft); outline: 1px solid var(--mgr); } .cal-key .k-use::before { background: var(--ledger-soft); outline: 1px solid var(--ledger); }

@@ -284,6 +284,7 @@
       el.querySelectorAll(".st-dot").forEach(function (b, k) { b.classList.toggle("on", k === i); b.classList.toggle("done", k < i); });
       body.setAttribute("aria-live", quiet ? "off" : "polite");
       body.innerHTML = '<h4>' + (d.numbered === false ? "" : "Step " + (i + 1) + ": ") + d.items[i].t + '</h4><div>' + d.items[i].b + '</div>';
+      if (HUB.mountIn && body.querySelector("[data-widget]")) HUB.mountIn(body);
       el.querySelector(".st-prev").disabled = i === 0;
       el.querySelector(".st-next").disabled = i === d.items.length - 1;
     }
