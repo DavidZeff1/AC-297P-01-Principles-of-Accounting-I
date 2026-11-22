@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AC 297P Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  @page { size: Letter; margin: 0.5in 0.55in 0.55in; }
+  :root { --g: #1b6a50; --g2: #123f31; --soft: #e8f2ec; --line: #c9d6cd; --ink: #16211c; --ink2: #4a5a51; --amber: #9a5512; --amber-soft: #f7ecdf; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; color: var(--ink); }
+  body { font: 10pt/1.36 "Source Sans 3", "Inter", Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  h1, h2, h3 { font-family: "Archivo", "Inter Display", Arial, sans-serif; font-stretch: 88%; margin: 0; color: var(--g2); }
+  h1 { font-size: 22pt; line-height: 1.05; letter-spacing: -.01em; }
+  h2 { font-size: 14pt; margin: 0 0 6pt; padding-bottom: 3pt; border-bottom: 1.5pt solid var(--g); }
+  h3 { font-size: 11pt; margin: 0 0 3pt; }
+  p { margin: 0 0 5pt; }
+  .page { page-break-after: always; break-after: page; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  .mast { display: flex; justify-content: space-between; align-items: flex-end; gap: 12pt; padding-bottom: 6pt; margin-bottom: 8pt; border-bottom: 3pt solid var(--g2); }
+  .mast .kicker { font: 600 8.5pt/1 "Source Sans 3", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--g); margin-bottom: 5pt; }
+  .mast .meta { text-align: right; font-size: 9pt; color: var(--ink2); line-height: 1.35; }
+  .mast .meta b { color: var(--ink); }
+  .pagehead { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1pt solid var(--line); padding-bottom: 4pt; margin-bottom: 10pt; font-size: 8.5pt; color: var(--ink2); }
+  .pagehead b { font-family: "Archivo", sans-serif; font-stretch: 88%; font-size: 10.5pt; color: var(--g2); }
+  .lead { font-size: 10.5pt; color: var(--ink2); margin-bottom: 8pt; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt 14pt; }
+  .box { border: 1pt solid var(--line); border-radius: 6pt; padding: 6pt 9pt; break-inside: avoid; }
+  .box.tint { background: var(--soft); border-color: #cfe2d6; }
+  .box.warm { background: var(--amber-soft); border-color: #ecd6bd; }
+  .sec { margin-bottom: 9pt; break-inside: avoid; }
+  /* daily timeline */
+  .tl { width: 100%; border-collapse: collapse; }
+  .tl td { padding: 3.2pt 5pt; vertical-align: top; border-bottom: .75pt solid var(--line); }
+  .tl tr:last-child td { border-bottom: 0; }
+  .tl .t { width: 0.95in; font: 600 9pt/1.3 "IBM Plex Mono", monospace; color: var(--g); white-space: nowrap; }
+  .tl .what b { color: var(--g2); }
+  .tl .min { width: 0.7in; white-space: nowrap; text-align: right; font: 600 9pt/1.3 "IBM Plex Mono", monospace; color: var(--ink2); }
+  .tl tr.brk td { background: #f5f7f5; color: var(--ink2); font-style: italic; }
+  .steps { margin: 2pt 0 0; padding-left: 15pt; }
+  .steps li { margin-bottom: 1.5pt; }
+  ul.tight { margin: 2pt 0 0; padding-left: 13pt; }
+  ul.tight li { margin-bottom: 2pt; }
+  .rule { display: grid; grid-template-columns: 18pt 1fr; gap: 6pt; margin-bottom: 5pt; }
+  .rule .n { width: 16pt; height: 16pt; border-radius: 50%; background: var(--g); color: #fff; font: 700 8.5pt/16pt "Archivo", sans-serif; text-align: center; }
+  /* 18-day plan */
+  .plan { width: 100%; border-collapse: collapse; font-size: 9.6pt; }
+  .plan th { text-align: left; font: 600 8pt/1 "Source Sans 3", sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--ink2); padding: 0 6pt 4pt; border-bottom: 1.5pt solid var(--g); }
+  .plan td { padding: 4.2pt 6pt; border-bottom: .75pt solid var(--line); vertical-align: top; }
+  .plan .d { width: 0.45in; font: 700 11pt/1.1 "Archivo", sans-serif; color: var(--g2); }
+  .plan .chk, .plan .date { width: 0.62in; }
+  .plan .chk span, .ck { display: inline-block; width: 10pt; height: 10pt; border: 1.2pt solid var(--g); border-radius: 2pt; vertical-align: -1.5pt; }
+  .plan .date span { display: block; border-bottom: .75pt solid #9fb3a7; height: 11pt; }
+  .plan tr.exam td { background: var(--soft); }
+  .plan tr.exam .d { color: var(--g); }
+  .plan tr.unit td { padding: 7pt 6pt 3pt; border-bottom: 0; font: 700 8.5pt/1 "Source Sans 3", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); }
+  .note { font-size: 8.8pt; color: var(--ink2); }
+  .tag { display: inline-block; font: 700 7.5pt/1 "Source Sans 3", sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--amber); background: var(--amber-soft); border-radius: 3pt; padding: 2pt 4pt; margin-left: 4pt; vertical-align: 1pt; }
+  /* formulas */
+  .fx { width: 100%; border-collapse: collapse; font-size: 8.8pt; }
+  .fx td { padding: 1.8pt 4pt; border-bottom: .75pt solid var(--line); vertical-align: top; }
+  .fx td:first-child { width: 37%; font-weight: 600; color: var(--g2); }
+  .fx td:last-child { font-family: "IBM Plex Mono", monospace; font-size: 7.6pt; letter-spacing: -.01em; }
+  .fx tr.grp td { border-bottom: 0; padding-top: 4pt; font: 700 8pt/1 "Source Sans 3", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); }
+  .master td { padding: 3pt 6pt; border-bottom: .75pt solid var(--line); vertical-align: top; font-size: 9pt; }
+  .master { width: 100%; border-collapse: collapse; }
+  .master td:first-child { width: 1.35in; font-weight: 700; color: var(--g2); }
+  .foot { margin-top: 8pt; font-size: 8.3pt; color: var(--ink2); text-align: center; }
+  .foot a { color: var(--g); }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1: the daily routine ============ -->
+<section class="page">
+  <div class="mast">
+    <div>
+      <div class="kicker">AC 297P · Principles of Accounting I</div>
+      <h1>How to study, every day</h1>
+    </div>
+    <div class="meta"><b>18 study days</b> · 5 hours each<br>75 lessons · 4 exams<br>Study site: Course &amp; Practice tabs</div>
+  </div>
+  <p class="lead">Accounting is learned by <b>doing</b>, not by reading. Every day follows the same rhythm: learn a lesson, then prove it to yourself by working it without looking. Tape this page where you study.</p>
+
+  <div class="sec">
+    <h2>A study day (5 hours)</h2>
+    <table class="tl">
+      <tr><td class="t">0:00 – 0:10</td><td class="what"><b>Warm-up.</b> Practice → Flashcards → yesterday’s chapter, with <i>Only cards I’m still learning</i> checked. Clear as many as you can.</td><td class="min">10 min</td></tr>
+      <tr><td class="t">0:10 – 1:40</td><td class="what"><b>Lessons, back to back</b> (about 45 min each, see the loop below). Usually 2 lessons in this block.</td><td class="min">90 min</td></tr>
+      <tr class="brk"><td class="t">1:40 – 1:50</td><td class="what">Break: stand up, water, no phone scrolling.</td><td class="min">10 min</td></tr>
+      <tr><td class="t">1:50 – 3:20</td><td class="what"><b>Lessons</b>, 2 more.</td><td class="min">90 min</td></tr>
+      <tr class="brk"><td class="t">3:20 – 3:30</td><td class="what">Break.</td><td class="min">10 min</td></tr>
+      <tr><td class="t">3:30 – 4:30</td><td class="what"><b>Last lesson(s)</b> of the day. If you finish early, redo the hardest example from today on paper.</td><td class="min">60 min</td></tr>
+      <tr><td class="t">4:30 – 5:00</td><td class="what"><b>Lock it in.</b> Practice → Flashcards → today’s lessons (mark <i>Got it</i> / <i>Still learning</i>). Then Practice → Multiple choice → today’s chapter → 10 questions. Write your misses in your notebook.</td><td class="min">30 min</td></tr>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="box tint">
+      <h3>The lesson loop (≈45 min per lesson)</h3>
+      <ol class="steps">
+        <li><b>Listen</b> to the audio lesson first (3–4 min) for the big picture.</li>
+        <li><b>Read</b> the lesson. Before revealing any example, <b>predict the debit and credit</b> or the number on paper.</li>
+        <li><b>Work</b> every interactive example yourself, then check.</li>
+        <li><b>Practice check:</b> 75% or better marks the lesson done. Below that, reread and retake.</li>
+        <li><b>One line</b> in your notebook: the main idea in your own words.</li>
+      </ol>
+    </div>
+    <div class="box">
+      <h3>Rules that make it stick</h3>
+      <div class="rule"><span class="n">1</span><span><b>Paper first.</b> Write the entry or formula before checking the answer.</span></div>
+      <div class="rule"><span class="n">2</span><span><b>Never skip a miss.</b> Every wrong answer gets redone until it’s right.</span></div>
+      <div class="rule"><span class="n">3</span><span><b>DEAD / RELIC</b> every day until it’s automatic.</span></div>
+      <div class="rule"><span class="n">4</span><span><b>Same time daily.</b> Consistency beats long weekend cramming.</span></div>
+      <div class="rule"><span class="n">5</span><span><b>Phone away</b> during lesson blocks.</span></div>
+    </div>
+  </div>
+
+  <div class="sec" style="margin-top:9pt">
+    <h2>Review &amp; exam day (5 hours + the exam)</h2>
+    <table class="tl">
+      <tr><td class="t">Hour 1</td><td class="what"><b>Find your gaps.</b> Practice → Multiple choice → each chapter of the unit → <i>All</i> questions. List every topic you missed.</td></tr>
+      <tr><td class="t">Hours 2–3</td><td class="what"><b>Fix them.</b> Reopen the lesson behind each miss and redo its examples on paper, answer hidden. Then <i>Retry the ones I missed</i> until all are right.</td></tr>
+      <tr><td class="t">Hour 4</td><td class="what"><b>Flashcards:</b> the whole unit with <i>Only cards I’m still learning</i> until the pile is empty.</td></tr>
+      <tr><td class="t">Hour 5</td><td class="what"><b>Dress rehearsal:</b> one mixed set of 50 questions across the unit. <b>90% or better → take the exam.</b> Below 90% → repeat hours 2–3 and take it tomorrow.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ PAGE 2: the 18-day plan ============ -->
+<section class="page">
+  <div class="pagehead"><b>The 18-day plan</b><span>Check off each day · write the date you did it</span></div>
+  <table class="plan">
+    <tr><th>Day</th><th>Study</th><th>Done</th><th>Date</th></tr>
+    <tr class="unit"><td colspan="4">Unit 1 · The Accounting Cycle · chapters 1–4</td></tr>
+    <tr><td class="d">1</td><td><b>Chapter 1</b>, lessons 1.1–1.5 · what accounting is, the equation, the four statements</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">2</td><td><b>Chapter 2</b>, lessons 2.1–2.6 · debits &amp; credits, journal, ledger, trial balance</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">3</td><td><b>Chapter 3</b>, lessons 3.1–3.6 · accrual accounting, adjusting entries <span class="tag">3.5 is the key lesson</span></td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">4</td><td><b>Chapter 4</b>, lessons 4.1–4.5 · worksheet, closing, classified balance sheet, liquidity</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr class="exam"><td class="d">5</td><td><b>Review chapters 1–4 → Exam 1: Accounting Cycle</b></td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr class="unit"><td colspan="4">Unit 2 · Current Assets · chapters 5–8</td></tr>
+    <tr><td class="d">6</td><td><b>Chapter 5</b>, lessons 5.1–5.5 · merchandising, periodic vs perpetual, internal control</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">7</td><td><b>Chapter 6</b>, lessons 6.1–6.5 · cash, bank reconciliation, petty cash, short-term investments</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">8</td><td><b>Chapter 7</b>, lessons 7.1–7.4 · receivables, bad debts, notes · <b>plus 8.1–8.2</b></td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">9</td><td><b>Chapter 8</b>, lessons 8.3–8.6 · perpetual layers, NRV, estimating inventory, errors</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr class="exam"><td class="d">10</td><td><b>Review chapters 5–8 → Exam 2: Current Assets</b></td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr class="unit"><td colspan="4">Unit 3 · Long-term Assets · chapters 9–11</td></tr>
+    <tr><td class="d">11</td><td><b>Chapter 9</b>, lessons 9.1–9.5 · investments: debt, equity method, consolidation</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">12</td><td><b>Chapter 10</b>, lessons 10.1–10.6 · PP&amp;E cost, depreciation methods, leases</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">13</td><td><b>Chapter 11</b>, lessons 11.1–11.6 · disposals, exchanges, impairment, depletion, intangibles</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr class="exam"><td class="d">14</td><td><b>Review chapters 9–11 → Exam 3: Long-term Assets</b></td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr class="unit"><td colspan="4">Unit 4 · Liabilities and Equity · chapters 12–14</td></tr>
+    <tr><td class="d">15</td><td><b>Chapter 12</b>, lessons 12.1–12.5 · current liabilities, notes, contingencies, payroll</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">16</td><td><b>Chapter 13</b>, lessons 13.1–13.6 · time value, bonds, amortization <span class="tag">hardest day, go slow</span></td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr><td class="d">17</td><td><b>Chapter 14</b>, lessons 14.1–14.5 · corporations, stock, treasury stock, dividends</td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+    <tr class="exam"><td class="d">18</td><td><b>Review chapters 12–14 → Exam 4: Liabilities/Equity</b></td><td class="chk"><span></span></td><td class="date"><span></span></td></tr>
+  </table>
+  <div class="grid2" style="margin-top:12pt">
+    <div class="box tint">
+      <h3>Pace</h3>
+      <p style="margin:0">7 study days a week → about <b>2½ weeks</b>.<br>5 days a week → about <b>3½ weeks</b>.<br>3 days a week → about <b>6 weeks</b>.</p>
+    </div>
+    <div class="box">
+      <h3>If you fall behind</h3>
+      <p style="margin:0">Don’t skip the lock-in block or a review day. Slide the plan a day instead. A lesson you rushed costs more on the exam than the day you saved.</p>
+    </div>
+  </div>
+  <div class="box warm" style="margin-top:12pt">
+    <h3>On exam day</h3>
+    <ul class="tight">
+      <li><b>Journal entries:</b> sketch the T-accounts or write <i>dr / cr</i> first, then check that debits equal credits.</li>
+      <li><b>Calculations:</b> write the formula before the numbers. It catches most mistakes and can earn partial credit.</li>
+      <li><b>Read the trap words:</b> book value vs fair value · stated rate vs market rate · issued vs outstanding · earned vs received.</li>
+      <li><b>Stuck?</b> Mark it, move on, come back. Don’t let one question eat your time.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PAGE 3: what to master + formulas ============ -->
+<section class="page">
+  <div class="pagehead"><b>What each exam tests · formulas to know cold</b><span>Review this page before every exam</span></div>
+  <div class="sec">
+    <h2>Master these for each exam</h2>
+    <table class="master">
+      <tr><td>Exam 1<br><span class="note">Accounting Cycle</span></td><td>DEAD / RELIC automatically · journal entries · the four adjusting entries (prepaids, unearned revenue, accrued expenses, accrued revenue) · depreciation &amp; accumulated depreciation · the four closing entries · accrual vs cash basis</td></tr>
+      <tr><td>Exam 2<br><span class="note">Current Assets</span></td><td>Sales/purchase entries with returns, discounts (2/10, n/30), F.O.B. freight · bank reconciliation (bank side vs book side; only book side gets entries) · aging: adjust the allowance <i>to</i> the target · FIFO / LIFO / average · NRV write-downs · gross profit &amp; retail estimates</td></tr>
+      <tr><td>Exam 3<br><span class="note">Long-term Assets</span></td><td>What goes into an asset’s cost · straight-line, units-of-output, double-declining depreciation by hand · update depreciation, then gain/loss on disposal · exchanges · impairment test · depletion per unit · equity method vs consolidation</td></tr>
+      <tr><td>Exam 4<br><span class="note">Liabilities / Equity</span></td><td>Notes &amp; interest · contingencies (probable / possible / remote) · payroll entries · why bonds sell at a premium or discount · effective-interest tables · treasury stock · splits vs stock dividends (small at market, large at par) · dividend dates</td></tr>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h2>Formulas</h2>
+      <table class="fx">
+        <tr class="grp"><td colspan="2">Foundations</td></tr>
+        <tr><td>Accounting equation</td><td>Assets = Liabilities + Equity</td></tr>
+        <tr><td>Net income</td><td>Revenues − Expenses</td></tr>
+        <tr><td>Ending retained earnings</td><td>Beginning RE + Net income − Dividends</td></tr>
+        <tr><td>Interest</td><td>Principal × Rate × Time</td></tr>
+        <tr class="grp"><td colspan="2">Liquidity</td></tr>
+        <tr><td>Working capital</td><td>Current assets − Current liabilities</td></tr>
+        <tr><td>Current ratio</td><td>Current assets ÷ Current liabilities</td></tr>
+        <tr><td>Quick ratio</td><td>(Cash + ST investments + Receivables) ÷ Current liabilities</td></tr>
+        <tr class="grp"><td colspan="2">Merchandise &amp; inventory</td></tr>
+        <tr><td>Gross profit</td><td>Net sales − Cost of goods sold</td></tr>
+        <tr><td>Net purchases</td><td>Purchases + Freight-in − Discounts − Returns</td></tr>
+        <tr><td>Cost of goods sold</td><td>Beginning inv. + Net purchases − Ending inv.</td></tr>
+        <tr><td>Inventory turnover</td><td>COGS ÷ Average inventory</td></tr>
+        <tr class="grp"><td colspan="2">Receivables</td></tr>
+        <tr><td>Net realizable value</td><td>Receivables − Allowance</td></tr>
+        <tr><td>Receivables turnover</td><td>Net credit sales ÷ Avg. net receivables</td></tr>
+        <tr><td>Days outstanding</td><td>365 ÷ Receivables turnover</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2 style="visibility:hidden">Formulas</h2>
+      <table class="fx">
+        <tr class="grp"><td colspan="2">Long-term assets</td></tr>
+        <tr><td>Book value</td><td>Cost − Accumulated depreciation</td></tr>
+        <tr><td>Straight-line</td><td>(Cost − Salvage) ÷ Life</td></tr>
+        <tr><td>Units-of-output</td><td>(Cost − Salvage) ÷ Total units × Units used</td></tr>
+        <tr><td>Double-declining</td><td>2 × (1 ÷ Life) × Beginning book value</td></tr>
+        <tr><td>Gain / loss on sale</td><td>Cash received − Book value</td></tr>
+        <tr><td>Depletion rate</td><td>(Cost − Residual) ÷ Estimated units</td></tr>
+        <tr class="grp"><td colspan="2">Bonds &amp; debt</td></tr>
+        <tr><td>Cash interest</td><td>Face value × Stated rate</td></tr>
+        <tr><td>Interest expense (effective)</td><td>Carrying value × Market rate</td></tr>
+        <tr><td>Carrying value</td><td>Face + Unamortized premium (− Unamortized discount)</td></tr>
+        <tr><td>Debt to total assets</td><td>Total debt ÷ Total assets</td></tr>
+        <tr><td>Times interest earned</td><td>Income before interest &amp; taxes ÷ Interest</td></tr>
+        <tr class="grp"><td colspan="2">Equity</td></tr>
+        <tr><td>Outstanding shares</td><td>Issued − Treasury shares</td></tr>
+        <tr><td>Small stock dividend</td><td>New shares × Market price</td></tr>
+        <tr><td>Large stock dividend</td><td>New shares × Par value</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <p class="foot">Study site: claude.ai/artifact/Cfczk2RDSXU3JSARetoWMy · Course tab for lessons, Practice tab for flashcards &amp; multiple choice</p>
+</section>
+
+</body>
+</html>
