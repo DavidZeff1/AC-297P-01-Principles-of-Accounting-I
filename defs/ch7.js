@@ -1,0 +1,26 @@
+/* Extra flashcard definitions for chapter 7: term -> [in plain words, example]. */
+HUB.addDefs({
+  "Trade receivables": ["Money customers owe from buying the company’s products or services.", "A wholesaler is owed $12,000 by stores that bought on credit."],
+  "Nontrade receivables": ["Money owed to the company from things other than sales.", "A $1,000 advance to an employee, or a deposit with the utility company."],
+  "Merchant fee": ["The cut a credit card company keeps from each sale.", "On a $1,000 card sale with a 2% fee, the card company keeps $20."],
+  "Service charge expense": ["The expense account for card fees.", "Rayyan records $20 of service charge expense on a $1,000 card sale."],
+  "Bad debts": ["Money customers owe that will never be collected.", "A customer goes bankrupt still owing $5,000."],
+  "Direct write-off method": ["Record bad debt expense only when a specific account is confirmed uncollectible.", "In August, give up on a December sale: debit Uncollectible Accounts Expense, credit Accounts Receivable."],
+  "Material": ["Big enough to change an informed reader’s decision.", "A $50 error at a billion-dollar company is immaterial; a $50 million error is material."],
+  "Allowance method": ["Estimate bad debts in the same period as the sales, before knowing which customers won’t pay.", "At year end, record expense for the $25,500 of receivables expected to go bad."],
+  "Allowance for Uncollectible Accounts": ["A contra-asset holding the estimate of receivables that won’t be collected.", "Receivables $425,000 minus allowance $25,500."],
+  "Net realizable value (receivables)": ["The amount of receivables the company actually expects to collect.", "$425,000 − $25,500 = $399,500."],
+  "Aging of accounts receivable": ["Sorting receivables by how overdue they are and estimating losses for each group.", "2% of current accounts, 5% of 31–60 days, 15% of 61–90, and 32% of those over 90 days."],
+  "Write-off (allowance method)": ["Removing a specific bad account against the allowance, with no new expense.", "Debit Allowance $5,000, credit Accounts Receivable $5,000; net realizable value doesn’t change."],
+  "Letter of credit": ["A bank’s promise to pay if the customer doesn’t.", "An overseas buyer’s bank guarantees payment so the seller will ship on credit."],
+  "Receivables turnover": ["How many times a year receivables are collected and replaced.", "$1,200,000 credit sales ÷ $100,000 average receivables = 12 times."],
+  "Days outstanding": ["About how many days it takes to collect from customers.", "365 ÷ 12 turnover ≈ 30 days."],
+  "Note receivable": ["A signed written promise from someone to pay you a set amount by a set date.", "Hewlett signs a 3-month, 12% note for $10,000."],
+  "Maker": ["The one who signs the note and promises to pay.", "Hewlett, the customer, is the maker."],
+  "Payee": ["The one who will receive the payment.", "Butchko, the seller, is the payee."],
+  "Principal": ["The face amount borrowed or owed, before interest.", "The $10,000 on Hewlett’s note."],
+  "Maturity date": ["The day the note must be paid.", "A 3-month note dated March 1 matures June 1."],
+  "Maturity value": ["The total due on the maturity date: principal plus interest.", "$10,000 + $300 interest = $10,300."],
+  "Dishonored note": ["A note the maker fails to pay when due.", "Hewlett doesn’t pay: Butchko moves $10,300 back to Accounts Receivable."],
+  "360-day year": ["A shortcut that treats a year as 360 days for interest math.", "$1,000 × 12% × 60/360 = $20 of interest."]
+});

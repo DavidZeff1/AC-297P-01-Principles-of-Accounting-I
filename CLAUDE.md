@@ -20,6 +20,8 @@ interactive examples, flashcards, practice quiz). See README.md for the file lay
 - Focus mode and voice-over work automatically when the lesson uses `section.sec[data-toc]`, the
   shared widgets, and `aria-live` on panels whose text changes with interaction.
 - Update the status table in README.md.
+- Add the lesson's flashcard terms to `defs/ch<N>.js` (`"Term": ["in plain words", "example"]`, exact term text)
+  so the Practice tab can explain each term three ways. The user asked for multiple definitions per card.
 - Record narration for the new lesson (and refresh `home`, whose text lists every lesson):
   ```
   python3 -m venv /tmp/tts && /tmp/tts/bin/pip install kokoro-onnx soundfile num2words huggingface_hub

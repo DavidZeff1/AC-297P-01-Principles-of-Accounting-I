@@ -22,7 +22,8 @@
       ".statement", ".jr-entry", ".ws-say", ".cont-res", ".tacct", ".eq-now", ".st-body", ".wk-q", ".wk-step", ".wk-ans", ".calc-field", ".calc-res", "table.ledger tbody tr", ".rule", ".sec > .scroll-x > table tr", ".fig-cap", ".quiz-result", ".recap li"
     ].join(","),
     home: ".home-hero h1, .home-hero p, .ledger-card, .unit-head, .chapter, .exam-milestone",
-    soon: ".soon-page h1, .soon-page p"
+    soon: ".soon-page h1, .soon-page p",
+    practice: ".pr-head h1, .pr-head p, .fc-front h2, .fc-back dd, .pq-setup h2, .pq-q, .pq-opt, .pq-verdict, .pq-why, .pq-score, .fc-done h2"
   };
   /* spoken forms for abbreviations and symbols; lessons can add more via def.pronounce */
   var SAY = [

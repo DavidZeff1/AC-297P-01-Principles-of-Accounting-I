@@ -43,6 +43,20 @@ male voice.
 Abbreviations are given spoken forms (FASB, GAAP, IFRS, …) in `assets/voice.js`. A lesson can add its own
 with `pronounce: [[/regex/g, "spoken form"]]`.
 
+## Practice
+
+The **Practice** tab in the top bar (`#practice/<cards|quiz>/<scope>`) pulls every lesson's flashcards and
+quiz questions into one place. Pick a section: all chapters, one chapter (`ch3`), or one lesson (`3-5`).
+
+- **Flashcards:** each card's back explains the term three ways: the lesson's definition, *in plain words*,
+  and an *example*. Mark cards *Got it* or *Still learning*, shuffle, or study only the ones still being
+  learned. Space flips, arrow keys move, and phones can swipe.
+- **Multiple choice:** choose 10, 20, 50, or all questions; each answer shows the explanation and a link to
+  the lesson. The results screen lists the misses and can retry just those. Best scores are remembered.
+
+The extra definitions live in `defs/ch<N>.js` as `HUB.addDefs({ "Term": ["in plain words", "example"] })`,
+keyed by the card's exact term. A new lesson's cards need entries there too.
+
 ## Audio lessons
 
 Lessons with an audio lesson show a player under the summary (and a headphone mark on the course map):
@@ -66,6 +80,7 @@ and rebuild `talks/index.js`. Each script costs about one ElevenLabs credit per 
 | `tools/narrate-capture.js`, `tools/narrate.py` | Collect every sentence a page can say, then record them with Kokoro |
 | `assets/talk.js`, `talks/` | Audio lesson player; scripts, recordings, and the generated `talks/index.js` |
 | `tools/build_talks.py` | Encodes audio-lesson recordings and builds `talks/index.js` |
+| `assets/practice.js`, `defs/ch<N>.js` | Practice tab (flashcards, multiple choice) and the extra flashcard definitions |
 | `assets/hub.js` | Router (`#home`, `#lesson-1-1`), progress, and shared widgets |
 | `assets/hub.css` | Design tokens (light and dark) and shared component styles |
 | `lessons/<ch>-<n>.js` | One file per lesson, e.g. `lessons/1-1.js` |
