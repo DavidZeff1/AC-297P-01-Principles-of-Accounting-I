@@ -71,6 +71,29 @@ def paragraphs(text):
 KEEP_CAPS = {"GAAP", "FASB", "IASB", "IFRS", "CPA", "CPAS", "CPAs", "IRS", "GAO", "SEC", "FBI", "DEAD", "RELIC", "AI", "US", "OK"}
 
 
+def add_words(i, paras):
+    """Word timings from tools/align_talks.py (talks/timings/<id>.json), if present and current:
+    each paragraph becomes [text, start, [gap to each word in centiseconds]], where word k starts at
+    start + sum of the first k+1 gaps. The paragraph start becomes its first word's start."""
+    f = os.path.join(ROOT, "talks/timings", i + ".json")
+    if not os.path.exists(f):
+        return
+    starts = json.load(open(f))["words"]
+    if len(starts) != sum(len(p[0].split()) for p in paras):
+        print("  %s: timings out of date (re-run tools/align_talks.py %s)" % (i, i))
+        return
+    k = 0
+    for p in paras:
+        n = len(p[0].split())
+        ws, k = starts[k:k + n], k + n
+        p[1] = round(max(0.0, ws[0] - 0.08), 2)
+        prev, gaps = p[1], []
+        for w in ws:
+            gaps.append(max(0, int(round((w - prev) * 100))))
+            prev += gaps[-1] / 100.0
+        p.append(gaps)
+
+
 def main():
     if len(sys.argv) > 2 and sys.argv[1] == "--encode":
         raw = sys.argv[2]
@@ -88,6 +111,7 @@ def main():
         dur, paras = duration(mp3), paragraphs(open(os.path.join(SCRIPTS, f)).read())
         for p, t in zip(paras, place(paras, dur, silences(mp3))):
             p[1] = t
+        add_words(i, paras)
         ver = hashlib.md5(open(mp3, "rb").read()).hexdigest()[:8]  # cache-buster when a lesson is re-recorded
         talks[i] = {"src": "talks/audio/%s.mp3?v=%s" % (i, ver), "dur": dur, "voice": voices.get(i, "Rob"), "paras": paras}
     body = ",\n".join("  %s: %s" % (json.dumps(i), json.dumps(t, ensure_ascii=False)) for i, t in talks.items())
