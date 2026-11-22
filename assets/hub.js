@@ -263,12 +263,21 @@
     })();
   }
 
+  /* Flashcards: the back shows the lesson's definition, then "in plain words" and an example
+     from defs/ch<N>.js (HUB.defs[term]) when available. */
   function cards(el, list) {
-    el.className = "tiles";
+    var extra = list.some(function (c) { return HUB.defs && HUB.defs[c.term]; });
+    el.className = "tiles" + (extra ? " cardset" : "");
     el.innerHTML = list.map(function (c) {
+      var d = (HUB.defs && HUB.defs[c.term]) || [];
       return '<button type="button" class="flip" aria-pressed="false"><div class="flip-inner">' +
-        '<div class="flip-face front"><span class="term">' + c.term + '</span>' + (c.sub ? '<span class="hint">' + c.sub + '</span>' : '') + '<span class="cue">Tap to flip</span></div>' +
-        '<div class="flip-face back"><span class="term">' + c.term + '</span><span>' + c.back + '</span></div></div></button>';
+        '<div class="flip-face front"><span class="term">' + c.term + '</span>' + (c.sub ? '<span class="hint">' + c.sub + '</span>' : '') +
+        '<span class="cue">' + (d.length ? "Tap to flip · definition, plain words, example" : "Tap to flip") + '</span></div>' +
+        '<div class="flip-face back"><span class="term">' + c.term + '</span>' +
+        (d.length ? '<span class="fl-k" data-no-voice>Definition</span>' : '') + '<span class="fl-def">' + c.back + '</span>' +
+        (d[0] ? '<span class="fl-x plain"><span class="fl-k">In plain words: </span>' + d[0] + '</span>' : '') +
+        (d[1] ? '<span class="fl-x ex"><span class="fl-k">For example: </span>' + d[1] + '</span>' : '') +
+        '</div></div></button>';
     }).join("");
     el.querySelectorAll(".flip").forEach(function (f) {
       f.addEventListener("click", function () {

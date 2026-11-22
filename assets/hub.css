@@ -929,3 +929,19 @@ body.focus-mode .talk { display: none; }
 }
 .fc-swipe { display: none; text-align: center; color: var(--ink-3); font-size: 13px; margin-top: 10px; }
 @media (max-width: 640px) { .fc-swipe { display: block; } }
+
+/* lesson flashcards with extra explanations (hub.js cards(), defs/ch<N>.js) */
+.tiles.cardset { grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); align-items: start; }
+/* compact until flipped, then the card grows to fit the back (the hidden face stays in the DOM for voice-over) */
+.cardset .flip-inner { position: relative; display: block; transform: none !important; }
+.cardset .flip-face { position: relative; inset: auto; transform: none; overflow: visible; }
+.cardset .flip-face.front { min-height: 150px; }
+.cardset .flip-face.back, .cardset .flip.on .flip-face.front { position: absolute; inset: 0; visibility: hidden; overflow: hidden; }
+.cardset .flip.on .flip-face.back { position: relative; inset: auto; visibility: visible; overflow: visible; animation: cardIn .38s cubic-bezier(.3, .7, .3, 1); }
+@keyframes cardIn { from { transform: perspective(900px) rotateY(-80deg); opacity: .25; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .cardset .flip.on .flip-face.back { animation: none; } }
+.cardset .flip-face.back { font-size: 14.5px; line-height: 1.45; gap: 6px; }
+.flip-face .fl-k { display: block; font: 700 11px/1.2 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 2px; }
+.flip-face .fl-x { display: block; padding: 8px 10px; border-radius: 8px; background: var(--card); }
+.flip-face .fl-x.ex { background: var(--mgr-soft); }
+.flip-face .fl-def { margin-bottom: 2px; }
