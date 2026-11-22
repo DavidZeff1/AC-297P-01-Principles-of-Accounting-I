@@ -1,0 +1,27 @@
+/* Extra flashcard definitions for chapter 11: term -> [in plain words, example]. */
+HUB.addDefs({
+  "Capital expenditure (subsequent)": ["A later cost that makes an asset last longer, do more, or work better, so it’s added to the asset.", "A $20,000 new engine that adds 5 years to a truck’s life."],
+  "Revenue expenditure": ["Ordinary upkeep that just keeps the asset running; expensed right away.", "An oil change or replacing worn tires."],
+  "Restoration": ["Bringing an asset back to like-new condition; recorded by reducing accumulated depreciation.", "Overhauling a machine’s worn parts: debit Accumulated Depreciation."],
+  "Betterment": ["Making an asset better than it originally was; added to the asset account.", "Adding air conditioning to a building that never had it."],
+  "Abandonment": ["Throwing an asset away; any remaining book value becomes a loss.", "Scrapping a machine with $3,000 of book value: a $3,000 loss."],
+  "Gain or loss on sale": ["Cash received minus the asset’s book value.", "Sell equipment with a $9,000 book value for $12,000: $3,000 gain."],
+  "Update depreciation": ["Record depreciation up to the disposal date before recording the sale.", "Sold on April 1: first record January–March depreciation, then the sale."],
+  "Exchange": ["Trading one asset for another, often with some cash.", "Trading in an old truck plus cash for a new truck."],
+  "Commercial substance": ["The trade really changes the company’s future cash flows, so it’s recorded at fair value with a gain or loss.", "Swapping a delivery truck for a forklift changes how the business operates."],
+  "Boot": ["The cash added to even out a trade.", "An old truck worth $10,000 plus $25,000 of boot buys a $35,000 new truck."],
+  "Gain/loss on exchange": ["Fair value of the asset given up minus its book value.", "Old truck’s fair value $10,000, book value $7,000: $3,000 gain."],
+  "Impairment": ["An asset can no longer earn back its book value.", "A factory whose product was banned can’t generate enough cash to justify its carrying amount."],
+  "Recoverability test (U.S.)": ["Check whether expected future cash flows cover the asset’s book value.", "Book value $500,000 but expected cash flows only $400,000: the asset is impaired."],
+  "Impairment loss": ["The write-down amount: book value minus fair value.", "Book value $500,000, fair value $350,000: a $150,000 impairment loss."],
+  "Natural resources": ["Assets taken from the earth that get used up.", "An oil field, a gold mine, or a stand of timber."],
+  "Depletion": ["Expensing a natural resource’s cost as it’s extracted.", "Mine $1,000,000 of ore estimated at 500,000 tons: $2 of depletion per ton mined."],
+  "Depletion rate": ["Cost per unit extracted.", "($1,000,000 − $0 residual) ÷ 500,000 tons = $2 per ton."],
+  "Accumulated depletion": ["The total depletion recorded so far, subtracted from the resource’s cost.", "After mining 100,000 tons at $2: $200,000 of accumulated depletion."],
+  "Intangible asset": ["A valuable asset you can’t touch.", "Patents, copyrights, franchises, trademarks, and goodwill."],
+  "Amortization": ["Spreading an intangible asset’s cost over its useful life.", "A $100,000 patent useful for 10 years: $10,000 of amortization each year."],
+  "Patent": ["The exclusive right to make or use an invention, for up to 20 years.", "A drug company’s patent on a new medicine."],
+  "Copyright": ["The exclusive right to a creative work, lasting the creator’s life plus 70 years.", "The rights to a novel, song, or software code."],
+  "Franchise": ["The right to run a business under another company’s brand in an area.", "The right to operate a fast-food restaurant under a national brand."],
+  "Trademark / brand": ["Legal protection for a name or logo; renewable forever, so it isn’t amortized.", "A famous soft drink name and logo."]
+});
