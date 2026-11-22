@@ -377,10 +377,16 @@
   function route() {
     var hsh = (location.hash || "").replace(/^#/, "");
     var m = /^lesson-(\d+-\d+)$/.exec(hsh);
+    var pm = /^practice(?:\/(cards|quiz))?(?:\/([\w-]+))?$/.exec(hsh);
+    document.querySelectorAll("[data-nav]").forEach(function (a) {
+      var on = a.getAttribute("data-nav") === (pm ? "practice" : m ? "" : "home");
+      a.classList.toggle("on", on); if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
     focusCtl = null; HUB.focusReveal = null;
     if (HUB.talk) HUB.talk.stop();
     document.body.classList.remove("focus-mode");
-    if (m) renderLesson(m[1]); else renderHome();
+    if (pm && HUB.practice) HUB.practice.render(app, pm[1] || "cards", pm[2] || "all");
+    else if (m) renderLesson(m[1]); else renderHome();
     window.scrollTo(0, 0);
     updateProgress();
   }
