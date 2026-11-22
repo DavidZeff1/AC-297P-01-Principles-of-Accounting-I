@@ -62,12 +62,13 @@ keyed by the card's exact term. A new lesson's cards need entries there too.
 Lessons with an audio lesson show a player under the summary (and a headphone mark on the course map):
 a 2½–4 minute talk where a teacher walks through the lesson, recorded with ElevenLabs (voice: Rob, an easygoing
 American male, model `eleven_v4`; `talks/voices.json` notes the few still in the earlier voice). The player has play/pause, ±15 s, speed (0.85×–1.5×), and a transcript
-that highlights the paragraph being spoken; click a paragraph to jump there. Position and speed are remembered.
+that opens on play and lights up each word as it is spoken (in the paragraph being spoken); click a paragraph to jump there. Position and speed are remembered.
 
 To add one: write `talks/scripts/<id>.txt` (paragraphs separated by blank lines; `[warmly]`, `[pause]` and other
 v4 audio tags are allowed), generate it with the ElevenLabs connector, download the mp3 into a scratch folder,
 then run `python3 tools/build_talks.py --encode <scratch folder>` to encode it to 64 kbps mono in `talks/audio/`
-and rebuild `talks/index.js`. Each script costs about one ElevenLabs credit per character.
+and rebuild `talks/index.js`. Then run `tools/align_talks.py <id>` (needs `pip install faster-whisper`) to find when
+each word is spoken (`talks/timings/<id>.json`) and run `python3 tools/build_talks.py` again. Each script costs about one ElevenLabs credit per character.
 
 ## Layout
 
@@ -80,6 +81,7 @@ and rebuild `talks/index.js`. Each script costs about one ElevenLabs credit per 
 | `tools/narrate-capture.js`, `tools/narrate.py` | Collect every sentence a page can say, then record them with Kokoro |
 | `assets/talk.js`, `talks/` | Audio lesson player; scripts, recordings, and the generated `talks/index.js` |
 | `tools/build_talks.py` | Encodes audio-lesson recordings and builds `talks/index.js` |
+| `tools/align_talks.py`, `talks/timings/` | Word start times for each audio lesson (speech recognition matched to the script) |
 | `assets/practice.js`, `defs/ch<N>.js` | Practice tab (flashcards, multiple choice) and the extra flashcard definitions |
 | `assets/hub.js` | Router (`#home`, `#lesson-1-1`), progress, and shared widgets |
 | `assets/hub.css` | Design tokens (light and dark) and shared component styles |

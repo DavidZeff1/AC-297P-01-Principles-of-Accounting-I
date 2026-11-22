@@ -43,6 +43,8 @@ interactive examples, flashcards, practice quiz). See README.md for the file lay
 
 - Each lesson can have a teacher-style audio lesson: `talks/scripts/<id>.txt` → ElevenLabs → `talks/audio/<id>.mp3`,
   then `python3 tools/build_talks.py --encode <download dir>` (see README "Audio lessons").
+- The transcript highlights each word as it's spoken (the user asked for it). After new recordings, run
+  `tools/align_talks.py <ids>` (faster-whisper) and rebuild with `build_talks.py`; don't ship talks without timings.
 - Voice: **Rob** (`Cz0K1kOv9tD8l0b5Qu53`, easygoing, grounded American male), model `eleven_v4`, one take per script.
   The user chose Rob after finding the first voice (Jeremy) annoying. Use Rob for every lesson.
   All existing audio lessons are in Rob's voice; `talks/voices.json` would list any exceptions.

@@ -781,6 +781,10 @@ table.plain tr.hl td { background: var(--marker); color: var(--marker-ink); }
 .talk-tx p { margin: 0 0 10px; padding: 6px 10px; border-radius: 6px; color: var(--ink-2); cursor: pointer; transition: background .3s ease, color .3s ease; }
 .talk-tx p:hover { background: var(--greenbar); }
 .talk-tx p.on { background: var(--ledger-soft); color: var(--ink); }
+.talk-tx .tw { display: inline-block; padding: 0 2px; margin: 0 -2px; border-radius: 4px; transform-origin: 50% 60%;
+  transition: transform .16s ease, background-color .16s ease, color .16s ease, box-shadow .16s ease; }
+.talk-tx .tw.on { transform: scale(1.08); background: var(--vo-word-bg); color: var(--vo-word-ink); box-shadow: 0 2px 8px rgba(0, 0, 0, .12); }
+@media (prefers-reduced-motion: reduce) { .talk-tx .tw, .talk-tx .tw.on { transform: none; transition: background-color .1s, color .1s; } }
 @media (max-width: 560px) {
   .talk { padding: 12px; }
   .talk-play { width: 46px; height: 46px; }
