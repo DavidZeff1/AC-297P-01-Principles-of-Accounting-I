@@ -83,17 +83,17 @@ const CLICKABLES = [".flow-step", ".users-svg .node", ".era-btn", ".flip", "[dat
       }
     }
     /* sweep sliders, under each setting of the toggles in the same panel */
-    const ranges = await page.locator('input[type="range"]').count();
+    const ranges = await page.locator('input[type="range"]:not(.talk-seek)').count();
     for (let r = 0; r < ranges; r++) {
       const toggles = await page.evaluate(r => {
-        const el = document.querySelectorAll('input[type="range"]')[r], panel = el.closest(".panel");
+        const el = document.querySelectorAll('input[type="range"]:not(.talk-seek)')[r], panel = el.closest(".panel");
         return panel ? panel.querySelectorAll(".seg button").length : 0;
       }, r);
       for (let t = 0; t < Math.max(1, toggles); t++) {
-        if (toggles) { await page.evaluate(([r, t]) => document.querySelectorAll('input[type="range"]')[r].closest(".panel").querySelectorAll(".seg button")[t].click(), [r, t]); await wait(600); await add(id, await spoken()); }
-        const [min, max, step] = await page.evaluate(r => { const e = document.querySelectorAll('input[type="range"]')[r]; return [+e.min, +e.max, +(e.step || 1)]; }, r);
+        if (toggles) { await page.evaluate(([r, t]) => document.querySelectorAll('input[type="range"]:not(.talk-seek)')[r].closest(".panel").querySelectorAll(".seg button")[t].click(), [r, t]); await wait(600); await add(id, await spoken()); }
+        const [min, max, step] = await page.evaluate(r => { const e = document.querySelectorAll('input[type="range"]:not(.talk-seek)')[r]; return [+e.min, +e.max, +(e.step || 1)]; }, r);
         for (let v = min; v <= max; v += step) {
-          await page.evaluate(([r, v]) => { const e = document.querySelectorAll('input[type="range"]')[r]; e.value = v; e.dispatchEvent(new Event("input", { bubbles: true })); }, [r, v]);
+          await page.evaluate(([r, v]) => { const e = document.querySelectorAll('input[type="range"]:not(.talk-seek)')[r]; e.value = v; e.dispatchEvent(new Event("input", { bubbles: true })); }, [r, v]);
           await wait(560);
           await add(id, await spoken());
         }
