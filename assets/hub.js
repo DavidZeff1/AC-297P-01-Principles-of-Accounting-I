@@ -69,6 +69,10 @@
           if (ready) h += '<li><a class="lesson-link ready" href="#lesson-' + id + '"><span class="num">' + num + '</span><span>' + esc(t) + au + '</span>' + st + '</a></li>';
           else h += '<li><a class="lesson-link pending" href="#lesson-' + id + '"><span class="num">' + num + '</span><span>' + esc(t) + '</span>' + st + '</a></li>';
         });
+        /* end-of-chapter statement problems (assets/problems.js) */
+        (HUB.problemSets || []).filter(function (p) { return p.chapter === ch.n; }).forEach(function (p) {
+          h += '<li><a class="lesson-link ready prob" href="#practice/problems/' + p.id + '"><span class="num">' + ch.n + '.P</span><span>' + esc(p.title) + '</span><span class="status">Practice</span></a></li>';
+        });
         h += '</ul></article>';
       });
       h += '</div><div class="exam-milestone"><span class="tag">Exam</span><strong>' + esc(u.exam) + '</strong><span>covers chapters ' + u.chapters[0].n + '–' + u.chapters[u.chapters.length - 1].n + '</span></div></section>';
@@ -386,7 +390,7 @@
   function route() {
     var hsh = (location.hash || "").replace(/^#/, "");
     var m = /^lesson-(\d+-\d+)$/.exec(hsh);
-    var pm = /^practice(?:\/(cards|quiz))?(?:\/([\w-]+))?$/.exec(hsh);
+    var pm = /^practice(?:\/(cards|quiz|problems))?(?:\/([\w-]+))?$/.exec(hsh);
     document.querySelectorAll("[data-nav]").forEach(function (a) {
       var on = a.getAttribute("data-nav") === (pm ? "practice" : m ? "" : "home");
       a.classList.toggle("on", on); if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");

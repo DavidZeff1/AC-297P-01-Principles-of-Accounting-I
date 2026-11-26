@@ -62,6 +62,7 @@
   function go(m, s) { location.hash = "practice/" + m + "/" + s; }
 
   function render(app, m, s) {
+    if (m === "problems" && HUB.problems) { root = app; mode = "problems"; HUB.problems.render(app, s); return; }
     root = app; mode = m === "quiz" ? "quiz" : "cards"; scope = lessonsIn(s).length ? s : "all";
     document.title = (mode === "quiz" ? "Multiple choice" : "Flashcards") + " · Practice · AC-297P";
     var chapters = [];
@@ -72,7 +73,8 @@
     h += '<p>' + (mode === "quiz" ? "Test yourself with questions from any chapter or lesson. You'll see the explanation after each answer." : "Flip through the key terms. Each card explains the term three ways: the definition, in plain words, and an example.") + '</p>';
     h += '<div class="pr-modes" role="tablist" aria-label="Practice mode">' +
       '<a role="tab" href="#practice/cards/' + scope + '" class="' + (mode === "cards" ? "on" : "") + '" aria-selected="' + (mode === "cards") + '">' + IC.cards + 'Flashcards</a>' +
-      '<a role="tab" href="#practice/quiz/' + scope + '" class="' + (mode === "quiz" ? "on" : "") + '" aria-selected="' + (mode === "quiz") + '">' + IC.quiz + 'Multiple choice</a></div>';
+      '<a role="tab" href="#practice/quiz/' + scope + '" class="' + (mode === "quiz" ? "on" : "") + '" aria-selected="' + (mode === "quiz") + '">' + IC.quiz + 'Multiple choice</a>' +
+      (HUB.problems ? '<a role="tab" href="#practice/problems/tx" aria-selected="false">' + IC.sheet + 'Statement problems</a>' : '') + '</div>';
     h += '<div class="pr-scope"><div class="pr-label">Section</div><div class="pr-chips" role="group" aria-label="Chapter">';
     h += '<a href="#practice/' + mode + '/all" class="chip' + (scope === "all" ? " on" : "") + '">All chapters</a>';
     chapters.forEach(function (c) { h += '<a href="#practice/' + mode + '/ch' + c.n + '" class="chip' + (String(c.n) === cur ? " on" : "") + '" title="' + esc(c.title) + '">Ch ' + c.n + '</a>'; });
@@ -97,6 +99,7 @@
   var IC = {
     cards: '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 6V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg>',
     quiz: '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></svg>',
+    sheet: '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4M14 16h2"/></svg>',
     prev: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>',
     next: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>',
     flip: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></svg>',

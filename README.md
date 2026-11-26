@@ -54,6 +54,17 @@ quiz questions into one place. Pick a section: all chapters, one chapter (`ch3`)
 - **Multiple choice:** choose 10, 20, 50, or all questions; each answer shows the explanation and a link to
   the lesson. The results screen lists the misses and can retry just those. Best scores are remembered.
 
+- **Statement problems** (`#practice/problems/<tx|build>`, `assets/problems.js`): worked problems in the style of
+  the Chapter 1 Excel assignments, also linked at the end of Chapter 1 on the course map.
+  - *Statements after each transaction* (like I-01.05, Bingo Corporation): one card per transaction with the
+    income statement, statement of retained earnings, and balance sheet. Each card starts from the previous
+    card's correct figures, so only the lines that change need editing. **Check & reveal** marks each box,
+    shows the right figure, highlights what changed, and explains the transaction. **New company** generates
+    a fresh 10-transaction set with different amounts.
+  - *Build the statements from an account list* (like the Chapter 1 self-grading sheet): enter a 5-digit ID
+    and the account balances are produced with the spreadsheet's own formulas. Pick each account and amount;
+    net income carries into retained earnings, and ending retained earnings into the balance sheet.
+
 The extra definitions live in `defs/ch<N>.js` as `HUB.addDefs({ "Term": ["in plain words", "example"] })`,
 keyed by the card's exact term. A new lesson's cards need entries there too.
 
@@ -83,6 +94,7 @@ each word is spoken (`talks/timings/<id>.json`) and run `python3 tools/build_tal
 | `tools/build_talks.py` | Encodes audio-lesson recordings and builds `talks/index.js` |
 | `tools/align_talks.py`, `talks/timings/` | Word start times for each audio lesson (speech recognition matched to the script) |
 | `assets/practice.js`, `defs/ch<N>.js` | Practice tab (flashcards, multiple choice) and the extra flashcard definitions |
+| `assets/problems.js`, `assets/problems.css` | Statement problems (Practice tab and end of Chapter 1) |
 | `assets/hub.js` | Router (`#home`, `#lesson-1-1`), progress, and shared widgets |
 | `assets/hub.css` | Design tokens (light and dark) and shared component styles |
 | `lessons/<ch>-<n>.js` | One file per lesson, e.g. `lessons/1-1.js` |

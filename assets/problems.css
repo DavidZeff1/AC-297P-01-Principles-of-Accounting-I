@@ -1,0 +1,110 @@
+/* Statement problems (assets/problems.js). Uses the design tokens from hub.css. */
+.ps-main { max-width: 1180px; }
+.ps-bar { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 18px; margin-bottom: 16px; }
+.ps-co strong { display: block; font: 800 24px/1.15 var(--f-display); font-stretch: 85%; margin-top: 4px; }
+.ps-tools, .ps-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.ps-idform { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px 10px; }
+.ps-idform label { display: grid; gap: 4px; font: 600 12px/1 var(--f-body); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.ps-txtin { font: 400 16px/1.2 var(--f-body); padding: 8px 10px; border-radius: 8px; border: 1px solid var(--rule); background: var(--card); color: var(--ink); width: 11em; }
+.ps-txtin.num { width: 6.5em; font-family: var(--f-mono); }
+
+/* step pills */
+.ps-steps { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.ps-step { min-width: 38px; height: 38px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--rule); background: var(--card); color: var(--ink); font: 700 14px/1 var(--f-mono); cursor: pointer; }
+.ps-step.wide, .ps-step.sum { font-family: var(--f-body); }
+.ps-step:hover:not(:disabled) { border-color: var(--ledger); }
+.ps-step:disabled { opacity: .4; cursor: default; }
+.ps-step.good { background: var(--good-soft); border-color: var(--good); }
+.ps-step.miss { background: var(--mgr-soft); border-color: var(--mgr); }
+.ps-step.on { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ledger); }
+
+/* the transaction / prompt card */
+.ps-tx { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; box-shadow: var(--shadow); padding: 18px 22px; margin-bottom: 16px; }
+.ps-txn { display: flex; gap: 14px; align-items: flex-start; }
+.ps-badge { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--ledger); color: var(--ledger-ink); font-size: 20px; font-weight: 600; }
+.ps-txt { font: 600 20px/1.4 var(--f-body); margin-top: 6px; }
+.ps-carry { margin-top: 12px; padding: 8px 12px; border-radius: 8px; background: var(--greenbar); color: var(--ink-2); font-size: 15px; }
+.ps-main > .ps-carry, #ps-card > .ps-carry { margin: 0 0 14px; }
+.ps-accts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 0 24px; margin-top: 14px; }
+.ps-accts div { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--rule-2); font-size: 16px; }
+
+/* statements */
+.ps-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.ps-grid.one { grid-template-columns: minmax(0, 640px); }
+.ps-col { display: grid; gap: 16px; min-width: 0; }
+.ps-st { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; box-shadow: var(--shadow); padding: 14px 16px 16px; min-width: 0; }
+.ps-st > header { text-align: center; display: grid; gap: 1px; padding-bottom: 10px; margin-bottom: 6px; border-bottom: 2px solid var(--ink); }
+.ps-st > header b { font: 800 15px/1.25 var(--f-display); text-transform: uppercase; letter-spacing: .04em; }
+.ps-st > header span { font: 700 16px/1.25 var(--f-display); }
+.ps-st > header small { font-size: 13px; color: var(--ink-3); }
+.ps-row { display: grid; grid-template-columns: minmax(0, 1fr) 8.2em 8.2em; gap: 6px; align-items: start; padding: 3px 4px; border-radius: 6px; }
+.ps-row.ps-h { padding-top: 10px; }
+.ps-row.ps-h .ps-lab { font-weight: 700; color: var(--ink-2); font-size: 14px; text-transform: uppercase; letter-spacing: .06em; }
+.ps-row.ind .ps-lab { padding-left: 14px; }
+.ps-row.sub .ps-lab { padding-left: 28px; }
+.ps-row.total .ps-lab { font-weight: 700; }
+.ps-lab { min-width: 0; padding-top: 7px; font-size: 16px; line-height: 1.3; }
+.ps-c1, .ps-c2 { min-width: 0; }
+.ps-cell { display: grid; gap: 2px; }
+.ps-in { width: 100%; font: 500 16px/1.2 var(--f-mono); font-variant-numeric: tabular-nums; text-align: right; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+.ps-in:focus { outline: none; border-color: var(--ledger); box-shadow: 0 0 0 3px var(--ledger-soft); background: var(--card); }
+.ps-row.sub .ps-in { border-top: 2px solid var(--ink-3); }
+.ps-row.total .ps-in { font-weight: 700; border-bottom: 4px double var(--ink); }
+.ps-in[readonly] { cursor: default; }
+.ps-in.ok { border-color: var(--good); background: var(--good-soft); }
+.ps-in.bad { border-color: var(--bad); background: var(--bad-soft); text-decoration: line-through; text-decoration-color: var(--bad); }
+.ps-fix { text-align: right; font-size: 14px; font-weight: 600; color: var(--good); padding-right: 9px; }
+.ps-fix::before { content: "✓ "; }
+.ps-sel { width: 100%; max-width: 100%; font: 400 16px/1.2 var(--f-body); padding: 6px 8px; border-radius: 6px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+.ps-sel.ok { border-color: var(--good); background: var(--good-soft); }
+.ps-sel.bad { border-color: var(--bad); background: var(--bad-soft); }
+.ps-sel:disabled { opacity: 1; color: var(--ink); }
+.ps-fixlab { display: block; font-size: 14px; font-weight: 600; color: var(--good); padding: 2px 0 0 4px; }
+.ps-fixlab::before { content: "✓ "; }
+.ps-row.changed { background: var(--marker); color: var(--marker-ink); }
+.ps-delta { display: inline-block; margin-left: 8px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+
+/* actions and feedback */
+.ps-act { margin-top: 18px; }
+.ps-tip { margin-top: 10px; font-size: 14px; color: var(--ink-3); }
+.ps-result { background: var(--card); border: 1px solid var(--rule); border-left: 5px solid var(--good); border-radius: 14px; box-shadow: var(--shadow); padding: 16px 20px; display: grid; gap: 10px; }
+.ps-result.no { border-left-color: var(--mgr); }
+.ps-score { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; font-weight: 600; }
+.ps-score .num { font-size: 28px; font-weight: 700; color: var(--good); }
+.ps-result.no .ps-score .num { color: var(--mgr); }
+.ps-why { line-height: 1.5; }
+.ps-eq { font-size: 15px; color: var(--ink-2); }
+.ps-legend { font-size: 14px; color: var(--ink-3); display: flex; align-items: center; gap: 8px; }
+.ps-chg { display: inline-block; width: 18px; height: 12px; border-radius: 3px; background: var(--marker); }
+
+/* results */
+.ps-sum { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; box-shadow: var(--shadow); padding: 20px 22px; }
+.ps-sum h2 { font-size: 24px; margin-bottom: 12px; }
+.ps-sumlist { list-style: none; margin: 0 0 14px; padding: 0; }
+.ps-sumlist li + li { border-top: 1px solid var(--rule-2); }
+.ps-sumrow { display: grid; grid-template-columns: 2em minmax(0, 1fr) auto; gap: 10px; align-items: center; width: 100%; text-align: left; padding: 9px 6px; border: 0; background: none; cursor: pointer; border-radius: 6px; }
+.ps-sumrow:hover { background: var(--ledger-soft); }
+.ps-pill { font-size: 13px; font-weight: 600; padding: 3px 8px; border-radius: 999px; }
+.ps-pill.ok { background: var(--good-soft); color: var(--good); }
+.ps-pill.no { background: var(--mgr-soft); color: var(--mgr); }
+.ps-sumline { margin-bottom: 14px; font-weight: 600; }
+
+/* chapter practice link on the course map */
+.lesson-link.prob .status { background: var(--mgr-soft); color: var(--mgr); }
+
+@media (max-width: 900px) { .ps-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) {
+  .ps-tx, .ps-sum { padding: 14px 14px; }
+  .ps-st { padding: 12px 10px 14px; }
+  .ps-txt { font-size: 18px; }
+  .ps-badge { width: 36px; height: 36px; font-size: 17px; }
+  /* one amount column: inner amounts share it, indentation shows the level */
+  .ps-row { grid-template-columns: minmax(0, 1fr) 7.6em; }
+  .ps-row .ps-c1:empty, .ps-row .ps-c2:empty { display: none; }
+  .ps-row.ps-h { grid-template-columns: minmax(0, 1fr); }
+  .ps-lab { font-size: 15px; }
+  .ps-row.ind .ps-lab { padding-left: 10px; }
+  .ps-row.sub .ps-lab { padding-left: 18px; }
+  .ps-delta { display: block; margin-left: 0; }
+  .ps-co strong { font-size: 21px; }
+}
